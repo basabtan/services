@@ -1,0 +1,464 @@
+[data-ui-tool="repair-request"] {
+  --repair-navy: var(--navy, #14243f);
+  --repair-gold: var(--gold, #b8934f);
+  --repair-vellum: var(--vellum, #f4eddd);
+  --repair-ink: var(--ink, var(--repair-navy));
+  --repair-muted: var(--muted, #6b7280);
+  --repair-line: var(--line, #d6cbb8);
+  --repair-surface: var(--surface, #fffdf8);
+  --repair-panel: var(--bg-panel, var(--repair-vellum));
+  --repair-canvas: var(--bg-canvas, var(--repair-vellum));
+  --repair-input: var(--input-bg, #fff);
+  --repair-link: var(--text-link, var(--repair-gold));
+  --repair-selected: var(--selected-surface, color-mix(in srgb, var(--repair-gold) 14%, white));
+  --repair-bad: var(--bad, #9b2c2c);
+  --repair-space-1: 4px;
+  --repair-space-2: 8px;
+  --repair-space-3: 12px;
+  --repair-space-4: 16px;
+  --repair-space-5: 20px;
+  --repair-font: var(--font-body, system-ui, sans-serif);
+  --repair-mono: var(--font-mono, ui-monospace, monospace);
+  font-family: var(--repair-font);
+}
+
+.repair-vh {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.repair-scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  pointer-events: none;
+  background: color-mix(in srgb, var(--repair-canvas) 48%, transparent);
+  backdrop-filter: blur(2px);
+}
+
+.repair-scrim.is-picking {
+  opacity: 0;
+  backdrop-filter: none;
+}
+
+.repair-panel {
+  position: fixed;
+  z-index: 120;
+  top: 22px;
+  right: 22px;
+  bottom: 22px;
+  width: min(680px, calc(100vw - 44px));
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--repair-panel);
+  border: 1px solid var(--repair-line);
+  border-radius: 0;
+  box-shadow: 0 24px 64px color-mix(in srgb, var(--repair-navy) 20%, transparent);
+  overflow: hidden;
+}
+
+.repair-panel.is-picking {
+  width: min(320px, calc(100vw - 44px));
+  bottom: auto;
+  max-height: calc(100dvh - 44px);
+  overflow: auto;
+}
+
+.repair-head {
+  flex: 0 0 auto;
+  padding: var(--repair-space-4) var(--repair-space-5);
+  border-bottom: 1px solid var(--repair-line);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--repair-space-3);
+  background: var(--repair-surface);
+}
+
+.repair-eyebrow {
+  color: var(--repair-link);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+
+.repair-head h2 {
+  font-size: 20px;
+  margin: var(--repair-space-1) 0;
+}
+
+.repair-head p {
+  font-size: 12px;
+  color: var(--repair-muted);
+  line-height: 1.45;
+}
+
+.repair-close {
+  margin-left: auto;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--repair-line);
+  border-radius: 0;
+  background: var(--repair-surface);
+  color: var(--repair-muted);
+  font-size: 22px;
+}
+
+.repair-body {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+
+.repair-quick {
+  padding: var(--repair-space-3) var(--repair-space-5);
+  display: flex;
+  gap: var(--repair-space-2);
+  align-items: center;
+  border-bottom: 1px solid var(--repair-line);
+}
+
+.repair-autofield {
+  position: relative;
+  min-width: 0;
+  flex: 1;
+}
+
+.repair-autofield input,
+.repair-autofield textarea {
+  width: 100%;
+  font-size: 13px;
+  background: var(--repair-panel);
+  border: 1px solid var(--repair-line);
+  border-radius: 0;
+  padding: var(--repair-space-2);
+  color: var(--repair-ink);
+  font-family: inherit;
+}
+
+.repair-chips {
+  min-height: 46px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--repair-space-2);
+  align-items: center;
+  padding: var(--repair-space-2) var(--repair-space-5);
+  border-bottom: 1px solid var(--repair-line);
+}
+
+.repair-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--repair-space-1);
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  padding: var(--repair-space-1) var(--repair-space-2);
+  border: 1px solid var(--repair-line);
+  border-radius: 0;
+  background: var(--repair-input);
+  color: var(--repair-link);
+  font: 11px var(--repair-mono);
+}
+
+.repair-chip button {
+  border: 0;
+  background: transparent;
+  color: var(--repair-muted);
+  padding: 0 var(--repair-space-1);
+  min-width: 22px;
+  min-height: 22px;
+}
+
+.repair-hint,
+.repair-disclosure {
+  color: var(--repair-muted);
+  font-size: 11px;
+}
+
+.repair-editor {
+  padding: var(--repair-space-3) var(--repair-space-5);
+}
+
+.repair-editor > label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: var(--repair-space-2);
+}
+
+.repair-editor textarea {
+  height: 140px;
+  min-height: 90px;
+  line-height: 1.55;
+}
+
+.repair-clarity {
+  margin-top: var(--repair-space-2);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--repair-space-2);
+  font-size: 11px;
+  color: var(--repair-muted);
+}
+
+.repair-clarity meter {
+  width: 100px;
+  height: 10px;
+  accent-color: var(--repair-gold);
+}
+
+.repair-clarity > span:last-child {
+  margin-left: auto;
+}
+
+.repair-actions {
+  display: flex;
+  gap: var(--repair-space-2);
+  flex-wrap: wrap;
+}
+
+.repair-body > .repair-actions {
+  padding: 0 var(--repair-space-5);
+}
+
+.repair-disclosure {
+  padding: var(--repair-space-2) var(--repair-space-5) var(--repair-space-3);
+}
+
+.repair-result {
+  border-top: 1px solid var(--repair-line);
+}
+
+.repair-result-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--repair-space-2);
+  padding-right: var(--repair-space-3);
+  background: var(--repair-surface);
+  border-bottom: 1px solid var(--repair-line);
+}
+
+.repair-tabs {
+  display: flex;
+}
+
+.repair-tabs button {
+  padding: var(--repair-space-3);
+  border: 0;
+  border-right: 1px solid var(--repair-line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--repair-muted);
+  font-size: 12px;
+}
+
+.repair-tabs button[aria-selected="true"] {
+  color: var(--repair-ink);
+  background: var(--repair-panel);
+  box-shadow: inset 0 -2px var(--repair-gold);
+  font-weight: 600;
+}
+
+.repair-result pre {
+  min-height: 220px;
+  max-height: 380px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  padding: var(--repair-space-4) var(--repair-space-5);
+  font: 11px/1.6 var(--repair-mono);
+  color: var(--repair-ink);
+  margin: 0;
+}
+
+.repair-footer {
+  flex: 0 0 auto;
+  padding: var(--repair-space-3) var(--repair-space-5);
+  border-top: 1px solid var(--repair-line);
+  background: var(--repair-surface);
+  display: flex;
+  flex-direction: column;
+  gap: var(--repair-space-2);
+}
+
+.repair-footer small,
+.repair-footer p {
+  font-size: 11px;
+  color: var(--repair-muted);
+}
+
+.repair-footer .repair-actions {
+  justify-content: flex-end;
+}
+
+.repair-footer .repair-error {
+  color: var(--repair-bad);
+}
+
+.repair-autocomplete {
+  position: absolute;
+  z-index: 5;
+  top: calc(100% + 4px);
+  left: 0;
+  width: min(360px, 100%);
+  max-height: 240px;
+  overflow: auto;
+  background: var(--repair-panel);
+  border: 1px solid var(--repair-line);
+  border-radius: 0;
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--repair-navy) 18%, transparent);
+}
+
+.repair-autocomplete [role="option"] {
+  padding: var(--repair-space-2) var(--repair-space-3);
+  border-bottom: 1px solid var(--repair-line);
+  cursor: pointer;
+}
+
+.repair-autocomplete [role="option"]:hover,
+.repair-autocomplete .is-active {
+  background: var(--repair-selected);
+}
+
+.repair-autocomplete strong {
+  display: block;
+  font: 11px var(--repair-mono);
+  color: var(--repair-link);
+  overflow-wrap: anywhere;
+}
+
+.repair-autocomplete span,
+.repair-autocomplete small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  color: var(--repair-muted);
+}
+
+.repair-autocomplete p {
+  padding: var(--repair-space-3);
+  font-size: 12px;
+}
+
+.repair-pick-banner {
+  padding: var(--repair-space-4);
+  background: var(--repair-selected);
+  color: var(--repair-link);
+  font-size: 12px;
+}
+
+.repair-pick-banner p {
+  margin: var(--repair-space-2) 0 var(--repair-space-3);
+}
+
+.repair-pick-outline {
+  position: fixed;
+  z-index: 115;
+  pointer-events: none;
+  border: 2px solid var(--repair-gold);
+  background: color-mix(in srgb, var(--repair-gold) 6%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--repair-gold) 12%, transparent);
+}
+
+.repair-pick-tip {
+  position: fixed;
+  z-index: 116;
+  pointer-events: none;
+  max-width: 260px;
+  overflow-wrap: anywhere;
+  background: var(--repair-navy);
+  color: var(--repair-vellum);
+  padding: var(--repair-space-2);
+  font: 11px var(--repair-mono);
+}
+
+.repair-pick-tip span {
+  display: block;
+  font: 10px var(--repair-font);
+  margin-top: var(--repair-space-1);
+}
+
+.repair-btn {
+  border: 1px solid var(--repair-line);
+  border-radius: 0;
+  padding: 6px 10px;
+  font: 12px var(--repair-font);
+  background: var(--repair-surface);
+  color: var(--repair-ink);
+  cursor: pointer;
+}
+
+.repair-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.repair-btn-primary {
+  background: var(--repair-gold);
+  border-color: var(--repair-gold);
+  color: var(--repair-navy);
+  font-weight: 600;
+}
+
+.repair-btn-ghost {
+  background: transparent;
+}
+
+body.repair-picking [data-ui],
+body.repair-picking [data-ui] * {
+  cursor: crosshair !important;
+}
+
+.repair-panel button:focus-visible,
+.repair-panel pre:focus-visible {
+  outline: 2px solid var(--repair-gold);
+  outline-offset: -2px;
+}
+
+@media (max-width: 700px) {
+  .repair-panel {
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    width: calc(100vw - 20px);
+  }
+  .repair-panel.is-picking {
+    width: min(280px, calc(100vw - 20px));
+    max-height: min(240px, calc(100dvh - 20px));
+  }
+  .repair-head,
+  .repair-quick,
+  .repair-editor,
+  .repair-chips,
+  .repair-footer {
+    padding-left: var(--repair-space-3);
+    padding-right: var(--repair-space-3);
+  }
+  .repair-quick {
+    flex-wrap: wrap;
+  }
+  .repair-quick .repair-autofield {
+    flex-basis: 100%;
+  }
+  .repair-head h2 {
+    font-size: 18px;
+  }
+  .repair-clarity > span:last-child {
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .repair-panel,
+  .repair-scrim {
+    transition: none;
+  }
+}
