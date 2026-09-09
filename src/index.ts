@@ -23,3 +23,20 @@ export type {
 } from './report';
 export { RepairReportPanel } from './RepairReportPanel';
 export type { RepairReportPanelProps } from './RepairReportPanel';
+export {
+  emptyChangeRequest,
+  formatWhen,
+  isRequestResolved,
+  requestFromRepair,
+  REQUEST_PRIORITIES,
+  REQUEST_STATUSES,
+  toggleSurface,
+} from './requests';
+export type {
+  ChangeRequest,
+  RequestPriority,
+  RequestStatus,
+  RequestSurface,
+} from './requests';
+export { ChangeRequestsPanel } from './ChangeRequestsPanel';
+export type { ChangeRequestsPanelProps } from './ChangeRequestsPanel';

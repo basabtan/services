@@ -1,8 +1,6 @@
-# Repair Report
+# Repair Report + Change Requests
 
-Host-agnostic **Repair Request / AI Report** panel. Local formatter only — no AI provider, no app store, no Concord/GMCR types.
-
-Copy the brief into Cursor or any chat. The panel does not apply UI changes.
+Host-agnostic **Repair Request / AI Report** and **Change Requests** inbox. No AI provider, no Concord/GMCR types. Host owns persistence.
 
 ## Install
 
@@ -74,13 +72,53 @@ Corners stay square (`border-radius: 0`).
 | `buildRepairReport` | Pure brief/spec builder |
 | `target(...)` | Catalog helper |
 | `repairToRecord` | `{ id, stage, title, summary, body, … }` for host storage |
+| `ChangeRequestsPanel` | Inbox: list, editor, autosave, resolve, delete |
+| `emptyChangeRequest` / `requestFromRepair` | Create or map a repair save into the inbox |
 
-`onSave` receives a generic record (`stage: 'note' | 'request'`). Map it to your inbox. No Change Requests UI is included.
+`RepairReportPanel.onSave` receives a generic record (`stage: 'note' | 'request'`). Use `requestFromRepair` to drop it into the inbox.
+
+## Change Requests
+
+Host-owned list. Autosave, priority, status, optional surfaces, delete, clear resolved.
+
+```tsx
+import { useState } from 'react';
+import { ChangeRequestsPanel, type ChangeRequest } from '@basabtan/repair-report';
+import '@basabtan/repair-report/styles.css';
+
+const SURFACES = [
+  { id: 'settings', label: 'Settings' },
+  { id: 'dialog', label: 'Dialog' },
+];
+
+export function Inbox() {
+  const [open, setOpen] = useState(false);
+  const [items, setItems] = useState<ChangeRequest[]>([]);
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(true)}>Change Requests</button>
+      <ChangeRequestsPanel
+        open={open}
+        onClose={() => setOpen(false)}
+        items={items}
+        surfaces={SURFACES}
+        onSave={item => setItems(current => {
+          const next = current.filter(row => row.id !== item.id);
+          return [...next, item];
+        })}
+        onDelete={id => setItems(current => current.filter(row => row.id !== id))}
+      />
+    </>
+  );
+}
+```
+
+The panel creates records. Persist `items` however you want (localStorage, API).
 
 ## Not included
 
 - LLM calls or API keys
-- Concord Notes / Change Requests / store
+- Concord Notes / store / GMCR surfaces
 - Host `data-ui` annotations (you add those)
 
 ## Test

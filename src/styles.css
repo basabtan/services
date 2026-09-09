@@ -1,3 +1,5 @@
+@import './change-requests.css';
+
 [data-ui-tool="repair-request"] {
   --repair-navy: var(--navy, #14243f);
   --repair-gold: var(--gold, #b8934f);
