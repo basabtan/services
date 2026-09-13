@@ -115,6 +115,14 @@ export function Inbox() {
 
 The panel creates records. Persist `items` however you want (localStorage, API).
 
+Repair Request uses the same **Resolved** checkbox as Change Requests. Check it
+and save to emit `status: 'Completed'`; uncheck it to emit `Requested`. Loading
+a saved request from the repair chain now preserves its ID and creation date,
+so hosts should upsert by ID. Preserve existing inbox metadata when updating
+from a repair record. **New** and successful saves with `clearOnSave` reset the
+editor to a fresh, unresolved request. Older records without a status remain
+unresolved by default.
+
 ## Not included
 
 - LLM calls or API keys

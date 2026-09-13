@@ -15,6 +15,7 @@ import {
 } from './requests';
 import { describeRejections, filesToAttachments } from './attachments';
 import { AttachmentField } from './AttachmentField';
+import { ResolvedCheckbox } from './ResolvedCheckbox';
 import { DropOverlay, useFileDrop, useWindowDrag } from './window';
 
 type SaveState = 'saved' | 'dirty' | 'saving' | 'error';
@@ -309,18 +310,8 @@ export function ChangeRequestsPanel({
                     </select>
                   </label>
                 </div>
-                <label className={`cr-resolved${isRequestResolved(draft) ? ' is-resolved' : ''}`}>
-                  <input
-                    type="checkbox"
-                    checked={isRequestResolved(draft)}
-                    onChange={event => patch({ status: event.target.checked ? 'Completed' : 'Requested' })}
-                    data-testid="checkbox-request-resolved"
-                  />
-                  <span>
-                    <strong>Resolved</strong>
-                    <small>Mark this request complete so it can be cleared from the inbox.</small>
-                  </span>
-                </label>
+                <ResolvedCheckbox status={draft.status} onChange={status => patch({ status })}
+                  testId="checkbox-request-resolved" />
                 {surfaces.length > 0 && (
                   <fieldset className="cr-surfaces">
                     <legend>Affected surfaces</legend>
