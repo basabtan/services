@@ -1,4 +1,5 @@
 import type { RepairRecord } from './report';
+import { isAttachment, type Attachment } from './attachments';
 
 export const REQUEST_PRIORITIES = ['Low', 'Normal', 'High', 'Urgent'] as const;
 export type RequestPriority = (typeof REQUEST_PRIORITIES)[number];
@@ -23,6 +24,8 @@ export interface ChangeRequest {
   acceptanceCriteria: string;
   createdAt: string;
   updatedAt: string;
+  /** Optional so records saved before attachments existed still validate. */
+  attachments?: Attachment[];
 }
 
 export function emptyChangeRequest(id: string, now: string): ChangeRequest {
@@ -31,7 +34,12 @@ export function emptyChangeRequest(id: string, now: string): ChangeRequest {
     priority: 'Normal', status: 'Requested', surfaces: [],
     desiredOutcome: '', acceptanceCriteria: '',
     createdAt: now, updatedAt: now,
+    attachments: [],
   };
+}
+
+export function requestAttachments(request: Pick<ChangeRequest, 'attachments'>): Attachment[] {
+  return Array.isArray(request.attachments) ? request.attachments.filter(isAttachment) : [];
 }
 
 export function isRequestResolved(request: Pick<ChangeRequest, 'status'>): boolean {
@@ -55,6 +63,7 @@ export function requestFromRepair(record: RepairRecord, extras: Partial<ChangeRe
     acceptanceCriteria: extras.acceptanceCriteria ?? record.acceptanceCriteria,
     createdAt: record.createdAt,
     updatedAt: record.updatedAt,
+    attachments: extras.attachments ?? record.attachments ?? [],
   };
 }
 

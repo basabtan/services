@@ -1,0 +1,150 @@
+/* Shared by the Repair Request and Change Requests windows: drop overlay and attachments. */
+
+.rr-drop-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  background: color-mix(in srgb, var(--repair-gold, var(--cr-gold, #b8934f)) 10%, color-mix(in srgb, var(--repair-panel, var(--cr-panel, #f4eddd)) 82%, transparent));
+  outline: 2px dashed var(--repair-gold, var(--cr-gold, #b8934f));
+  outline-offset: -8px;
+  transition: opacity 160ms ease;
+}
+
+.rr-drop-overlay.is-active {
+  opacity: 1;
+}
+
+.rr-drop-overlay-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 18px 26px;
+  background: var(--repair-surface, var(--cr-surface, #fffdf8));
+  border: 1px solid var(--repair-line, var(--cr-line, #d6cbb8));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--repair-navy, var(--cr-navy, #14243f)) 18%, transparent);
+  color: var(--repair-ink, var(--cr-ink, #14243f));
+  font-size: 13px;
+  transform: translateY(6px);
+  transition: transform 200ms cubic-bezier(.2, .8, .2, 1);
+}
+
+.rr-drop-overlay.is-active .rr-drop-overlay-card {
+  transform: translateY(0);
+}
+
+.rr-drop-overlay-icon {
+  font-size: 22px;
+  color: var(--repair-gold, var(--cr-gold, #b8934f));
+}
+
+.rr-drop-overlay-card small {
+  color: var(--repair-muted, var(--cr-muted, #6b7280));
+  font-size: 11px;
+}
+
+.rr-attachments {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rr-attachments-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.rr-attachments-label {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.rr-attachments-hint {
+  margin: 0;
+  font-size: 11px;
+  color: var(--repair-muted, var(--cr-muted, #6b7280));
+}
+
+.rr-attachment-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 8px;
+}
+
+.rr-attachment {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 6px 8px;
+  border: 1px solid var(--repair-line, var(--cr-line, #d6cbb8));
+  background: var(--repair-surface, var(--cr-surface, #fffdf8));
+}
+
+.rr-attachment-thumb {
+  flex: 0 0 auto;
+  width: 44px;
+  height: 44px;
+  object-fit: cover;
+  border: 1px solid var(--repair-line, var(--cr-line, #d6cbb8));
+  background: var(--repair-input, var(--cr-input, #fff));
+}
+
+.rr-attachment-file {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font: 600 10px var(--repair-mono, ui-monospace, monospace);
+  letter-spacing: .06em;
+  color: var(--repair-link, var(--cr-gold, #b8934f));
+}
+
+.rr-attachment-meta {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+  font-size: 12px;
+}
+
+.rr-attachment-meta a,
+.rr-attachment-meta strong {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--repair-ink, var(--cr-ink, #14243f));
+  font-weight: 600;
+}
+
+.rr-attachment-meta small {
+  font-size: 10px;
+  color: var(--repair-muted, var(--cr-muted, #6b7280));
+}
+
+.rr-attachment-remove {
+  margin-left: auto;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--repair-muted, var(--cr-muted, #6b7280));
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.rr-attachment-remove:hover:not(:disabled) {
+  border-color: var(--repair-line, var(--cr-line, #d6cbb8));
+  color: var(--repair-bad, var(--cr-bad, #9b2c2c));
+}

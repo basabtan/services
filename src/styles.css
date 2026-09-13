@@ -1,3 +1,4 @@
+@import './shared.css';
 @import './change-requests.css';
 
 [data-ui-tool="repair-request"] {
@@ -32,27 +33,50 @@
   clip: rect(0 0 0 0);
 }
 
-.repair-scrim {
+/*
+  The window is a fixed, centred frame the user can drag by its header. The
+  background stays clear: no scrim, no blur, and the app underneath remains
+  usable. The side chain slides out from behind the panel on the right.
+*/
+.repair-window {
+  --repair-chain-w: 280px;
+  --repair-chain-tab: 34px;
+  --repair-motion: 320ms cubic-bezier(.2, .8, .2, 1);
+  /*
+    Centred with inset + auto margins rather than viewport units: a host that
+    zooms <html> keeps vw/vh at screen size, which would push the window off
+    the bottom of the screen. Percentages of the containing block stay right.
+  */
   position: fixed;
-  inset: 0;
-  z-index: 110;
-  pointer-events: none;
-  background: color-mix(in srgb, var(--repair-canvas) 48%, transparent);
-  backdrop-filter: blur(2px);
+  z-index: 120;
+  inset: 22px;
+  margin: auto;
+  width: min(720px, calc(100% - 44px));
+  height: min(840px, calc(100% - 44px));
 }
 
-.repair-scrim.is-picking {
-  opacity: 0;
-  backdrop-filter: none;
+.repair-window.is-dragging {
+  user-select: none;
+}
+
+/* Glide when the window makes room for the chain; never while the pointer is dragging it. */
+.repair-window.is-sliding:not(.is-dragging) {
+  transition: left var(--repair-motion), top var(--repair-motion);
+}
+
+.repair-window.is-picking {
+  inset: 22px 22px auto auto;
+  margin: 0;
+  width: min(320px, 100%);
+  height: auto;
+  max-height: calc(100% - 44px);
 }
 
 .repair-panel {
-  position: fixed;
-  z-index: 120;
-  top: 22px;
-  right: 22px;
-  bottom: 22px;
-  width: min(680px, calc(100vw - 44px));
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   min-height: 0;
@@ -64,9 +88,12 @@
 }
 
 .repair-panel.is-picking {
-  width: min(320px, calc(100vw - 44px));
-  bottom: auto;
-  max-height: calc(100dvh - 44px);
+  height: auto;
+  max-height: none;
+  overflow: visible;
+}
+
+.repair-window.is-picking {
   overflow: auto;
 }
 
@@ -78,6 +105,235 @@
   align-items: flex-start;
   gap: var(--repair-space-3);
   background: var(--repair-surface);
+}
+
+.repair-head.is-draggable {
+  cursor: grab;
+  touch-action: none;
+}
+
+.repair-window.is-dragging .repair-head.is-draggable {
+  cursor: grabbing;
+}
+
+.repair-head-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--repair-space-2);
+  flex-shrink: 0;
+}
+
+.repair-attach {
+  padding: var(--repair-space-3) var(--repair-space-5);
+  border-top: 1px solid var(--repair-line);
+  border-bottom: 1px solid var(--repair-line);
+  margin-bottom: var(--repair-space-3);
+}
+
+/* Side chain: hidden behind the panel until its tab is used. */
+.repair-chain {
+  position: absolute;
+  z-index: 1;
+  top: 18px;
+  bottom: 18px;
+  right: 0;
+  width: var(--repair-chain-w);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: var(--repair-surface);
+  border: 1px solid var(--repair-line);
+  box-shadow: 12px 18px 40px color-mix(in srgb, var(--repair-navy) 18%, transparent);
+  transform: translateX(0);
+  visibility: hidden;
+  transition: transform var(--repair-motion), visibility 0s linear var(--repair-motion);
+}
+
+.repair-window.chain-open .repair-chain {
+  transform: translateX(100%);
+  visibility: visible;
+  transition: transform var(--repair-motion), visibility 0s;
+}
+
+.repair-chain-head {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--repair-space-3) var(--repair-space-4);
+  border-bottom: 1px solid var(--repair-line);
+  font-size: 12px;
+}
+
+.repair-chain-list {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.repair-chain-item {
+  border-bottom: 1px solid var(--repair-line);
+  opacity: 0;
+  translate: -8px 0;
+  transition: opacity 260ms ease, translate 320ms cubic-bezier(.2, .8, .2, 1);
+  transition-delay: calc(var(--i, 0) * 28ms + 80ms);
+}
+
+.repair-window.chain-open .repair-chain-item {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.repair-chain-load {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 3px;
+  width: 100%;
+  text-align: left;
+  padding: var(--repair-space-3) var(--repair-space-4);
+  border: 0;
+  background: transparent;
+  color: var(--repair-ink);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.repair-chain-load:hover,
+.repair-chain-load:focus-visible {
+  background: var(--repair-selected);
+}
+
+.repair-chain-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--repair-space-2);
+  font-size: 9px;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--repair-muted);
+}
+
+.repair-chain-load strong {
+  font-size: 12px;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.repair-chain-summary {
+  font-size: 11px;
+  color: var(--repair-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.repair-chain-open {
+  display: block;
+  margin: 0 var(--repair-space-4) var(--repair-space-3);
+  padding: 2px 0;
+  border: 0;
+  background: transparent;
+  color: var(--repair-link);
+  font: 11px var(--repair-font);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.repair-chain-empty {
+  padding: var(--repair-space-4);
+  font-size: 12px;
+  color: var(--repair-muted);
+}
+
+/* The tab peeks out from behind the panel's right edge and rides along with the drawer. */
+.repair-chain-tab {
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  right: calc(-1 * var(--repair-chain-tab));
+  width: calc(var(--repair-chain-tab) + 14px);
+  translate: 0 -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 0 12px 14px;
+  border: 1px solid var(--repair-line);
+  border-left: 0;
+  background: var(--repair-gold);
+  color: var(--repair-navy);
+  box-shadow: 6px 8px 22px color-mix(in srgb, var(--repair-navy) 22%, transparent);
+  cursor: pointer;
+  transition: right var(--repair-motion), translate var(--repair-motion), background 140ms ease, box-shadow 200ms ease;
+}
+
+.repair-chain-tab:hover,
+.repair-chain-tab:focus-visible {
+  translate: 4px -50%;
+  box-shadow: 10px 10px 26px color-mix(in srgb, var(--repair-navy) 28%, transparent);
+}
+
+.repair-window.chain-open .repair-chain-tab {
+  right: calc(-1 * (var(--repair-chain-w) + var(--repair-chain-tab)));
+}
+
+.repair-chain-tab-count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+  /* Gold on navy stays legible when a dark host maps both navy and vellum to dark tones. */
+  background: var(--repair-navy);
+  color: var(--repair-gold);
+  font: 600 10px var(--repair-mono);
+}
+
+.repair-chain-tab-label {
+  writing-mode: vertical-rl;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+.repair-chain-tab-arrow {
+  font-size: 16px;
+  line-height: 1;
+  transition: rotate var(--repair-motion);
+}
+
+.repair-window.chain-open .repair-chain-tab-arrow {
+  rotate: 180deg;
+}
+
+/* No room beside the panel even after gliding left: the chain overlays the panel from its right edge. */
+.repair-window.chain-overlay .repair-chain {
+  top: 0;
+  bottom: 0;
+  width: min(var(--repair-chain-w), calc(100% - 60px));
+  transform: translateX(100%);
+}
+
+.repair-window.chain-overlay.chain-open .repair-chain {
+  z-index: 3;
+  transform: translateX(0);
+}
+
+.repair-window.chain-overlay .repair-chain-tab,
+.repair-window.chain-overlay.chain-open .repair-chain-tab {
+  z-index: 4;
+  right: 0;
 }
 
 .repair-eyebrow {
@@ -425,15 +681,33 @@ body.repair-picking [data-ui] * {
 }
 
 @media (max-width: 700px) {
-  .repair-panel {
-    top: 10px;
-    right: 10px;
-    bottom: 10px;
-    width: calc(100vw - 20px);
+  .repair-window {
+    inset: 10px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
   }
-  .repair-panel.is-picking {
-    width: min(280px, calc(100vw - 20px));
-    max-height: min(240px, calc(100dvh - 20px));
+  .repair-window.is-picking {
+    inset: 10px 10px auto auto;
+    width: min(280px, 100%);
+    max-height: 240px;
+  }
+  /* No room beside the panel on a phone: the chain overlays it instead. */
+  .repair-chain {
+    top: 0;
+    bottom: 0;
+    width: min(var(--repair-chain-w), calc(100vw - 60px));
+    transform: translateX(100%);
+  }
+  .repair-window.chain-open .repair-chain {
+    z-index: 3;
+    transform: translateX(0);
+  }
+  .repair-chain-tab {
+    z-index: 4;
+    right: 0;
+  }
+  .repair-window.chain-open .repair-chain-tab {
+    right: 0;
   }
   .repair-head,
   .repair-quick,
@@ -460,7 +734,12 @@ body.repair-picking [data-ui] * {
 
 @media (prefers-reduced-motion: reduce) {
   .repair-panel,
-  .repair-scrim {
+  .repair-chain,
+  .repair-chain-tab,
+  .repair-chain-tab-arrow,
+  .repair-chain-item,
+  .rr-drop-overlay,
+  .rr-drop-overlay-card {
     transition: none;
   }
 }

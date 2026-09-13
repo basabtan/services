@@ -1,3 +1,5 @@
+@import './shared.css';
+
 [data-ui-tool="change-requests"] {
   --cr-navy: var(--repair-navy, var(--navy, #14243f));
   --cr-gold: var(--repair-gold, var(--gold, #b8934f));
@@ -19,27 +21,32 @@
   font-family: var(--cr-font);
 }
 
-.cr-scrim {
+/* Centred floating window, dragged by its header. No scrim: the app beneath stays clear and usable. */
+.cr-window {
+  /* inset + auto margins, not viewport units: see .repair-window in styles.css for why. */
   position: fixed;
-  inset: 0;
-  z-index: 110;
-  background: color-mix(in srgb, var(--cr-navy) 28%, transparent);
+  z-index: 120;
+  inset: 16px;
+  margin: auto;
+  width: min(980px, calc(100% - 32px));
+  height: min(760px, calc(100% - 32px));
+}
+
+.cr-window.is-dragging {
+  user-select: none;
 }
 
 .cr-panel {
-  position: fixed;
-  z-index: 120;
-  top: 6vh;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(980px, calc(100vw - 32px));
-  height: min(760px, 88vh);
+  position: relative;
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   background: var(--cr-panel);
   border: 1px solid var(--cr-line);
   border-radius: 0;
   box-shadow: 0 24px 64px color-mix(in srgb, var(--cr-navy) 22%, transparent);
+  overflow: hidden;
 }
 
 .cr-head {
@@ -50,6 +57,15 @@
   padding: var(--cr-space-4) var(--cr-space-5);
   border-bottom: 1px solid var(--cr-line);
   background: var(--cr-surface);
+}
+
+.cr-head.is-draggable {
+  cursor: grab;
+  touch-action: none;
+}
+
+.cr-window.is-dragging .cr-head.is-draggable {
+  cursor: grabbing;
 }
 
 .cr-eyebrow {
@@ -358,7 +374,8 @@
 }
 
 .cr-confirm {
-  position: fixed;
+  /* Absolute inside the panel so it travels with the window when dragged. */
+  position: absolute;
   z-index: 130;
   width: 260px;
   padding: var(--cr-space-3);

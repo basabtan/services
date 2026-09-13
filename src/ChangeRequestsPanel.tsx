@@ -4,6 +4,7 @@ import {
   emptyChangeRequest,
   formatWhen,
   isRequestResolved,
+  requestAttachments,
   REQUEST_PRIORITIES,
   REQUEST_STATUSES,
   toggleSurface,
@@ -12,6 +13,9 @@ import {
   type RequestStatus,
   type RequestSurface,
 } from './requests';
+import { describeRejections, filesToAttachments } from './attachments';
+import { AttachmentField } from './AttachmentField';
+import { DropOverlay, useFileDrop, useWindowDrag } from './window';
 
 type SaveState = 'saved' | 'dirty' | 'saving' | 'error';
 
@@ -42,7 +46,9 @@ export function ChangeRequestsPanel({
   const [saveState, setSaveState] = useState<SaveState>('saved');
   const [err, setErr] = useState('');
   const [ask, setAsk] = useState<{ kind: 'delete' | 'clear'; x: number; y: number } | null>(null);
+  const [notice, setNotice] = useState('');
   const editVersion = useRef(0);
+  const { windowRef, style: windowStyle, handleProps, reset: resetPosition } = useWindowDrag();
 
   useEffect(() => {
     if (!open) {
@@ -52,7 +58,10 @@ export function ChangeRequestsPanel({
       setSaveState('saved');
       setErr('');
       setAsk(null);
+      setNotice('');
+      resetPosition();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open]);
 
   useEffect(() => {
@@ -101,6 +110,7 @@ export function ChangeRequestsPanel({
 
   const patch = (partial: Partial<ChangeRequest>) => {
     editVersion.current += 1;
+    setNotice('');
     setSaveState('dirty');
     setDraft(current => (current ? { ...current, ...partial } : current));
   };
@@ -113,9 +123,9 @@ export function ChangeRequestsPanel({
     setErr('');
   };
 
-  const createRequest = async () => {
-    if (!(await flush())) return;
-    const request = emptyChangeRequest(crypto.randomUUID(), new Date().toISOString());
+  const createRequest = async (partial: Partial<ChangeRequest> = {}) => {
+    if (!(await flush())) return null;
+    const request = { ...emptyChangeRequest(crypto.randomUUID(), new Date().toISOString()), ...partial };
     try {
       await onSave(request);
       setSelectedId(request.id);
@@ -123,10 +133,43 @@ export function ChangeRequestsPanel({
       setPane('editor');
       setSaveState('saved');
       setErr('');
+      return request;
     } catch (error) {
       setErr(error instanceof Error ? error.message : String(error));
+      return null;
     }
   };
+
+  /** Files dropped on the window or chosen from the field. With no request open, they start a new one. */
+  const addFiles = async (files: File[]) => {
+    const existing = draft ? requestAttachments(draft) : [];
+    const result = await filesToAttachments(files, existing.length);
+    const rejected = describeRejections(result.rejected);
+    setErr(rejected ? `Not attached — ${rejected}` : '');
+    if (!result.accepted.length) return;
+    if (draft) {
+      patch({ attachments: [...existing, ...result.accepted] });
+    } else {
+      await createRequest({ attachments: result.accepted });
+    }
+    setNotice(`Attached ${result.accepted.length} file${result.accepted.length === 1 ? '' : 's'}.`);
+  };
+  const removeAttachment = (id: string) => {
+    if (!draft) return;
+    patch({ attachments: requestAttachments(draft).filter(a => a.id !== id) });
+  };
+  const drop = useFileDrop(files => { void addFiles(files); });
+
+  /** The confirm popover is positioned inside the window, so convert viewport coordinates. */
+  const askAt = (kind: 'delete' | 'clear', clientX: number, clientY: number) => {
+    const el = windowRef.current;
+    const rect = el?.getBoundingClientRect();
+    // Pointer coordinates arrive in screen pixels; the popover is laid out in CSS pixels.
+    // Under a host `zoom` those differ, and the ratio of the two box widths is the factor.
+    const scale = el && rect && el.offsetWidth ? rect.width / el.offsetWidth : 1;
+    setAsk({ kind, x: (clientX - (rect?.left ?? 0)) / scale, y: (clientY - (rect?.top ?? 0)) / scale });
+  };
+  const bounds = { width: windowRef.current?.offsetWidth ?? window.innerWidth, height: windowRef.current?.offsetHeight ?? window.innerHeight };
 
   const remove = async () => {
     if (!draft) return;
@@ -179,13 +222,13 @@ export function ChangeRequestsPanel({
   if (!open) return null;
   return createPortal(
     <div data-ui-tool="change-requests">
-      <div className="cr-scrim" onClick={() => { void requestClose(); }} />
-      <section className="cr-panel" role="dialog" aria-modal="true" aria-labelledby="cr-title" aria-describedby="cr-description" data-testid="change-requests-panel">
-        <header className="cr-head">
+      <div ref={windowRef} className="cr-window" style={windowStyle} data-testid="change-requests-window" {...drop.dropProps}>
+      <section className="cr-panel" role="dialog" aria-modal="false" aria-labelledby="cr-title" aria-describedby="cr-description" data-testid="change-requests-panel">
+        <header className="cr-head is-draggable" {...handleProps}>
           <div>
             <span className="cr-eyebrow">Product request inbox</span>
             <h2 id="cr-title">Change Requests</h2>
-            <p id="cr-description">Describe what should change, why it matters, and what success looks like. Requests autosave as you type.</p>
+            <p id="cr-description">Describe what should change, why it matters, and what success looks like. Requests autosave as you type. Drag this bar to move the window; drop files anywhere to attach them.</p>
           </div>
           <div className="cr-head-actions">
             {onRepair && <button className="cr-btn cr-btn-ghost" type="button" onClick={onRepair}>Repair Request</button>}
@@ -200,7 +243,7 @@ export function ChangeRequestsPanel({
                 <button
                   className="cr-btn cr-btn-danger"
                   type="button"
-                  onClick={event => setAsk({ kind: 'clear', x: event.clientX, y: event.clientY })}
+                  onClick={event => askAt('clear', event.clientX, event.clientY)}
                   data-testid="button-clear-resolved-requests"
                 >
                   Clear resolved ({resolvedRequests.length})
@@ -299,6 +342,7 @@ export function ChangeRequestsPanel({
                   <span>Context or evidence</span>
                   <textarea value={draft.body} onChange={event => patch({ body: event.target.value })} placeholder="What happened, where did it happen, and what is the current workaround?" />
                 </label>
+                <AttachmentField prefix="cr" attachments={requestAttachments(draft)} onAdd={files => { void addFiles(files); }} onRemove={removeAttachment} disabled={saveState === 'saving'} />
                 <label className="cr-field">
                   <span>Desired outcome</span>
                   <textarea value={draft.desiredOutcome} onChange={event => patch({ desiredOutcome: event.target.value })} placeholder="What should be easier or possible after this change?" />
@@ -311,12 +355,12 @@ export function ChangeRequestsPanel({
                 <div className="cr-form-actions">
                   <button className="cr-btn cr-btn-ghost" type="submit">Save now</button>
                   <span className={`cr-save cr-save-${saveState}`} role="status" aria-live="polite">
-                    {saveState === 'saving' ? 'Saving…' : saveState === 'dirty' ? 'Autosave pending' : saveState === 'error' ? 'Autosave failed' : 'All changes saved'}
+                    {saveState === 'saving' ? 'Saving…' : saveState === 'dirty' ? 'Autosave pending' : saveState === 'error' ? 'Autosave failed' : notice || 'All changes saved'}
                   </span>
                   <button
                     className="cr-btn cr-btn-danger cr-spacer"
                     type="button"
-                    onClick={event => setAsk({ kind: 'delete', x: event.clientX, y: event.clientY })}
+                    onClick={event => askAt('delete', event.clientX, event.clientY)}
                   >
                     Delete request
                   </button>
@@ -331,7 +375,7 @@ export function ChangeRequestsPanel({
           </div>
         </div>
         {ask && (
-          <div className="cr-confirm" style={{ left: Math.max(8, Math.min(window.innerWidth - 280, ask.x - 20)), top: Math.max(8, Math.min(window.innerHeight - 140, ask.y + 8)) }} role="alertdialog">
+          <div className="cr-confirm" style={{ left: Math.max(8, Math.min(bounds.width - 280, ask.x - 20)), top: Math.max(8, Math.min(bounds.height - 170, ask.y + 8)) }} role="alertdialog">
             <p>
               {ask.kind === 'delete'
                 ? `Delete "${draft?.title.trim() || 'Untitled request'}"? This cannot be undone.`
@@ -355,6 +399,8 @@ export function ChangeRequestsPanel({
           </div>
         )}
       </section>
+      <DropOverlay active={drop.active} />
+      </div>
     </div>,
     document.body,
   );
