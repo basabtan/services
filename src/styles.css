@@ -15,6 +15,11 @@
   --repair-link: var(--text-link, var(--repair-gold));
   --repair-selected: var(--selected-surface, color-mix(in srgb, var(--repair-gold) 14%, white));
   --repair-bad: var(--bad, #9b2c2c);
+  --cr-space-3: 12px;
+  --cr-line: var(--repair-line);
+  --cr-surface: var(--repair-surface);
+  --cr-muted: var(--repair-muted);
+  --cr-ok: var(--ok, #3d8f68);
   --repair-space-1: 4px;
   --repair-space-2: 8px;
   --repair-space-3: 12px;
@@ -129,6 +134,10 @@
   border-top: 1px solid var(--repair-line);
   border-bottom: 1px solid var(--repair-line);
   margin-bottom: var(--repair-space-3);
+}
+
+.repair-body > .cr-resolved {
+  margin: 0 var(--repair-space-5) var(--repair-space-3);
 }
 
 /* Side chain: hidden behind the panel until its tab is used. */

@@ -57,7 +57,7 @@ export function requestFromRepair(record: RepairRecord, extras: Partial<ChangeRe
     summary: record.summary,
     body: record.body,
     priority: extras.priority ?? 'Normal',
-    status: extras.status ?? 'Requested',
+    status: extras.status ?? record.status ?? 'Requested',
     surfaces: extras.surfaces ?? [],
     desiredOutcome: extras.desiredOutcome ?? '',
     acceptanceCriteria: extras.acceptanceCriteria ?? record.acceptanceCriteria,

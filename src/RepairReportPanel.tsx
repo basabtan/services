@@ -18,13 +18,14 @@ import {
 import { describeRejections, filesToAttachments, isAttachment, type Attachment } from './attachments';
 import { AttachmentField } from './AttachmentField';
 import { DropOverlay, useFileDrop, useWindowDrag } from './window';
-import { formatWhen } from './requests';
+import { formatWhen, REQUEST_STATUSES, type RequestStatus } from './requests';
+import { ResolvedCheckbox } from './ResolvedCheckbox';
 
 const DEFAULT_DRAFT_KEY = 'repair-draft.v1';
 
-type Draft = { text: string; selected: string[]; knownTargets?: RepairTarget[]; attachments: Attachment[] };
+type Draft = { text: string; selected: string[]; knownTargets?: RepairTarget[]; attachments: Attachment[]; id?: string; createdAt?: string; status: RequestStatus };
 
-const EMPTY_DRAFT: Draft = { text: '', selected: [], attachments: [] };
+const EMPTY_DRAFT: Draft = { text: '', selected: [], attachments: [], status: 'Requested' };
 
 function readDraft(storageKey: string): Draft {
   try {
@@ -34,7 +35,10 @@ function readDraft(storageKey: string): Draft {
         t && typeof t.name === 'string' && isTargetName(t.name) && typeof t.kind === 'string'
         && typeof t.location === 'string' && Array.isArray(t.aliases) && t.aliases.every(a => typeof a === 'string')) : [];
       const attachments = Array.isArray(draft.attachments) ? draft.attachments.filter(isAttachment) : [];
-      return { text: draft.text, selected: draft.selected.filter((s: unknown): s is string => typeof s === 'string' && isTargetName(s)), knownTargets, attachments };
+      return { text: draft.text, selected: draft.selected.filter((s: unknown): s is string => typeof s === 'string' && isTargetName(s)), knownTargets, attachments,
+        id: typeof draft.id === 'string' ? draft.id : undefined,
+        createdAt: typeof draft.createdAt === 'string' ? draft.createdAt : undefined,
+        status: REQUEST_STATUSES.includes(draft.status) ? draft.status : 'Requested' };
     }
   } catch { /* Storage can be unavailable; in-memory editing still works. */ }
   return EMPTY_DRAFT;
@@ -74,6 +78,7 @@ export interface RepairHistoryItem {
   title: string;
   summary: string;
   updatedAt: string;
+  createdAt?: string;
   status?: string;
   priority?: string;
   attachments?: Attachment[];
@@ -147,7 +152,7 @@ export function RepairReportPanel({
     [draft, catalog.registry, resolvedRoute, reportOptions],
   );
   const resolved = useMemo(() => resolveRepairTargets(draft.text, draft.selected, catalog.registry), [draft, catalog.registry]);
-  const contentKey = report.machine;
+  const contentKey = `${report.machine}:${draft.status}`;
   const matches = auto ? findRepairTargets(auto.source === 'search' ? query : auto.mention?.query ?? '', catalog.registry).slice(0, 8) : [];
   const chain = useMemo(() => (history ?? []).slice().sort((a, b) => b.updatedAt.localeCompare(a.updatedAt)), [history]);
   const hasChain = history !== undefined;
@@ -342,23 +347,28 @@ export function RepairReportPanel({
     setDraft(current => ({
       ...current,
       text,
+      id: item.id,
+      createdAt: item.createdAt,
+      status: REQUEST_STATUSES.includes(item.status as RequestStatus) ? item.status as RequestStatus : 'Requested',
       selected: targetMentions(text),
       attachments: (item.attachments ?? []).filter(isAttachment),
     }));
     setSaved({ key: '', stages: [] });
     closeChain();
-    requestAnimationFrame(() => { requestRef.current?.focus(); setNotice('Loaded from the chain. Saving creates a new request.'); });
+    requestAnimationFrame(() => { requestRef.current?.focus(); setNotice('Loaded from the chain. Save to update this request.'); });
   };
   const save = async (stage: 'note' | 'request') => {
     if (!onSave || savingRef.current || !report.clarity.hasRequest) return;
     savingRef.current = true; setSaving(true); setError('');
     try {
-      await onSave(repairToRecord(report, stage, crypto.randomUUID(), new Date().toISOString(), draft.attachments));
+      const record = repairToRecord(report, stage, draft.id ?? crypto.randomUUID(), new Date().toISOString(), draft.attachments);
+      await onSave({ ...record, createdAt: draft.createdAt ?? record.createdAt, status: draft.status });
       onSaved?.();
       if (clearOnSave) {
         clearForm();
         requestAnimationFrame(() => setNotice(stage === 'note' ? 'Saved as a note. Form cleared for the next request.' : 'Saved as a request. Form cleared for the next request.'));
       } else {
+        setDraft(current => ({ ...current, id: record.id, createdAt: current.createdAt ?? record.createdAt }));
         setSaved(current => ({ key: contentKey, stages: [...(current.key === contentKey ? current.stages : []), stage] }));
         setNotice(stage === 'note' ? 'Saved as a note record.' : 'Saved as a request record.');
       }
@@ -471,6 +481,8 @@ export function RepairReportPanel({
               <div className="repair-attach">
                 <AttachmentField prefix="repair" attachments={draft.attachments} onAdd={files => { void addFiles(files); }} onRemove={removeAttachment} disabled={saving} />
               </div>
+              <ResolvedCheckbox status={draft.status} onChange={status => setDraft(current => ({ ...current, status }))}
+                disabled={saving} testId="checkbox-repair-resolved" />
               <div className="repair-actions">
                 <button className="repair-btn repair-btn-primary" type="button" disabled={!report.clarity.hasRequest} onClick={() => { setActiveTab('brief'); setAuto(null); setNotice('Brief refreshed locally. Review the open questions; no AI service was called.'); }}>AI Clarify</button>
                 <button className="repair-btn repair-btn-ghost" type="button" onClick={startPick}>+ Pick Target</button>

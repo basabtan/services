@@ -43,4 +43,11 @@ describe('change request records', () => {
     expect(formatWhen('not-a-date')).toBe('—');
     expect(formatWhen('2026-09-09T00:00:00Z')).toMatch(/2026/);
   });
+
+  it('carries repair resolution into the inbox, including explicit reopening', () => {
+    const report = buildRepairReport('Widen @Sidebar', [], [target('Sidebar', 'panel', 'Chrome')], '/');
+    const record = { ...repairToRecord(report, 'request', 'rep-1', '2026-09-14T00:00:00Z'), status: 'Completed' as const };
+    expect(isRequestResolved(requestFromRepair(record))).toBe(true);
+    expect(requestFromRepair(record, { status: 'Requested' }).status).toBe('Requested');
+  });
 });

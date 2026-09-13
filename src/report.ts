@@ -150,4 +150,7 @@ export function repairToRecord(report: RepairReport, stage: 'note' | 'request', 
   };
 }
 
-export type RepairRecord = ReturnType<typeof repairToRecord>;
+export type RepairRecord = ReturnType<typeof repairToRecord> & {
+  /** Optional for compatibility with records created before resolution support. */
+  status?: import('./requests').RequestStatus;
+};
