@@ -1,6 +1,6 @@
 {
   "name": "ZEAL Ivory & Champagne",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "geometry": {
     "radius": 0,
     "padX": 32,
@@ -26,7 +26,7 @@
     "reading": "Georgia,'Times New Roman',serif"
   },
   "rules": [
-    "Champagne gold identifies interface actions, focus and metallic edges.",
+    "Ivory uses champagne; Ink Blue uses platinum and pale ice blue for interface actions, focus and metallic edges.",
     "External web sources retain a dashed neutral boundary.",
     "Sub-source colors stay within their parent pigment family.",
     "Arabic source excerpts use Amiri with right-to-left text direction.",
@@ -220,39 +220,40 @@
       "secondary": "#1b2d48"
     },
     "obsidian": {
-      "page": "#101722",
-      "bg": "#1b2534",
-      "bg2": "#242f40",
-      "field": "#151e2c",
-      "ink": "#f1ecde",
-      "ink2": "#c9d1dd",
-      "muted": "#a8b5c7",
-      "placeholder": "#9aa8bc",
-      "line": "#38465a",
-      "line2": "#596b83",
-      "accent": "#d2ba83",
-      "accentInk": "#33280f",
-      "link": "#ddc58d",
-      "linkHover": "#f7e9c1",
+      "page": "#080f1b",
+      "bg": "#13253b",
+      "bg2": "#0e1d30",
+      "field": "#101f33",
+      "ink": "#e5ebf3",
+      "ink2": "#c1cede",
+      "muted": "#94a8c1",
+      "placeholder": "#8b9fb9",
+      "line": "#293f59",
+      "line2": "#4b6481",
+      "accent": "#c5d7ed",
+      "accentInk": "#162c47",
+      "link": "#a9ccfa",
+      "linkHover": "#e4f0ff",
       "goldRim": [
-        "#d8c293",
-        "#88703e",
-        "#e5d1a0",
-        "#8f7743",
-        "#c1a975"
+        "#e9f3ff",
+        "#788fa9",
+        "#a6c0df",
+        "#3b5676",
+        "#b9d4ee",
+        "#5c7797"
       ],
       "champagne": [
-        "#d5bd82",
-        "#ebdbac",
-        "#f4e9c6",
-        "#d8c38e",
-        "#c6ab70"
+        "#98aec9",
+        "#cbdbea",
+        "#f1f7fc",
+        "#bfcede",
+        "#8ea7c7"
       ],
       "metal": [
-        "#384b65",
-        "#2b3a50",
-        "#1e2c42",
-        "#2f3f56"
+        "#344d6b",
+        "#203750",
+        "#1a2e48",
+        "#29415e"
       ],
       "traditions": {
         "jewish": {
@@ -260,7 +261,7 @@
           "sub2": "#f5d179",
           "sub3": "#f8dca0",
           "pigment": "saffron",
-          "contrastOnBg": 9.53,
+          "contrastOnBg": 9.57,
           "gradientStops": [
             "#8d6511",
             "#f1c500",
@@ -273,7 +274,7 @@
           "sub2": "#7be0f5",
           "sub3": "#a4ebfa",
           "pigment": "verdigris",
-          "contrastOnBg": 8.85,
+          "contrastOnBg": 8.88,
           "gradientStops": [
             "#00778e",
             "#04cfff",
@@ -286,7 +287,7 @@
           "sub2": "#96e3a7",
           "sub3": "#b4edc2",
           "pigment": "malachite",
-          "contrastOnBg": 8.66,
+          "contrastOnBg": 8.69,
           "gradientStops": [
             "#287a35",
             "#50cf40",
@@ -297,7 +298,7 @@
         "apocrypha": {
           "base": "#d8a3f5",
           "pigment": "tyrian",
-          "contrastOnBg": 7.7,
+          "contrastOnBg": 7.73,
           "gradientStops": [
             "#7540bc",
             "#db69fb",
@@ -308,7 +309,7 @@
         "other": {
           "base": "#bac7d9",
           "pigment": "stone",
-          "contrastOnBg": 9.01,
+          "contrastOnBg": 9.04,
           "gradientStops": [
             "#63768e",
             "#b9cfe4",
@@ -322,25 +323,25 @@
         }
       },
       "washAlpha": 0.15,
-      "goldRimCss": "linear-gradient(120deg,#d8c293,#88703e 24%,#e5d1a0 46%,#8f7743 73%,#c1a975)",
-      "champagneCss": "linear-gradient(112deg,#d5bd82 0%,#ebdbac 30%,#f4e9c6 48%,#d8c38e 70%,#c6ab70 100%)",
-      "metalCss": "linear-gradient(175deg,#384b65,#2b3a50 44%,#1e2c42 48%,#2f3f56)",
+      "goldRimCss": "linear-gradient(118deg,#e9f3ff 0%,#788fa9 23%,#a6c0df 41%,#3b5676 67%,#b9d4ee 86%,#5c7797)",
+      "champagneCss": "linear-gradient(113deg,#98aec9 0%,#cbdbea 23%,#f1f7fc 44%,#bfcede 66%,#8ea7c7 100%)",
+      "metalCss": "linear-gradient(175deg,#344d6b 0%,#203750 42%,#1a2e48 48%,#29415e 100%)",
       "cssVariables": {
-        "--page": "#101722",
-        "--bg": "#1b2534",
-        "--bg-2": "#242f40",
-        "--field": "#151e2c",
-        "--ink": "#f1ecde",
-        "--ink-2": "#c9d1dd",
-        "--muted": "#a8b5c7",
-        "--placeholder": "#9aa8bc",
-        "--line": "#38465a",
-        "--line-2": "#596b83",
-        "--accent": "#d2ba83",
-        "--accent-ink": "#33280f",
-        "--link": "#ddc58d",
-        "--link-hover": "#f7e9c1",
-        "--raise": "#d9e7ff0a",
+        "--page": "#080f1b",
+        "--bg": "#13253b",
+        "--bg-2": "#0e1d30",
+        "--field": "#101f33",
+        "--ink": "#e5ebf3",
+        "--ink-2": "#c1cede",
+        "--muted": "#94a8c1",
+        "--placeholder": "#8b9fb9",
+        "--line": "#293f59",
+        "--line-2": "#4b6481",
+        "--accent": "#c5d7ed",
+        "--accent-ink": "#162c47",
+        "--link": "#a9ccfa",
+        "--link-hover": "#e4f0ff",
+        "--raise": "#b7d6ff0b",
         "--serif": "'Cormorant Garamond',Georgia,serif",
         "--sans": "'Manrope','Segoe UI',Arial,sans-serif",
         "--arabic": "Amiri,serif",
@@ -361,22 +362,22 @@
         "--apo": "#d8a3f5",
         "--oth": "#bac7d9",
         "--wash-alpha": "15",
-        "--gold-rim": "linear-gradient(120deg,#d8c293,#88703e 24%,#e5d1a0 46%,#8f7743 73%,#c1a975)",
-        "--metal": "linear-gradient(175deg,#384b65,#2b3a50 44%,#1e2c42 48%,#2f3f56)",
-        "--glass": "linear-gradient(140deg,#bdd5f518,#ffffff03 50%,#dac49112)",
-        "--champagne": "linear-gradient(112deg,#d5bd82 0%,#ebdbac 30%,#f4e9c6 48%,#d8c38e 70%,#c6ab70 100%)",
-        "--champagne-hover": "linear-gradient(112deg,#ddc78f,#fbefca 44%,#dbc18a)",
-        "--btn-shadow": "inset 0 1px 0 #ffffff14,0 2px 0 #0f1725,0 4px 8px #0003",
-        "--btn-shadow-hover": "inset 0 1px 0 #ffffff26,0 2px 0 #0f1725,0 5px 10px #0004",
-        "--btn-shadow-active": "inset 0 2px 5px #0006",
-        "--send-shadow": "inset 0 1px 0 #fff5d5, inset 0 -1px 0 #9f8348,0 2px 0 #9c824b,0 5px 10px #5e4b2520",
-        "--panel-shadow": "0 24px 64px #0005,inset 0 1px 0 #c5b38320",
-        "--field-shadow": "inset 0 2px 4px #0002",
-        "--header-band": "linear-gradient(110deg,#2c3d56,#192a42)",
-        "--focus": "#e0c58b",
-        "--inverse": "#192a42",
-        "--inverse-text": "#f0eadb",
-        "--inverse-muted": "#b4bfd0",
+        "--gold-rim": "linear-gradient(118deg,#e9f3ff 0%,#788fa9 23%,#a6c0df 41%,#3b5676 67%,#b9d4ee 86%,#5c7797)",
+        "--metal": "linear-gradient(175deg,#344d6b 0%,#203750 42%,#1a2e48 48%,#29415e 100%)",
+        "--glass": "linear-gradient(135deg,#b7d8ff16,#b7d8ff03 58%,#7fafe91c)",
+        "--champagne": "linear-gradient(113deg,#98aec9 0%,#cbdbea 23%,#f1f7fc 44%,#bfcede 66%,#8ea7c7 100%)",
+        "--champagne-hover": "linear-gradient(113deg,#b5c8e0 0%,#e2edf8 36%,#fff 49%,#b6cce5 100%)",
+        "--btn-shadow": "inset 0 1px 0 #e2f1ff26,inset 0 -1px 0 #02081566,0 3px 7px #0003",
+        "--btn-shadow-hover": "inset 0 1px 0 #e2f1ff4d,0 4px 14px #0004",
+        "--btn-shadow-active": "inset 0 2px 5px #03091480",
+        "--send-shadow": "inset 0 1px 0 #fff,inset 0 -1px 0 #6b839e,0 2px 0 #455b77,0 7px 18px #0005",
+        "--panel-shadow": "0 30px 85px #0005,inset 0 1px 0 #bddaff24",
+        "--field-shadow": "inset 0 2px 9px #02091540",
+        "--header-band": "linear-gradient(112deg,#1c3453 0%,#142940 50%,#0f2035 100%)",
+        "--focus": "#a4caff",
+        "--inverse": "#0b192c",
+        "--inverse-text": "#e7effb",
+        "--inverse-muted": "#9fb2cb",
         "--space-1": "4px",
         "--space-2": "8px",
         "--space-3": "12px",
@@ -386,8 +387,8 @@
         "--space-7": "48px",
         "--duration": "180ms",
         "--ease": "cubic-bezier(.2,.7,.2,1)",
-        "--secondary": "#1b2d48",
-        "--secondary-text": "#f4eee0",
+        "--secondary": "#1b3556",
+        "--secondary-text": "#e5eefb",
         "--jew-gradient": "linear-gradient(90deg,#8d6511 0%,#f1c500 50%,#ad790d 100%)",
         "--jew-gradient-vertical": "linear-gradient(180deg,#8d6511 0%,#f1c500 50%,#ad790d 100%)",
         "--chr-gradient": "linear-gradient(90deg,#00778e 0%,#04cfff 50%,#007fc7 100%)",
@@ -397,9 +398,18 @@
         "--apo-gradient": "linear-gradient(90deg,#7540bc 0%,#db69fb 50%,#914bea 100%)",
         "--apo-gradient-vertical": "linear-gradient(180deg,#7540bc 0%,#db69fb 50%,#914bea 100%)",
         "--oth-gradient": "linear-gradient(90deg,#63768e 0%,#b9cfe4 50%,#7184a0 100%)",
-        "--oth-gradient-vertical": "linear-gradient(180deg,#63768e 0%,#b9cfe4 50%,#7184a0 100%)"
+        "--oth-gradient-vertical": "linear-gradient(180deg,#63768e 0%,#b9cfe4 50%,#7184a0 100%)",
+        "--platinum": "#c5d7ed",
+        "--ice": "#a4caff",
+        "--ink-surface": "#1b3556"
       },
-      "secondary": "#1b2d48"
+      "secondary": "#1b3556",
+      "materialNames": {
+        "goldRim": "Platinum edge",
+        "champagne": "Brushed platinum",
+        "metal": "Blue steel",
+        "glass": "Smoked blue glass"
+      }
     }
   },
   "subSources": {
@@ -422,5 +432,11 @@
   "secondary": {
     "name": "Ink blue",
     "value": "#1b2d48"
+  },
+  "darkDesign": {
+    "name": "Ink Blue / Platinum",
+    "accent": "Brushed platinum",
+    "lightAccent": "Pale ice blue",
+    "intent": "Independently designed dark materials, depth, hierarchy and controls. Approved Ivory is unchanged."
   }
 }
