@@ -121,6 +121,16 @@ The panel creates records. Persist `items` however you want (localStorage, API).
 - Concord Notes / store / GMCR surfaces
 - Host `data-ui` annotations (you add those)
 
+## Demo
+
+```powershell
+Set-Location C:\Users\bader\services
+npm install
+npm run dev
+```
+
+Opens a fake host app at http://localhost:4177. Pick a control, generate the brief, save into Change Requests.
+
 ## Test
 
 ```powershell
