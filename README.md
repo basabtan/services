@@ -132,7 +132,7 @@ npm test
 
 Four reusable palettes, approved design references, and interactive style tiles are available in [themes/](themes/README.md): Ivory + Champagne, Ink Blue + Platinum, Graphite + Soft Copper, and Light Grey + Red-orange.
 
-Download the [repository ZIP](https://github.com/basabtan/services/archive/refs/heads/main.zip), extract it, and open `themes/index.html` locally for the palette switcher. Gold + Obsidian and the original Ivory reskin are standalone references with embedded CSS; the gold/glass button playground is also included. Ask AI examples are visual demonstrations.
+Download the [repository ZIP](https://github.com/basabtan/services/archive/refs/heads/main.zip), extract it, and open `themes/index.html` locally. It opens Bader's approved Ivory + Champagne main style tile by default. The [palette collection](themes/palette-collection.html) retains the four-way switcher. Gold + Obsidian and the original Ivory reskin are standalone references with embedded CSS; the gold/glass button playground is also included. Ask AI examples are visual demonstrations.
 
 Import the portable palette tokens separately from the existing panels:
 
@@ -140,7 +140,7 @@ Import the portable palette tokens separately from the existing panels:
 import '@basabtan/repair-report/themes/approved-palettes.tokens.css';
 
 // ivory | ink-platinum | graphite-copper | grey-orange
-document.documentElement.dataset.zealTheme = 'graphite-copper';
+document.documentElement.dataset.zealTheme = 'ivory';
 ```
 
 Apply `--zs-*` variables in your own component CSS. The token stylesheet preserves generic host CSS variables; the separate ZEAL adapter stylesheet overrides them only when explicitly imported. See the [theme README](themes/README.md) for a complete example, downloads, and source provenance. Existing Repair Report and Change Requests styling is unchanged.
