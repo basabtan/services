@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Champagne Collection — Gold and Glass</title><style>body{margin:0;background:#101110;font:14px/1.5 "Segoe UI",Arial,sans-serif}#gold-button-lab{max-width:960px;margin:32px auto}h2{font-size:28px}h3{font-size:18px}</style></head><body>
+<div id="gold-button-lab">
+  <style>
+    #gold-button-lab{--metal-light:#f4ebd5;--metal-mid:#bca679;--metal-dark:#5b4c33;--ink:#e9e4d8;--edge:linear-gradient(135deg,#e7d9b5 0%,#97845c 17%,#504730 32%,#eee5ce 48%,#ac9462 53%,#51452f 72%,#d2bd8e 91%,#f3e6c5);--grain:repeating-linear-gradient(0deg,#fff9e708 0px,#fff9e708 .5px,transparent .5px,transparent 2px);font-family:Inter,"Segoe UI",Arial,sans-serif;color:var(--ink);background:radial-gradient(ellipse at 45% 0%,#29292745,transparent 65%),#141514;padding:32px;box-sizing:border-box}
+    #gold-button-lab *{box-sizing:border-box}
+    #gold-button-lab h2,#gold-button-lab h3{font-weight:500;margin:0}
+    #gold-button-lab .heading{display:flex;justify-content:space-between;gap:16px;align-items:baseline;margin-bottom:32px;flex-wrap:wrap}
+    #gold-button-lab .heading h2{font-family:Georgia,serif;letter-spacing:.02em}
+    #gold-button-lab .caption{color:#a9a498;letter-spacing:.035em}
+    #gold-button-lab .first-set{display:flex;gap:24px;padding:8px 0 38px;justify-content:space-between;flex-wrap:wrap}
+    #gold-button-lab .sample{display:grid;gap:12px;flex:1;min-width:150px;text-align:center}
+    #gold-button-lab .metal{--fill:linear-gradient(110deg,#b19b6b,#e5d8b9 35%,#c3ae7c 66%,#a48d5c);--surface:var(--grain);--shine-x:35%;--shine-y:0%;appearance:none;position:relative;border:0;border-radius:999px;padding:0 22px;height:48px;min-width:70px;width:100%;color:#30291c;background:var(--surface),var(--fill);cursor:pointer;box-shadow:0 2px 2px #0009,0 5px 10px #0004,inset 0 1px 1px #fff4,inset 0 -2px 2px #0005;transition:box-shadow .2s,translate .2s;white-space:nowrap;font:inherit;font-weight:500;letter-spacing:.045em;-webkit-tap-highlight-color:transparent}
+    #gold-button-lab .metal:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:var(--edge);mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;pointer-events:none}
+    #gold-button-lab .metal:after{content:"";position:absolute;inset:2px;border-radius:inherit;pointer-events:none;background:radial-gradient(ellipse 50% 95% at var(--shine-x) var(--shine-y),#fff4d326,transparent 85%),linear-gradient(174deg,#fff9e519,transparent 34% 80%,#f3e6c60b);box-shadow:inset 0 1px 0 #fff6df21,inset 0 -1px 0 #0003;opacity:.65;transition:opacity .2s}
+    #gold-button-lab .metal:hover{box-shadow:0 2px 2px #000a,0 7px 14px #0005,inset 0 1px 1px #fff5,inset 0 -2px 2px #0005;translate:0 -2px}
+    #gold-button-lab .metal:hover:after{opacity:1}
+    #gold-button-lab .metal:active{translate:0 1px;box-shadow:0 1px 1px #0008,inset 0 2px 4px #0006}
+    #gold-button-lab .bevel{height:52px;box-shadow:0 2px 0 #756442,0 3px 3px #0009,0 7px 12px #0005,inset 0 3px 1px #efdfb980,inset 0 -3px 2px #705d3c}
+    #gold-button-lab .bevel:before{padding:2px}
+    #gold-button-lab .bevel:after{inset:4px;box-shadow:inset 0 1px 0 #64543665,inset 0 -1px 0 #efe0bb55}
+    #gold-button-lab .ivory{--fill:linear-gradient(175deg,#ded0b0 0%,#f3ead5 20%,#e8dcc0 60%,#c9b991 96%)}
+    #gold-button-lab .amber{--fill:linear-gradient(115deg,#75623d,#af9462 31%,#8e7749 58%,#c2a77a 88%,#d3bf98);color:#fff3d8;text-shadow:0 1px 2px #49391e}
+    #gold-button-lab .obsidian{--fill:linear-gradient(150deg,#343737,#202323 45%,#141616 80%,#232524);color:#e4d7b9}
+    #gold-button-lab .clear{--surface:linear-gradient(transparent,transparent);--fill:linear-gradient(125deg,#e9dbb414,transparent 43% 70%,#e9dbb40a);color:#f0e9d9}
+    #gold-button-lab .smoke{--surface:linear-gradient(transparent,transparent);--fill:linear-gradient(130deg,#282b2c72,#11161766 60%,#afa17f16);color:#f0e9d9;backdrop-filter:blur(3px) saturate(.8);-webkit-backdrop-filter:blur(3px) saturate(.8)}
+    #gold-button-lab .frost{--surface:linear-gradient(transparent,transparent);--fill:linear-gradient(130deg,#e8ddc51c,#e8ddc50a 65%,#f9e8c426);color:#fff4df;backdrop-filter:blur(10px) saturate(.75);-webkit-backdrop-filter:blur(10px) saturate(.75)}
+    #gold-button-lab .glint{position:absolute;left:-5px;top:58%;width:15px;height:15px;pointer-events:none;background:radial-gradient(ellipse,#fff9dc 0%,#ffe8a97a 15%,transparent 64%)}
+    #gold-button-lab .glint:before,#gold-button-lab .glint:after{content:"";position:absolute;background:linear-gradient(90deg,transparent,#fff4d1,transparent);width:22px;height:1px;left:-4px;top:7px}
+    #gold-button-lab .glint:after{transform:rotate(90deg);width:13px;left:0}
+    #gold-button-lab .glint{display:none}
+    #gold-button-lab .matrix{display:grid;grid-template-columns:100px minmax(120px,1.5fr) minmax(100px,1fr) 68px;gap:24px 24px;align-items:center;border-top:1px solid #bca67926;padding:32px 0 36px}
+    #gold-button-lab .matrix .metal{height:44px}
+    #gold-button-lab .row-name{color:#b4ad9c}
+    #gold-button-lab .lab-heading{border-top:1px solid #bca67926;padding-top:26px;display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:20px}
+    #gold-button-lab .stage{position:relative;height:290px;overflow:hidden;background:#181b21;touch-action:pan-y}
+    #gold-button-lab .backdrop{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);pointer-events:none}
+    #gold-button-lab .zone{position:relative;overflow:hidden}
+    #gold-button-lab .zone span{position:absolute;bottom:14px;left:12px;color:#fff9e0;text-shadow:0 1px 5px #000}
+    #gold-button-lab .zone:nth-child(1){background-color:#30312e;background-image:conic-gradient(#55564e 25%,transparent 0 50%,#55564e 0 75%,transparent 0);background-size:24px 24px}
+    #gold-button-lab .zone:nth-child(2){background:linear-gradient(140deg,#103d42,#368b89 48%,#182f38)}
+    #gold-button-lab .zone:nth-child(3){background:repeating-linear-gradient(135deg,#b9ac8d 0 13px,#343832 13px 26px)}
+    #gold-button-lab .zone:nth-child(4){background:radial-gradient(ellipse at 90% 20%,#ab665d,transparent 80%),linear-gradient(160deg,#2d2632,#702f39)}
+    #gold-button-lab .zone:nth-child(2):after,#gold-button-lab .zone:nth-child(4):after{content:"";position:absolute;left:30%;top:20%;height:140px;width:3px;background:#ffffcf99;transform:rotate(32deg);box-shadow:30px 0 #ffffcf33}
+    #gold-button-lab .draggable{position:absolute;width:185px;max-width:70%;cursor:grab;touch-action:none;user-select:none;z-index:2;transition:box-shadow .18s}
+    #gold-button-lab .draggable:hover,#gold-button-lab .draggable:active{translate:none}
+    #gold-button-lab .dragging{cursor:grabbing;z-index:20}
+    #gold-button-lab .metal .button-label{position:relative;z-index:1}
+    #gold-button-lab .draggable span{position:relative;z-index:1;text-shadow:0 1px 3px #000,0 0 6px #0009}
+    #gold-button-lab .a11y-status{position:absolute;width:1px;height:1px;padding:0;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+    @media(max-width:580px){#gold-button-lab{padding:18px}#gold-button-lab .first-set{gap:20px}#gold-button-lab .sample{min-width:130px}#gold-button-lab .matrix{grid-template-columns:minmax(100px,1fr) minmax(80px,.7fr) 62px;gap:14px 10px}#gold-button-lab .row-name{grid-column:1/-1}#gold-button-lab .metal{padding:0 12px;min-width:0}#gold-button-lab .zone span{writing-mode:vertical-rl}#gold-button-lab .stage{height:320px}}
+    @media(prefers-reduced-motion:reduce){#gold-button-lab .metal,#gold-button-lab .metal:after{transition:none}#gold-button-lab .metal:hover,#gold-button-lab .metal:active{translate:none}}
+  </style>
+  <div class="heading"><h2>Gold &amp; glass</h2><span class="caption">Champagne collection · II</span></div>
+  <div class="first-set">
+    <div class="sample"><button type="button" class="metal bevel">Champagne</button></div>
+    <div class="sample"><button type="button" class="metal smoke">Smoked glass</button></div>
+    <div class="sample"><button type="button" class="metal obsidian">Obsidian</button></div>
+  </div>
+  <div class="matrix" aria-label="Button variants and sizes">
+    <span class="row-name">Ivory gold</span><button type="button" class="metal ivory">Continue</button><button type="button" class="metal ivory">Explore</button><button type="button" class="metal ivory" aria-label="Ivory gold next">→</button>
+    <span class="row-name">Amber gold</span><button type="button" class="metal amber">Continue</button><button type="button" class="metal amber">Explore</button><button type="button" class="metal amber" aria-label="Amber gold next">→</button>
+    <span class="row-name">Obsidian</span><button type="button" class="metal obsidian">Continue</button><button type="button" class="metal obsidian">Explore</button><button type="button" class="metal obsidian" aria-label="Obsidian next">→</button>
+    <span class="row-name">Smoked glass</span><button type="button" class="metal smoke">Continue</button><button type="button" class="metal smoke">Explore</button><button type="button" class="metal smoke" aria-label="Smoked glass next">→</button>
+  </div>
+  <div class="lab-heading"><h3>Transparency playground</h3><span class="caption" id="gold-drag-help">Drag glass buttons · Arrow keys also move them</span></div>
+  <div class="stage" aria-label="Glass button drag area">
+    <div class="backdrop" aria-hidden="true"><div class="zone"><span>Checkerboard</span></div><div class="zone"><span>Turquoise</span></div><div class="zone"><span>Stripes</span></div><div class="zone"><span>Crimson</span></div></div>
+    <button type="button" class="metal clear draggable" style="left:22px;top:28px" aria-describedby="gold-drag-help"><span>Clear glass ↔</span><i class="glint"></i></button>
+    <button type="button" class="metal smoke draggable" style="left:90px;top:107px" aria-describedby="gold-drag-help"><span>Smoked glass ↔</span></button>
+    <button type="button" class="metal frost draggable" style="left:160px;top:186px" aria-describedby="gold-drag-help"><span>Frosted glass ↔</span></button>
+  </div>
+  <span class="a11y-status" aria-live="polite"></span>
+  <script>
+    (()=>{
+      const root=document.getElementById('gold-button-lab');
+      const stage=root.querySelector('.stage');
+      const status=root.querySelector('.a11y-status');
+      const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)');
+      root.querySelectorAll('.metal').forEach(button=>{
+        for(const node of [...button.childNodes]){
+          if(node.nodeType===Node.TEXT_NODE && node.textContent.trim()){
+            const label=document.createElement('span');label.className='button-label';
+            label.textContent=node.textContent;node.replaceWith(label);
+          }
+        }
+        button.addEventListener('pointermove',event=>{
+          if(reducedMotion.matches)return;
+          const box=button.getBoundingClientRect();
+          button.style.setProperty('--shine-x',Math.max(0,Math.min(100,100*(event.clientX-box.left)/box.width))+'%');
+          button.style.setProperty('--shine-y',Math.max(0,Math.min(100,100*(event.clientY-box.top)/box.height))+'%');
+        });
+        button.addEventListener('pointerleave',()=>{
+          button.style.removeProperty('--shine-x');button.style.removeProperty('--shine-y');
+        });
+      });
+      let topLayer=3;
+      const place=(button,x,y)=>{
+        button.style.left=Math.max(0,Math.min(stage.clientWidth-button.offsetWidth,x))+'px';
+        button.style.top=Math.max(0,Math.min(stage.clientHeight-button.offsetHeight,y))+'px';
+      };
+      root.querySelectorAll('.draggable').forEach(button=>{
+        let drag=null;
+        button.addEventListener('pointerdown',event=>{
+          if(event.button!==0 || drag)return;
+          const box=button.getBoundingClientRect();
+          drag={id:event.pointerId,dx:event.clientX-box.left,dy:event.clientY-box.top};
+          button.setPointerCapture(event.pointerId);
+          button.classList.add('dragging');button.style.zIndex=++topLayer;
+        });
+        button.addEventListener('pointermove',event=>{
+          if(!drag || drag.id!==event.pointerId)return;
+          const box=stage.getBoundingClientRect();
+          place(button,event.clientX-box.left-drag.dx,event.clientY-box.top-drag.dy);
+        });
+        const end=event=>{
+          if(!drag || drag.id!==event.pointerId)return;
+          drag=null;button.classList.remove('dragging');
+          if(button.hasPointerCapture(event.pointerId))button.releasePointerCapture(event.pointerId);
+          status.textContent=button.textContent.trim()+' repositioned';
+        };
+        button.addEventListener('pointerup',end);button.addEventListener('pointercancel',end);button.addEventListener('lostpointercapture',end);
+        button.addEventListener('keydown',event=>{
+          const direction={ArrowLeft:[-1,0],ArrowRight:[1,0],ArrowUp:[0,-1],ArrowDown:[0,1]}[event.key];
+          if(!direction)return;event.preventDefault();const step=event.shiftKey?25:8;
+          button.style.zIndex=++topLayer;
+          place(button,button.offsetLeft+direction[0]*step,button.offsetTop+direction[1]*step);
+        });
+      });
+      new ResizeObserver(()=>root.querySelectorAll('.draggable').forEach(button=>place(button,button.offsetLeft,button.offsetTop))).observe(stage);
+    })();
+  </script>
+</div>
+
+</body></html>

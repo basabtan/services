@@ -127,3 +127,20 @@ The panel creates records. Persist `items` however you want (localStorage, API).
 Set-Location C:\Users\bader\services
 npm test
 ```
+
+## Reusable theme collection
+
+Four reusable palettes, approved design references, and interactive style tiles are available in [themes/](themes/README.md): Ivory + Champagne, Ink Blue + Platinum, Graphite + Soft Copper, and Light Grey + Red-orange.
+
+Download the [repository ZIP](https://github.com/basabtan/services/archive/refs/heads/main.zip), extract it, and open `themes/index.html` locally for the palette switcher. Gold + Obsidian and the original Ivory reskin are standalone references with embedded CSS; the gold/glass button playground is also included. Ask AI examples are visual demonstrations.
+
+Import the portable palette tokens separately from the existing panels:
+
+```ts
+import '@basabtan/repair-report/themes/approved-palettes.tokens.css';
+
+// ivory | ink-platinum | graphite-copper | grey-orange
+document.documentElement.dataset.zealTheme = 'graphite-copper';
+```
+
+Apply `--zs-*` variables in your own component CSS. The token stylesheet preserves generic host CSS variables; the separate ZEAL adapter stylesheet overrides them only when explicitly imported. See the [theme README](themes/README.md) for a complete example, downloads, and source provenance. Existing Repair Report and Change Requests styling is unchanged.

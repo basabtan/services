@@ -14,11 +14,13 @@
       "import": "./src/index.ts"
     },
     "./styles.css": "./src/styles.css",
-    "./change-requests.css": "./src/change-requests.css"
+    "./change-requests.css": "./src/change-requests.css",
+    "./themes/*": "./themes/*"
   },
   "files": [
     "src",
-    "README.md"
+    "README.md",
+    "themes"
   ],
   "scripts": {
     "test": "vitest run",

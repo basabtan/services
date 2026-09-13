@@ -1,0 +1,365 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZEAL Ask AI — Ivory & Champagne</title>
+  <style>
+    /* Original structural CSS; material overrides follow below. */
+
+    :root { --page: #0b0c0e; }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; min-height: 100%; background: var(--page); }
+    body { padding: 28px 24px 48px; }
+
+    .handoff {
+      max-width: 920px; margin: 0 auto 28px;
+      color: #eee9de; font: 14px/1.55 'Source Serif 4', Georgia, serif;
+    }
+    .handoff h1 { margin: 0 0 6px; font: 600 22px/1.2 'Source Serif 4', Georgia, serif; }
+    .handoff .kicker { margin: 0 0 14px; color: #cba63a; font: 10px/1.5 'IBM Plex Mono', monospace; letter-spacing: .12em; }
+    .handoff p, .handoff li { color: #cbc6bb; }
+    .handoff ul { margin: 8px 0 16px; padding-left: 18px; }
+    .handoff code { font: 12px/1.4 'IBM Plex Mono', monospace; color: #cba63a; }
+    .stage { max-width: 920px; margin: 0 auto; }
+
+    .zeal-chat { --chat-bg: #111317; --chat-ink: #eee9de; --chat-muted: #aaa59b; --chat-line: #343941; --chat-accent: #cba63a; color: var(--chat-ink); font: 14px/1.6 'Source Serif 4', Georgia, serif; }
+    .zeal-chat * { box-sizing: border-box; }
+    .zeal-chat button, .zeal-chat select, .zeal-chat textarea { font: inherit; color: inherit; }
+    .zeal-chat button { cursor: pointer; border: 1px solid var(--chat-line); padding: 5px 10px; background: #191c21; }
+    .zeal-chat button:hover, .zeal-chat a:hover { color: var(--chat-accent); }
+    .zeal-chat button:disabled { opacity: .45; cursor: not-allowed; }
+    .zeal-chat :focus-visible { outline: 2px solid var(--chat-accent); outline-offset: 3px; }
+    .zeal-chat a { color: var(--chat-accent); text-decoration: underline; text-underline-offset: 3px; }
+
+    .zeal-chat-drawer {
+      position: relative;
+      width: 100%;
+      height: min(860px, calc(100vh - 220px));
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      background: var(--chat-bg);
+      border: 1px solid var(--chat-line);
+      box-shadow: 0 16px 48px #0006;
+      overflow: hidden;
+    }
+    .zeal-chat-drawer > header {
+      position: relative; z-index: 3; padding: 16px;
+      border-bottom: 1px solid var(--chat-line);
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+    }
+    .zeal-chat-drawer > header p { margin: 0 0 4px; color: var(--chat-accent); font: 9px/1.5 monospace; letter-spacing: .1em; }
+    .zeal-chat-drawer h2 { margin: 0; font: 21px/1.2 'Source Serif 4', Georgia, serif; }
+    .zeal-chat-header-actions { display: flex; align-items: flex-start; gap: 8px; }
+    .zeal-chat-mode { display: flex; }
+    .zeal-chat-mode button { border-right: 0; }
+    .zeal-chat-mode button:last-child { border-right: 1px solid var(--chat-line); }
+    .zeal-chat-mode button[aria-pressed='true'] { color: var(--chat-accent); }
+
+    .zeal-chat-panel { display: flex; flex-direction: column; min-height: 0; flex: 1; }
+    .zeal-chat-tools { display: flex; gap: 6px; align-items: flex-end; padding: 12px 16px; border-bottom: 1px solid var(--chat-line); }
+    .zeal-chat-tools label { flex: 1; min-width: 0; font-size: 11px; color: var(--chat-muted); }
+    .zeal-chat-tools select { display: block; width: 100%; padding: 5px; background: var(--chat-bg); border: 1px solid var(--chat-line); color: var(--chat-ink); }
+    .zeal-chat-transcript { overflow-y: auto; overscroll-behavior: contain; flex: 1; min-height: 80px; padding: 16px; scrollbar-width: thin; scrollbar-color: var(--chat-line) transparent; }
+    .zeal-chat-message { padding: 12px 0 18px; overflow-wrap: anywhere; }
+    .zeal-chat-message + .zeal-chat-message { border-top: 1px solid var(--chat-line); }
+    .zeal-chat-message.is-user { color: #cbc6bb; }
+    .zeal-chat-meta { color: var(--chat-muted); font: 10px/1.6 monospace; margin: 0 0 8px; }
+    .zeal-chat-user-text { white-space: pre-wrap; margin: 0; }
+    .zeal-chat-answer p { margin: 0 0 12px; }
+    .zeal-chat-answer sup a { font-size: 11px; font-weight: 600; text-decoration: none; }
+    .zeal-chat-sources { border: 1px solid var(--chat-line); padding: 9px; font-size: 12px; }
+    .zeal-chat-sources summary { cursor: pointer; color: var(--chat-accent); }
+    .zeal-chat-sources > div { padding: 10px 0; border-top: 1px solid var(--chat-line); }
+    .zeal-chat-sources p { color: var(--chat-muted); margin: 5px 0; }
+    .zeal-chat-sources + .zeal-chat-sources { margin-top: 8px; }
+    .zeal-chat-compose { border-top: 1px solid var(--chat-line); padding: 12px 16px; max-height: 55%; overflow-y: auto; }
+    .zeal-chat-compose label { display: block; margin-bottom: 6px; font-size: 12px; }
+    .zeal-chat-compose .zeal-chat-web { display: flex; align-items: center; gap: 8px; }
+    .zeal-chat-web input { width: 16px; height: 16px; accent-color: var(--chat-accent); flex-shrink: 0; }
+    .zeal-chat-compose textarea { display: block; width: 100%; resize: vertical; min-height: 70px; max-height: 150px; border: 1px solid var(--chat-line); background: #0c0e11; padding: 9px; }
+    .zeal-chat-send { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 8px; }
+    .zeal-chat-send-actions { display: flex; }
+    .zeal-chat-send-actions button + button { border-left: 0; min-width: 2.25em; font-family: Amiri, 'Times New Roman', serif; }
+    .zeal-chat-send span, .zeal-chat-privacy { font: 9px/1.6 monospace; color: var(--chat-muted); }
+    .zeal-chat-privacy { margin: 10px 0 0; }
+    .zeal-chat-quote { background: #1b1e23; padding: 8px; margin: 0 0 10px; }
+    .zeal-chat-quote blockquote { margin: 0; max-height: 85px; overflow: auto; font-size: 12px; white-space: pre-wrap; border-left: 2px solid var(--chat-accent); padding-left: 8px; }
+    .zeal-chat-quote .zeal-chat-meta { display: flex; align-items: center; justify-content: space-between; }
+    .zeal-chat-resize {
+      position: absolute; right: 0; bottom: 0; width: 12px; height: 12px;
+      background: linear-gradient(135deg, transparent 0 45%, var(--chat-accent) 45% 58%, transparent 58% 70%, var(--chat-accent) 70% 83%, transparent 83%);
+      opacity: .8;
+    }
+/* Gold and obsidian material skin. Geometry and sample content preserved. */
+:root{--page:#100f0d}
+body{padding:32px 24px 48px;background:radial-gradient(ellipse at 50% 0,#332b1d55,transparent 65%),var(--page)}
+.handoff{max-width:920px;margin-bottom:22px;font-family:Georgia,serif}
+.handoff h1{font-weight:400;font-size:26px;color:#f4e8cc;margin:0}
+.handoff .kicker{color:#bca679;font:11px/1.5 'Courier New',monospace;letter-spacing:.14em;margin-bottom:8px}
+.handoff .preview-note{font:12px/1.6 'Segoe UI',Arial,sans-serif;color:#b6ac99;margin:8px 0 0}
+.zeal-chat{
+ --chat-bg:#181713;--chat-ink:#eee7d7;--chat-muted:#b4ab9b;--chat-line:#c9aa6a2b;--chat-accent:#e1c383;
+ --gold-rim:linear-gradient(135deg,#ffedb4,#a67c36 24%,#e4c581 48%,#846022 69%,#f3d48c 91%,#ae8340);
+ --black-metal:linear-gradient(120deg,#30312e,#20211f 54%,#181916);
+ --clear-glass:linear-gradient(125deg,#e3bc6220,#e3bc6205 60%,#edd59115);
+ --button-shadow:0 2px 0 #090906,0 5px 8px #0006,inset 0 1px 0 #fff5ce22;
+ font:15px/1.65 Georgia,'Times New Roman',serif;
+}
+.zeal-chat button,.zeal-chat select,.zeal-chat textarea,.zeal-chat-drawer,.zeal-chat-sources,.zeal-chat-quote{border-radius:0}
+.zeal-chat button{
+ position:relative;isolation:isolate;background:var(--black-metal);border:1px solid #ad8d4f;
+ padding:7px 15px;min-height:36px;font:12px/1.45 'Segoe UI',Arial,sans-serif;letter-spacing:.025em;
+ color:#ecd8ab;box-shadow:var(--button-shadow);transition:box-shadow .16s,translate .16s;
+}
+.zeal-chat button:before{
+ content:'';position:absolute;inset:-1px;padding:1px;pointer-events:none;background:var(--gold-rim);
+ -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;
+ mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude;
+}
+.zeal-chat button:after{content:'';position:absolute;inset:3px;pointer-events:none;border-top:1px solid #fff0c129;border-bottom:1px solid #cab16d12}
+.zeal-chat button:hover{color:#fff1ce;translate:0 -1px;box-shadow:0 2px 0 #080806,0 6px 10px #0007,inset 0 1px 1px #ffe6aa50}
+.zeal-chat button:active{translate:0 1px;box-shadow:inset 0 2px 4px #0006}
+.zeal-chat button:disabled{translate:none}
+.zeal-chat a{color:#e9c883;text-decoration-color:#e9c88360}
+.zeal-chat a:hover{color:#fff0be}
+.zeal-chat-drawer{
+ height:960px;min-height:720px;background:linear-gradient(110deg,#28251d25,transparent 50%),var(--chat-bg);
+ border:1px solid #a388524d;box-shadow:0 1px 0 #f4d29136 inset,0 18px 65px #0008;
+}
+.zeal-chat-drawer>header{
+ padding:23px 26px;background:linear-gradient(125deg,#3833297a,#201f1b99 45%,#332e2159);
+ border-bottom:1px solid #bda16b4a;box-shadow:inset 0 -1px 0 #0008;
+}
+.zeal-chat-drawer>header p{font:10px/1.6 'Courier New',monospace;letter-spacing:.13em;color:#d3b97e;margin-bottom:6px}
+.zeal-chat-drawer h2{font:400 26px/1.2 Georgia,serif;color:#f3e8d1;text-shadow:0 2px 4px #0005}
+.zeal-chat-header-actions{gap:12px;align-items:center}
+.zeal-chat-mode button{background:var(--clear-glass);border-right:1px solid #ad8d4f;color:#c5baa4;box-shadow:0 2px 4px #0005}
+.zeal-chat-mode button+button{margin-left:-1px}
+.zeal-chat-mode button:last-child{border-right:1px solid #ad8d4f}
+.zeal-chat-mode button[aria-pressed='true']{
+ color:#36270e;background:linear-gradient(110deg,#d5b36c,#f9e7b6 38%,#c3a35f 90%);
+ box-shadow:inset 0 2px 0 #fff0c788,inset 0 -2px 0 #957032,0 2px 4px #0005;
+}
+.zeal-chat-header-actions>button{min-width:36px;padding:5px 10px;color:#c3b593;background:var(--clear-glass);border-color:#bba06a60}
+.zeal-chat-tools{padding:16px 26px;gap:10px;background:#24221b60;border-bottom-color:#bda16b24}
+.zeal-chat-tools label{font:11px/1.6 'Segoe UI',Arial,sans-serif;color:#b7ad98}
+.zeal-chat-tools select{margin-top:5px;padding:8px 10px;min-height:36px;font:12px/1.45 'Segoe UI',Arial,sans-serif;background:linear-gradient(110deg,#eee0b40a,transparent),#181813;border-color:#b69a5d55;box-shadow:inset 0 1px 4px #0004;color:#dfd4bf}
+.zeal-chat-tools option{background:#21201b;color:#eee7d7}
+.zeal-chat-tools button{background:var(--clear-glass)}
+.zeal-chat-tools button:last-child{border-color:#9e8a644d;color:#b9ae97;box-shadow:0 2px 4px #0004}
+.zeal-chat-tools button:last-child:before{opacity:.4}
+.zeal-chat-transcript{padding:14px 26px 24px;scrollbar-color:#796540 #171611}
+.zeal-chat-message{padding:17px 0 22px}
+.zeal-chat-message+.zeal-chat-message{border-top-color:#c9aa6a21}
+.zeal-chat-message.is-user{color:#c9c1b0}
+.zeal-chat-meta{font:11px/1.6 'Segoe UI',Arial,sans-serif;color:#a99f8b;letter-spacing:.025em;margin-bottom:10px}
+.zeal-chat-message.is-assistant>.zeal-chat-meta{color:#d9bc7c}
+.zeal-chat-answer{color:#f1e9d8}
+.zeal-chat-answer strong{color:#f5d995}
+.zeal-chat-answer sup a{font:500 11px/1 'Segoe UI',sans-serif;padding:2px 4px;border-bottom:1px solid #bfa06366}
+.zeal-chat-sources{padding:0 12px;font:12px/1.6 'Segoe UI',Arial,sans-serif;border-color:#c7ab693b;background:var(--clear-glass);box-shadow:inset 0 1px 0 #fff0c00c,0 2px 5px #0002}
+.zeal-chat-sources summary{padding:10px 0;color:#d7bd84}
+.zeal-chat-sources[open]{background:linear-gradient(130deg,#d8c0860c,transparent 75%),#191a16}
+.zeal-chat-sources>div{padding:12px 0;border-top-color:#c7ab6929}
+.zeal-chat-sources+.zeal-chat-sources{margin-top:7px}
+.zeal-chat-compose{padding:18px 26px 20px;background:linear-gradient(115deg,#29261fbb,#1c1c1899);border-top:1px solid #c7ab6950;box-shadow:0 -8px 22px #0002;max-height:49%}
+.zeal-chat-compose label{font:12px/1.6 'Segoe UI',Arial,sans-serif;color:#d1c6ae;margin-bottom:8px}
+.zeal-chat-compose .zeal-chat-web{margin-top:12px;gap:9px;color:#d9cfba}
+.zeal-chat-web input{accent-color:#d5b16a}
+.zeal-chat-quote{background:linear-gradient(110deg,#bfa0660d,transparent),#18191480;border:1px solid #b3986033;padding:10px 12px;box-shadow:inset 0 1px 0 #fff3ce08}
+.zeal-chat-quote .zeal-chat-meta{margin-bottom:6px}
+.zeal-chat-quote blockquote{font:13px/1.6 Georgia,serif;border-left-color:#b89c61;color:#cec2a8}
+.zeal-chat-quote summary{font:12px/1.5 'Segoe UI',Arial,sans-serif;color:#b7aa8d;cursor:pointer}
+.zeal-chat-quote .zeal-chat-meta button{padding:0 7px;min-height:24px;border-color:#9f8d6550;background:transparent;box-shadow:none}
+.zeal-chat-quote .zeal-chat-meta button:before,.zeal-chat-quote .zeal-chat-meta button:after{display:none}
+.zeal-chat-compose textarea{font:14px/1.6 'Segoe UI',Arial,sans-serif;background:linear-gradient(110deg,#fff2c203,transparent),#10120f;border-color:#bba16a64;padding:12px;min-height:80px;max-height:130px;box-shadow:inset 0 2px 7px #0007,inset 0 1px 0 #e7cf9820;color:#f0e7d2}
+.zeal-chat-compose textarea::placeholder{color:#928d7e}
+.zeal-chat-send{margin-top:12px}
+.zeal-chat-send-actions{gap:5px}
+.zeal-chat-send-actions button[type='submit']{padding:9px 30px;color:#34250d;background:linear-gradient(110deg,#e8c77c,#fff0bf 43%,#cfad62);border-color:#e5c37a;box-shadow:0 2px 0 #86652d,0 5px 8px #0006,inset 0 2px 0 #fff3cd99,inset 0 -2px 0 #bd9750;}
+.zeal-chat-send-actions button[type='submit']:hover{color:#211807;background:linear-gradient(110deg,#f0d391,#fff4d5 43%,#dfbe7a)}
+.zeal-chat-send-actions button[type='submit']:active{box-shadow:inset 0 2px 4px #5d471a55;translate:0 1px}
+.zeal-chat-send-actions button+button{border-left:1px solid #ad8d4f;min-width:40px;font-family:'Times New Roman',serif;background:var(--black-metal)}
+.zeal-chat-send span,.zeal-chat-privacy{font:11px/1.6 'Segoe UI',Arial,sans-serif;color:#aaa18e}
+.zeal-chat-privacy{margin-top:13px}
+.zeal-chat-resize{opacity:.45}
+@media(max-width:640px){body{padding:16px 10px 30px}.zeal-chat-drawer{height:1040px}.zeal-chat-drawer>header{padding:18px 16px;flex-wrap:wrap}.zeal-chat-tools{padding:14px 16px;gap:7px}.zeal-chat-tools button{padding:7px 9px}.zeal-chat-transcript,.zeal-chat-compose{padding-left:16px;padding-right:16px}.zeal-chat-send{flex-wrap:wrap}.zeal-chat-send-actions{margin-left:auto}.zeal-chat-drawer h2{font-size:24px}.zeal-chat-compose{max-height:53%}}
+@media(prefers-reduced-motion:reduce){.zeal-chat button{transition:none}.zeal-chat button:hover,.zeal-chat button:active{translate:none}}
+
+  /* Ivory and champagne variant: same geometry, content, and interactions. */
+:root{--page:#eae6dd;color-scheme:light}
+body{background:radial-gradient(ellipse at 50% 0,#fffdf6 0,transparent 70%),var(--page)}
+.handoff h1{color:#332c20}
+.handoff .kicker{color:#79602e}
+.handoff .preview-note{color:#696354}
+.zeal-chat{
+ --chat-bg:#fffcf5;--chat-ink:#302d25;--chat-muted:#716957;--chat-line:#b6a58255;--chat-accent:#806022;
+ --gold-rim:linear-gradient(135deg,#e1c58a,#a7894d 24%,#f1deb3 48%,#9f7d3e 69%,#d4b77b 91%,#a5864d);
+ --black-metal:linear-gradient(120deg,#fffcf3,#eee8d9 54%,#e1d6be);
+ --clear-glass:linear-gradient(125deg,#ffffffb8,#faf5e670 60%,#d7c49538);
+ --button-shadow:0 1px 0 #c1b18f,0 3px 6px #66512717,inset 0 1px 0 #fffef5;
+}
+.zeal-chat button{color:#554322;border-color:#ad915b}
+.zeal-chat button:after{border-top-color:#ffffffe0;border-bottom-color:#96753722}
+.zeal-chat button:hover{color:#3e2c0c;box-shadow:0 1px 0 #ab9363,0 5px 9px #72582724,inset 0 1px 0 #fff}
+.zeal-chat button:active{box-shadow:inset 0 2px 4px #826b3826}
+.zeal-chat a{color:#785512;text-decoration-color:#92702980}
+.zeal-chat a:hover{color:#4e3606}
+.zeal-chat-drawer{background:linear-gradient(110deg,#fff 0,transparent 60%),var(--chat-bg);border-color:#b9a477;box-shadow:0 1px 0 #fff inset,0 18px 50px #5643281c,0 3px 8px #5643280d}
+.zeal-chat-drawer>header{background:linear-gradient(125deg,#f8f1e1,#fffcf4 45%,#e9dec7);border-bottom-color:#bba47575;box-shadow:inset 0 -1px 0 #fff8}
+.zeal-chat-drawer>header p{color:#816330}
+.zeal-chat-drawer h2{color:#302719;text-shadow:0 1px 0 #fff}
+.zeal-chat-mode button{color:#6b5a38;box-shadow:0 2px 4px #715d3214}
+.zeal-chat-mode button[aria-pressed='true']{color:#3c2b0c;background:linear-gradient(110deg,#d9bc7b,#f9e7b7 38%,#c8aa68 90%);box-shadow:inset 0 2px 0 #fff5d8,inset 0 -2px 0 #af8f4e,0 2px 4px #745a2920}
+.zeal-chat-header-actions>button{color:#71613d;border-color:#ad945f80}
+.zeal-chat-tools{background:#eee7d83d;border-bottom-color:#b4a17a45}
+.zeal-chat-tools label{color:#70644d}
+.zeal-chat-tools select{background:linear-gradient(110deg,#fffefb,#f7f2e7);border-color:#b7a27a8c;box-shadow:inset 0 1px 3px #816a3510;color:#514a3b}
+.zeal-chat-tools option{background:#fffcf5;color:#302d25}
+.zeal-chat-tools button:last-child{border-color:#b9a78380;color:#73654c;box-shadow:0 2px 4px #715d3212}
+.zeal-chat-transcript{scrollbar-color:#b8a67f #f7f1e6}
+.zeal-chat-message+.zeal-chat-message{border-top-color:#b6a58240}
+.zeal-chat-message.is-user{color:#5b5549}
+.zeal-chat-meta{color:#746b59}
+.zeal-chat-message.is-assistant>.zeal-chat-meta{color:#826026}
+.zeal-chat-answer{color:#302d25}
+.zeal-chat-answer strong{color:#785316}
+.zeal-chat-answer sup a{border-bottom-color:#a0814380}
+.zeal-chat-sources{border-color:#c3ad7d80;background:linear-gradient(125deg,#fffefbd9,#f1e9d982);box-shadow:inset 0 1px 0 #fff,0 2px 5px #7d67470a}
+.zeal-chat-sources summary{color:#7a5c23}
+.zeal-chat-sources[open]{background:linear-gradient(130deg,#fffdf8,#f4eee1)}
+.zeal-chat-sources>div{border-top-color:#b7a47a45}
+.zeal-chat-compose{background:linear-gradient(115deg,#f4eee2,#ebe2cf75);border-top-color:#b9a06a80;box-shadow:0 -6px 20px #65502f06}
+.zeal-chat-compose label,.zeal-chat-compose .zeal-chat-web{color:#554c39}
+.zeal-chat-web input{accent-color:#8b6928}
+.zeal-chat-quote{background:linear-gradient(110deg,#fffcf7c9,#fffdf683);border-color:#baa67965;box-shadow:inset 0 1px 0 #fff}
+.zeal-chat-quote blockquote{border-left-color:#a7884a;color:#5c503b}
+.zeal-chat-quote summary{color:#6f5d3b}
+.zeal-chat-quote .zeal-chat-meta button{border-color:#a38b5865;color:#6e5b34}
+.zeal-chat-compose textarea{background:linear-gradient(110deg,#fff,#fffdf8);border-color:#b39b69a1;box-shadow:inset 0 2px 5px #9b814b10,0 1px 0 #fff9;color:#302d25}
+.zeal-chat-compose textarea::placeholder{color:#79715f}
+.zeal-chat-send-actions button[type='submit']{color:#3e2b0b;background:linear-gradient(110deg,#dfbc72,#fff0be 43%,#d2af66);border-color:#b5924f;box-shadow:0 2px 0 #a18143,0 4px 8px #88692926,inset 0 2px 0 #fff6d7,inset 0 -2px 0 #c4a05a}
+.zeal-chat-send-actions button[type='submit']:hover{color:#2c1c04;background:linear-gradient(110deg,#e9cc8b,#fff5d4 43%,#dec087)}
+.zeal-chat-send-actions button[type='submit']:active{box-shadow:inset 0 2px 4px #89692630}
+.zeal-chat-send span,.zeal-chat-privacy{color:#746a55}
+
+</style>
+</head>
+<body>
+  <section class="handoff">
+    <p class="kicker">ZEAL · IVORY &amp; CHAMPAGNE</p>
+    <h1>Ask AI</h1>
+    <p class="preview-note">Visual reskin · Static preview with the original sample conversation.</p>
+  </section>
+
+  <div class="stage">
+    <div class="zeal-chat">
+      <aside class="zeal-chat-drawer" aria-label="Lore chat" data-layout="window">
+        <header>
+          <div>
+            <p>LORE COMPANION · READ ONLY</p>
+            <h2>Iblis / Satan</h2>
+          </div>
+          <div class="zeal-chat-header-actions">
+            <div class="zeal-chat-mode" role="group" aria-label="Ask layout">
+              <button type="button" aria-pressed="false">Side</button>
+              <button type="button" aria-pressed="true">Window</button>
+            </div>
+            <button type="button" aria-label="Close chat">×</button>
+          </div>
+        </header>
+
+        <div class="zeal-chat-panel">
+          <div class="zeal-chat-tools">
+            <label>Conversations
+              <select aria-label="Conversation history">
+                <option selected>can you cheeck if this accurate ? The Quran records the command:</option>
+                <option>New conversation</option>
+              </select>
+            </label>
+            <button type="button">New</button>
+            <button type="button">Delete</button>
+          </div>
+
+          <div class="zeal-chat-transcript">
+            <article class="zeal-chat-message is-assistant">
+              <div class="zeal-chat-answer">
+                <p>the command.”</p>
+              </div>
+              <details class="zeal-chat-sources">
+                <summary>Recorded sources · 2</summary>
+                <div>
+                  <a href="#">Q 7:11–18 · Islamic · Quran</a>
+                  <p>God commands the angels to prostrate to Adam. Iblis refuses, citing that he was created from fire and Adam from clay.</p>
+                </div>
+                <div>
+                  <a href="#">Q 2:34 · Islamic · Quran</a>
+                  <p>Iblis refused and was proud, and became one of the disbelievers.</p>
+                </div>
+              </details>
+              <details class="zeal-chat-sources">
+                <summary>Web sources (external) · 1</summary>
+                <div>
+                  <a href="#">Encyclopaedia of Islam — Iblīs</a>
+                  <p>Overview of Iblis in Quranic narrative and later tafsir. External; not stored as lore.</p>
+                </div>
+              </details>
+            </article>
+
+            <article class="zeal-chat-message is-user">
+              <div class="zeal-chat-meta">You</div>
+              <details class="zeal-chat-quote">
+                <summary>Passage included</summary>
+                <blockquote>The Quran records the command: “Prostrate yourselves to Adam.” They all prostrated except Iblis, who refused.</blockquote>
+              </details>
+              <p class="zeal-chat-user-text">who did he mean here</p>
+            </article>
+
+            <article class="zeal-chat-message is-assistant">
+              <div class="zeal-chat-meta">Zeal · AI interpretation</div>
+              <div class="zeal-chat-answer">
+                <p>“He” refers to <strong>Iblis</strong>: he refused God’s command to prostrate to Adam. <sup><a href="#">1</a></sup></p>
+              </div>
+              <details class="zeal-chat-sources">
+                <summary>Recorded sources · 1</summary>
+                <div>
+                  <a href="#">Q 7:11 · Islamic · Quran</a>
+                  <p>They all prostrated except Iblis; he was not of those who prostrated.</p>
+                </div>
+              </details>
+            </article>
+          </div>
+
+          <div class="zeal-chat-compose">
+            <p class="zeal-chat-meta">Reading · Islamic · Quran</p>
+            <div class="zeal-chat-quote">
+              <div class="zeal-chat-meta">Selected passage <button type="button" aria-label="Remove selected passage">×</button></div>
+              <blockquote>Resurrection</blockquote>
+            </div>
+            <form action="#" onsubmit="return false">
+              <label class="zeal-chat-web">
+                <input type="checkbox" checked />
+                Search the web when needed
+              </label>
+              <p id="zeal-web-help" class="zeal-chat-meta">Public-topic searches may be sent to search providers. Web results are not saved as lore.</p>
+              <label for="zeal-chat-question">Ask about the lore</label>
+              <textarea id="zeal-chat-question" rows="3" maxlength="2000" placeholder="What does this passage mean?"></textarea>
+              <div class="zeal-chat-send">
+                <span>0/2000 · Shift+Enter for a new line</span>
+                <span class="zeal-chat-send-actions">
+                  <button type="submit">Send</button>
+                  <button type="button" aria-label="Send in Arabic">ع</button>
+                </span>
+              </div>
+            </form>
+            <p class="zeal-chat-privacy">Saved in this browser · last 20 conversations per topic. Recent complete turns are sent for follow-ups. AI can be wrong; check its sources.</p>
+          </div>
+        </div>
+        <div class="zeal-chat-resize" aria-hidden="true"></div>
+      </aside>
+    </div>
+  </div>
+</body>
+</html>

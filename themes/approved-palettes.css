@@ -1,0 +1,127 @@
+@import './approved-palettes.tokens.css';
+
+/* Opt-in ZEAL compatibility aliases; portable tokens do not set generic variables. */
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) {
+ --bg:var(--zs-bg)!important;--surface:var(--zs-surface)!important;--surface-2:var(--zs-raised)!important;
+ --text:var(--zs-ink)!important;--text-dim:var(--zs-muted)!important;--line:var(--zs-line)!important;--accent:var(--zs-accent)!important;
+ --zt-bg:var(--zs-bg);--zt-surface:var(--zs-surface);--zt-surface-raised:var(--zs-raised);
+ --zt-ivory:var(--zs-ink);--zt-dim:var(--zs-muted);--zt-gold:var(--zs-accent);--zt-cyan:var(--zs-focus);
+ --zt-graphite:var(--zs-raised);--zt-line:var(--zs-line);--zt-gold-edge:var(--zs-edge);--zt-cyan-edge:var(--zs-line);
+ --zt-gold-wash:color-mix(in srgb,var(--zs-accent) 10%,transparent);--zt-cyan-wash:color-mix(in srgb,var(--zs-focus) 8%,transparent);
+ --zt-gold-panel:var(--zs-stage);--zt-cyan-panel:var(--zs-glass);--zt-dual-panel:var(--zs-stage);--zt-header:var(--zs-bg);
+ --zt-gold-highlight:inset 0 1px var(--zs-light);--zt-cyan-highlight:inset 0 1px var(--zs-light);
+ --zt-panel-shadow:0 12px 36px var(--zs-shadow);--zt-card-shadow:0 16px 54px var(--zs-shadow);
+ --zt-focus-ring:2px solid var(--zs-focus);--zt-chamber-light:none;
+}
+
+/* New palettes only. Legacy choices keep their current CSS, prefs, and artwork. */
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) {
+--chat-bg:var(--zs-surface);--chat-ink:var(--zs-ink);--chat-muted:var(--zs-muted);--chat-line:var(--zs-line);--chat-accent:var(--zs-accent);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .zeal-theme-switch {
+color:var(--zs-muted);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .zeal-theme-switch select {
+color:var(--zs-accent);background:var(--zs-surface);border-color:var(--zs-line);color-scheme:inherit;
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) :focus-visible {
+outline-color:var(--zs-focus);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) [data-ui="AppHeader"] {
+background:var(--zs-stage);box-shadow:inset 0 1px var(--zs-light);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .v2-root {
+--v2-bg:var(--zs-bg);--v2-surface:var(--zs-surface);--v2-surface-raised:var(--zs-raised);--v2-ink:var(--zs-ink);--v2-muted:var(--zs-muted);--v2-line:var(--zs-line);--v2-line-strong:var(--zs-edge);--v2-accent:var(--zs-accent);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .v2-header {
+background:var(--zs-stage);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .v2-ai-trigger {
+background:var(--zs-primary);color:var(--zs-accentInk);border-color:var(--zs-edge);box-shadow:inset 0 1px var(--zs-light);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .v2-ai-trigger:is(:hover,[aria-expanded="true"]) {
+background:var(--zs-primary);filter:brightness(1.05);color:var(--zs-accentInk);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .zeal-chat {
+--chat-bg:var(--zs-surface);--chat-ink:var(--zs-ink);--chat-muted:var(--zs-muted);--chat-line:var(--zs-line);--chat-accent:var(--zs-accent);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .zeal-chat button:not(.zeal-chat-resize):not(.zeal-chat-resize-edge) {
+background:var(--zs-glass);border-color:var(--zs-line);color:var(--zs-ink);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) :is(.zeal-chat-drawer > header,.zeal-chat-quote) {
+background:var(--zs-stage);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) :is(.zeal-chat-compose textarea,.selection-ask-input,.selection-ask-composer) {
+background:var(--zs-bg);color:var(--zs-ink);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .zeal-chat-message.is-user {
+color:var(--zs-ink);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .zeal-chat-send button:not(:disabled) {
+background:var(--zs-primary);color:var(--zs-accentInk);border-color:var(--zs-edge);box-shadow:inset 0 1px var(--zs-light),0 2px 0 var(--zs-line);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .zeal-chat-notice {
+color:var(--zs-ink);background:var(--zs-raised);border-inline-start:2px solid var(--zs-accent);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .heroes-root {
+--h-bg:var(--zs-bg);--h-bone:var(--zs-ink);--h-dim:var(--zs-muted);--h-line:var(--zs-line);--h-gold:var(--zs-accent);--h-silver:var(--zs-muted);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .labyrinth {
+--lab-night:var(--zs-bg);--lab-panel:var(--zs-surface);--lab-bone:var(--zs-ink);--lab-sand:var(--zs-muted);--lab-rule:var(--zs-line);--lab-gold:var(--zs-accent);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .gain-root {
+--g-bg:var(--zs-bg);--g-panel:var(--zs-surface);--g-ink:var(--zs-ink);--g-dim:var(--zs-muted);--g-line:var(--zs-line);--g-amber:var(--zs-accent);background:var(--zs-bg);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) :is(.gain-deck,.gain-intro,.gain-explainer,.gain-thesis-grid p,.gain-orbit-readout p,.gain-engine-caption > div > p:last-child,.gain-model > p,.gain-source-comparison p,.gain-conclusion-copy > p:not(.gain-chapter-index)) {
+color:var(--zs-muted);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) :is(.gain-evidence-drawer,.gain-model,.gain-source-comparison article,.gain-harm-note > div) {
+background:var(--zs-surface);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) {
+--zs-jew-gradient:linear-gradient(90deg,#8d6511 0%,#f1c500 50%,#ad790d 100%);
+--zs-chr-gradient:linear-gradient(90deg,#00778e 0%,#04cfff 50%,#007fc7 100%);
+--zs-isl-gradient:linear-gradient(90deg,#287a35 0%,#50cf40 50%,#08a96a 100%);
+--zs-apo-gradient:linear-gradient(90deg,#7540bc 0%,#db69fb 50%,#914bea 100%);
+--zs-oth-gradient:linear-gradient(90deg,#63768e 0%,#b9cfe4 50%,#7184a0 100%);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .v2-root [data-tradition="jew"] {
+--zs-provenance:var(--zs-jew-gradient);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .v2-root [data-tradition="chr"] {
+--zs-provenance:var(--zs-chr-gradient);
+}
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) .v2-root [data-tradition="isl"] {
+--zs-provenance:var(--zs-isl-gradient);
+}
+:root:is([data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]).zeal-v2{color-scheme:light}
+
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) [data-theme="celestial"] {
+--celestial-bg-0:var(--zs-bg);
+--celestial-bg-1:var(--zs-surface);
+--celestial-bg-2:var(--zs-raised);
+--celestial-panel:var(--zs-surface);
+--celestial-panel-strong:var(--zs-raised);
+--celestial-panel-hover:var(--zs-raised);
+--celestial-text:var(--zs-ink);
+--celestial-text-bright:var(--zs-ink);
+--celestial-text-muted:var(--zs-muted);
+--celestial-text-faint:var(--zs-muted);
+--celestial-bronze:var(--zs-accent);
+--celestial-amber:var(--zs-accent);
+--celestial-gold-soft:var(--zs-accent);
+--celestial-gold-pale:var(--zs-focus);
+--celestial-line:var(--zs-line);
+--celestial-line-strong:var(--zs-line);
+--celestial-selected:var(--zs-focus);
+}
+:root:is([data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) [data-theme="celestial"]{color-scheme:light}
+
+/* Keep Atlas provenance independent of the chosen interface accent. */
+:root:is([data-zeal-theme="ink-platinum"],[data-zeal-theme="graphite-copper"],[data-zeal-theme="grey-orange"],[data-zeal-theme="ivory"]) [data-theme="celestial"] {
+--atlas-family-jew:var(--src-jew);
+--atlas-family-chr:var(--src-chr);
+--atlas-family-isl:var(--src-isl);
+--atlas-family-apo:var(--src-apo);
+--atlas-family-oth:var(--src-oth);
+}
