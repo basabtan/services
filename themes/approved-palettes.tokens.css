@@ -1,0 +1,77 @@
+/* Four additive ZEAL palettes. Existing themes and source colors are not overwritten. */
+:root[data-zeal-theme="ivory"]{
+ color-scheme:light;
+ --zs-bg:#e9e7e0;
+ --zs-surface:#fffdf8;
+ --zs-raised:#f2efe7;
+ --zs-ink:#272c35;
+ --zs-muted:#6b7480;
+ --zs-line:#c6c2b6;
+ --zs-accent:#84652d;
+ --zs-accentInk:#33280f;
+ --zs-focus:#84652d;
+ --zs-primary:linear-gradient(112deg,#d5bd82 0%,#ebdbac 30%,#f4e9c6 48%,#d8c38e 70%,#c6ab70 100%);
+ --zs-stage:linear-gradient(110deg,#fefdf8,#f2efe5);
+ --zs-glass:linear-gradient(140deg,#ffffff5c,#ffffff12 50%,#d9c79920);
+ --zs-edge:#aa8d50;
+ --zs-light:#ffffff;
+ --zs-shadow:#202a3c10;
+ --zs-signal:#d5bd82;
+}
+:root[data-zeal-theme="ink-platinum"]{
+ color-scheme:dark;
+ --zs-bg:#080f1b;
+ --zs-surface:#13253b;
+ --zs-raised:#1b3556;
+ --zs-ink:#e5ebf3;
+ --zs-muted:#a8bdd6;
+ --zs-line:#4b6481;
+ --zs-accent:#c5d7ed;
+ --zs-accentInk:#162c47;
+ --zs-focus:#a4caff;
+ --zs-primary:linear-gradient(113deg,#98aec9 0%,#cbdbea 23%,#f1f7fc 44%,#bfcede 66%,#8ea7c7 100%);
+ --zs-stage:linear-gradient(145deg,#29476a 0%,#142b47 54%,#0b1b30 100%);
+ --zs-glass:linear-gradient(120deg,#355679bd,#1c385699);
+ --zs-edge:#98bde380;
+ --zs-light:#e6f2ff40;
+ --zs-shadow:#0005;
+ --zs-signal:#c5d7ed;
+}
+:root[data-zeal-theme="graphite-copper"]{
+ color-scheme:dark;
+ --zs-bg:#17181a;
+ --zs-surface:#212225;
+ --zs-raised:#353538;
+ --zs-ink:#eeeae5;
+ --zs-muted:#bab7b3;
+ --zs-line:#77716d;
+ --zs-accent:#d5a58d;
+ --zs-accentInk:#32241f;
+ --zs-focus:#f1c7ab;
+ --zs-primary:linear-gradient(113deg,#aa7963 0%,#d9ac95 23%,#f1d4c3 44%,#c79880 70%,#ad7f68 100%);
+ --zs-stage:linear-gradient(145deg,#3d3e41 0%,#292a2d 54%,#202124 100%);
+ --zs-glass:linear-gradient(120deg,#535151bd,#36363899);
+ --zs-edge:#c7ada080;
+ --zs-light:#f8eee640;
+ --zs-shadow:#0005;
+ --zs-signal:#d5a58d;
+}
+:root[data-zeal-theme="grey-orange"]{
+ color-scheme:light;
+ --zs-bg:#e2e5e7;
+ --zs-surface:#e8ecee;
+ --zs-raised:#c0c5c9;
+ --zs-ink:#282c30;
+ --zs-muted:#4b5156;
+ --zs-line:#7b868e;
+ --zs-accent:#aa382f;
+ --zs-accentInk:#3c1511;
+ --zs-focus:#a13930;
+ --zs-primary:linear-gradient(113deg,#ef4941 0%,#ff5c56 27%,#ff8175 46%,#ff5c56 69%,#ee4d43 100%);
+ --zs-stage:linear-gradient(145deg,#d7dcdf 0%,#c0c5c9 54%,#aeb6bc 100%);
+ --zs-glass:linear-gradient(120deg,#eef1f3c7,#cbd1d5ad);
+ --zs-edge:#969fa6;
+ --zs-light:#ffffffcc;
+ --zs-shadow:#323a4426;
+ --zs-signal:#ff5c56;
+}
