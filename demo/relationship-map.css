@@ -1,0 +1,42 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.demo-shell {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.demo-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid #d0d5dd;
+}
+
+.demo-header h1 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.demo-header p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: #5c6675;
+}
+
+.demo-controls {
+  display: flex;
+  gap: 8px;
+  padding: 8px 18px;
+}
+
+#map-root {
+  flex: 1;
+  min-height: 0;
+}

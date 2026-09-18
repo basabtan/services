@@ -15,6 +15,11 @@
     },
     "./styles.css": "./src/styles.css",
     "./change-requests.css": "./src/change-requests.css",
+    "./relationship-map": {
+      "types": "./src/relationship-map/index.ts",
+      "import": "./src/relationship-map/index.ts"
+    },
+    "./relationship-map.css": "./src/relationship-map/relationship-map.css",
     "./themes/*": "./themes/*"
   },
   "files": [

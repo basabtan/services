@@ -162,3 +162,106 @@ document.documentElement.dataset.zealTheme = 'ivory';
 ```
 
 Apply `--zs-*` variables in your own component CSS. The token stylesheet preserves generic host CSS variables; the separate ZEAL adapter stylesheet overrides them only when explicitly imported. See the [theme README](themes/README.md) for a complete example, downloads, and source provenance. Existing Repair Report and Change Requests styling is unchanged.
+
+
+---
+
+# Relationship Map
+
+A second export in this repository: a framework-agnostic, data-driven SVG relationship/lineage-map engine. It renders any `nodes`/`edges` dataset with fixed coordinates and provides selection with relationship highlighting, a dossier card, search, pan/zoom, touch support, keyboard navigation, and token themes. No React required; it works in plain HTML, Vite, or React hosts.
+
+Install (same package):
+
+```powershell
+npm install github:basabtan/services
+```
+
+## Wire it in
+
+```ts
+import { createRelationshipMap } from '@basabtan/repair-report/relationship-map';
+import '@basabtan/repair-report/relationship-map.css';
+
+const map = createRelationshipMap({
+  container: '#map-root',
+  data: myMapData,           // JSON: nodes, edges, groups, canvas, meta
+  theme: 'dark',             // 'dark' | 'light'
+  options: {
+    enableSearch: true,
+    enableDossier: true,
+    enablePan: true,
+    enableZoom: true,
+    enableKeyboard: true,
+    edgeHighlightMode: 'direct', // 'direct' | 'upstream' | 'downstream' | 'connected'
+  },
+});
+```
+
+Public API:
+
+```ts
+map.selectNode(nodeId);     // select, highlight relations, open dossier
+map.clearSelection();
+map.focusNode(nodeId);       // center viewport on a node
+map.search(query);           // returns ranked matches
+map.resetViewport();         // refit the initial view
+map.setTheme('light');
+map.destroy();
+```
+
+## Data contract
+
+```jsonc
+{
+  "meta": { "title": "Example Relationship Map" },
+  "canvas": { "width": 1500, "height": 950, "minZoom": 0.4, "maxZoom": 3 },
+  "groups": [{ "id": "storage", "label": "Recharge and Storage", "color": "var(--map-group-a)" }],
+  "nodes": [
+    {
+      "id": "alluvial-aquifer",
+      "label": "Alluvial Aquifer",
+      "secondaryLabel": "shallow storage",
+      "groupId": "storage",
+      "x": 800, "y": 430,
+      "shape": "circle",        // circle | rect | diamond | pill
+      "size": "lg",             // sm | md | lg
+      "tags": ["aquifer"],
+      "detail": {
+        "eyebrow": "Storage",
+        "title": "Alluvial Aquifer",
+        "body": "Explanatory text shown in the dossier.",
+        "meta": [{ "label": "Type", "value": "Storage" }]
+      }
+    }
+  ],
+  "edges": [
+    { "source": "rainfall", "target": "runoff", "directed": true, "type": "generates", "weight": 2 }
+  ]
+}
+```
+
+Replacing the dataset with any other topic requires no source changes. Data is validated at mount (`validateRelationshipMapData`) and the graph, search, and traversal helpers (`buildGraph`, `neighbors`, `upstream`, `downstream`, `connected`, `highlightFor`, `searchNodes`) are exported for tests and host tooling.
+
+## Behavior
+
+- Click/tap a node to select it; related nodes stay lit, everything else dims.
+- Highlight scope is configurable: direct neighbors (default), upstream, downstream, or the full connected component.
+- The dossier opens next to the selected node, traps focus, and returns focus to the node on close.
+- Escape closes the dossier first; a second Escape clears the selection. Background click clears selection.
+- Search matches labels, secondary labels, tags, and group names; choosing a result centers, selects, and opens the node.
+- Mouse drag pans; wheel zooms toward the pointer; two-finger pinch zooms on touch; tap still selects.
+- Arrow keys move between the nearest nodes in each direction; Enter/Space activate; visible focus rings throughout.
+- `prefers-reduced-motion` disables transitions.
+- Sharp corners everywhere; no mixed radii.
+
+## Theme
+
+All colors are CSS custom properties on `.rm-host` (`--map-bg`, `--map-text`, `--map-node-*`, `--map-edge-*`, `--map-dossier-*`, `--map-group-a` through `--map-group-f`). Dark and light token sets ship in `relationship-map.css`; override any token on `.rm-host` or a parent to rebrand. `DEFAULT_TOKENS` is exported for programmatic use.
+
+## Demo
+
+Run the Vite dev server, then open `/relationship-map.html` at the served port - a synthetic "Groundwater System Dependencies" example (16 nodes, 20 edges, 4 groups, all four node shapes, directed and undirected edges). The main index demo for Repair Report is unchanged.
+
+## Tests
+
+`tests/relationship-map.model.test.ts` covers data validation, graph traversal, and spatial keyboard navigation. `tests/relationship-map.search.test.ts` covers search matching and ranking. Run with `npm test`.
