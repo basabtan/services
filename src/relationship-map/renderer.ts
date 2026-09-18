@@ -19,10 +19,14 @@ export interface RendererOptions {
 export interface Renderer {
   readonly svg: SVGSVGElement;
   readonly viewport: SVGGElement;
+  /** Layer holding node groups; overlays (branch toggles) append here. */
+  readonly nodeLayer: SVGGElement;
   getNodeElement(nodeId: string): SVGGElement | null;
+  getEdgeElement(edgeId: string): SVGPathElement | null;
   getViewport(): Viewport;
   setViewport(viewport: Viewport): void;
-  fitToView(): void;
+  /** Fit the canvas to the host and return the applied viewport. */
+  fitToView(): Viewport;
   focusNode(nodeId: string, zoom?: number): void;
   setStates(selectedId: string | null, highlight: HighlightResult | null): void;
   clientToCanvas(clientX: number, clientY: number): { x: number; y: number };
@@ -134,6 +138,7 @@ export function createRenderer(
       text.setAttribute('x', String(midX));
       text.setAttribute('y', String(midY - 4));
       text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('data-edge-label-for', id);
       text.textContent = edge.label;
       (viewport.querySelector('.rm-edge-layer') as SVGGElement).appendChild(text);
     }
@@ -184,7 +189,7 @@ export function createRenderer(
     viewport.setAttribute('transform', `translate(${current.tx} ${current.ty}) scale(${current.scale})`);
   }
 
-  function fitToView(): void {
+  function fitToView(): Viewport {
     const width = host.clientWidth || 800;
     const height = host.clientHeight || 600;
     const scale = Math.min(width / canvas.width, height / canvas.height, 1);
@@ -194,6 +199,7 @@ export function createRenderer(
       ty: (height - canvas.height * scale) / 2,
     };
     applyViewport();
+    return { ...current };
   }
 
   const observer = new ResizeObserver(() => {
@@ -204,7 +210,9 @@ export function createRenderer(
   return {
     svg,
     viewport,
+    nodeLayer,
     getNodeElement: (nodeId) => nodeElements.get(nodeId) ?? null,
+    getEdgeElement: (id) => edgeElements.get(id) ?? null,
     getViewport: () => ({ ...current }),
     setViewport(next) {
       current = {

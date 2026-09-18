@@ -48,5 +48,10 @@ const map: RelationshipMapApi = createRelationshipMap({
     enableZoom: true,
     enableKeyboard: true,
     edgeHighlightMode: 'direct',
+    dossierMode: 'origin',
+    enableFocus: true,
+    enableBranches: true,
+    initiallyExpanded: false,
+    branchStaggerMs: 38,
   },
 });

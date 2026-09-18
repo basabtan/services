@@ -83,6 +83,9 @@ export interface RelationshipMapData {
 /** How related nodes are highlighted when a node is selected. */
 export type HighlightMode = 'direct' | 'upstream' | 'downstream' | 'connected';
 
+/** Dossier presentation. `origin` grows the card out of the clicked node. */
+export type DossierMode = 'anchored' | 'origin';
+
 export type MapThemeName = 'dark' | 'light';
 
 export interface RelationshipMapOptions {
@@ -95,6 +98,16 @@ export interface RelationshipMapOptions {
   respectReducedMotion?: boolean;
   /** Highlight scope for the selected node. Default `direct`. */
   edgeHighlightMode?: HighlightMode;
+  /** Dossier presentation. Default `origin` (the signature grow-from-node card). */
+  dossierMode?: DossierMode;
+  /** Add a toolbar button and API for the fullscreen focus workspace morph. Default false. */
+  enableFocus?: boolean;
+  /** Derive branches from the graph and add staggered expand/collapse. Default false. */
+  enableBranches?: boolean;
+  /** When branches are enabled, whether branches start expanded. Default true. */
+  initiallyExpanded?: boolean;
+  /** Per-depth stagger for branch expand/collapse, in ms. Default 38. */
+  branchStaggerMs?: number;
 }
 
 export interface RelationshipMapConfig {
@@ -112,6 +125,13 @@ export interface SearchMatch {
   score: number;
 }
 
+/** A derived branch: a root node plus everything reachable from it. */
+export interface BranchSummary {
+  id: string;
+  rootNodeId: string;
+  nodeIds: string[];
+}
+
 /** Public API returned by `createRelationshipMap`. */
 export interface RelationshipMapApi {
   /** Select a node, highlight relationships, and open its dossier. */
@@ -126,6 +146,20 @@ export interface RelationshipMapApi {
   resetViewport(): void;
   /** Switch between token themes. */
   setTheme(theme: MapThemeName): void;
+  /** Open the fullscreen focus workspace. */
+  openFocus(): void;
+  /** Close the fullscreen focus workspace. */
+  closeFocus(): void;
+  /** Derived branches with root and members. */
+  branches(): BranchSummary[];
+  /** Expand or collapse one branch by id. Staggered. */
+  toggleBranch(branchId: string): void;
+  /** Expand every branch with the depth cascade. */
+  expandAll(): void;
+  /** Collapse every branch; leaves fade first. */
+  collapseAll(): void;
+  /** Expand the branch containing a node, then center on it. */
+  revealNode(nodeId: string): boolean;
   /** Remove listeners and mounted DOM. */
   destroy(): void;
 }

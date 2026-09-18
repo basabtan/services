@@ -193,6 +193,11 @@ const map = createRelationshipMap({
     enableZoom: true,
     enableKeyboard: true,
     edgeHighlightMode: 'direct', // 'direct' | 'upstream' | 'downstream' | 'connected'
+    dossierMode: 'origin',       // 'origin' (default) | 'anchored'
+    enableFocus: true,           // fullscreen focus workspace
+    enableBranches: true,        // staggered expand/collapse
+    initiallyExpanded: false,    // start collapsed to roots
+    branchStaggerMs: 38,         // per-depth cascade timing
   },
 });
 ```
@@ -206,6 +211,13 @@ map.focusNode(nodeId);       // center viewport on a node
 map.search(query);           // returns ranked matches
 map.resetViewport();         // refit the initial view
 map.setTheme('light');
+map.openFocus();             // fullscreen focus workspace
+map.closeFocus();
+map.branches();              // derived branches: [{ id, rootNodeId, nodeIds }]
+map.toggleBranch(branchId);  // staggered expand/collapse
+map.expandAll();
+map.collapseAll();
+map.revealNode(nodeId);      // expand the containing branch, then center
 map.destroy();
 ```
 
@@ -246,12 +258,15 @@ Replacing the dataset with any other topic requires no source changes. Data is v
 
 - Click/tap a node to select it; related nodes stay lit, everything else dims.
 - Highlight scope is configurable: direct neighbors (default), upstream, downstream, or the full connected component.
-- The dossier opens next to the selected node, traps focus, and returns focus to the node on close.
-- Escape closes the dossier first; a second Escape clears the selection. Background click clears selection.
-- Search matches labels, secondary labels, tags, and group names; choosing a result centers, selects, and opens the node.
+- The dossier grows out of the clicked node — clip-path reveal, child stagger, shrink-back close — with a cancel-safe state machine, scrim, focus trap, and focus return (`dossierMode: 'origin'`, the default). Set `dossierMode: 'anchored'` for the plain adjacent panel.
+- Focus mode (`enableFocus`) lifts the stage into a fullscreen workspace with the signature 480/440 ms `cubic-bezier(.22,.61,.36,1)` rect morph, scrim, inert page behind, and the same pan/zoom inside. Escape closes.
+- Branches (`enableBranches`) are derived from the data: roots are nodes with no incoming directed edge (or one root per connected component for undirected payloads). Expand/collapse cascades at `branchStaggerMs` per depth — 38 ms by default, reversed on collapse so leaves go first.
+- Escape closes the topmost layer only: dossier first, then focus mode, then selection.
+- Search matches labels, secondary labels, tags, and group names; choosing a hidden result expands its branch (staggered), centers, selects, and opens the node.
 - Mouse drag pans; wheel zooms toward the pointer; two-finger pinch zooms on touch; tap still selects.
 - Arrow keys move between the nearest nodes in each direction; Enter/Space activate; visible focus rings throughout.
-- `prefers-reduced-motion` disables transitions.
+- `prefers-reduced-motion` disables all transitions and morphs.
+- Motion timing follows the source maps' DNA: 460 ms ease for dim states, the `.22,.61,.36,1` / `.22,.74,.18,1` / `.4,0,.2,1` easing family.
 - Sharp corners everywhere; no mixed radii.
 
 ## Theme
@@ -264,4 +279,4 @@ Run the Vite dev server, then open `/relationship-map.html` at the served port -
 
 ## Tests
 
-`tests/relationship-map.model.test.ts` covers data validation, graph traversal, and spatial keyboard navigation. `tests/relationship-map.search.test.ts` covers search matching and ranking. Run with `npm test`.
+`tests/relationship-map.model.test.ts` covers data validation, graph traversal, and spatial keyboard navigation. `tests/relationship-map.search.test.ts` covers search matching and ranking. `tests/relationship-map.branch.test.ts` covers branch derivation (directed roots, undirected components, cycles), visibility sets, and the stagger delays. Run with `npm test`.
