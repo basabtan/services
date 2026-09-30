@@ -41,11 +41,11 @@ export interface RequestStorageAdapter {
   submit(input: OnlineRequestInput): Promise<OnlineRequest>;
   amend(id: string, update: { id: string; text: string; creativeMode?: CreativeMode }): Promise<void>;
 }
-const SENSITIVE = /token|secret|password|credential|authorization|signature|api.?key|^code$|^state$|^session$/i;
+const SENSITIVE = /token|secret|password|credential|auth|signature|api.?key|jwt|nonce|^code$|^state$|^session$|^key$|^email$|^phone$/i;
 export function safeRequestUrl(raw: string): string {
   const url = new URL(raw);
   url.username = ''; url.password = ''; url.hash = '';
-  for (const key of [...url.searchParams.keys()]) if (SENSITIVE.test(key)) url.searchParams.delete(key);
+  for (const key of [...url.searchParams.keys()]) if (SENSITIVE.test(key) || /[?&#](?:token|access_token|secret|jwt|auth|code)=/i.test(url.searchParams.get(key) || '')) url.searchParams.delete(key);
   return url.href;
 }
 export function captureRequestOrigin(appId: string, locale: 'en' | 'ar' = 'en'): RequestOrigin {
