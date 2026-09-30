@@ -1,5 +1,6 @@
 import type { RepairRecord } from './report';
 import { isAttachment, type Attachment } from './attachments';
+import type { RequestOrigin, CreativeMode, AttachmentReference, WorkflowStatus } from './online';
 
 export const REQUEST_PRIORITIES = ['Low', 'Normal', 'High', 'Urgent'] as const;
 export type RequestPriority = (typeof REQUEST_PRIORITIES)[number];
@@ -26,6 +27,10 @@ export interface ChangeRequest {
   updatedAt: string;
   /** Optional so records saved before attachments existed still validate. */
   attachments?: Attachment[];
+  origin?: RequestOrigin;
+  creativeMode?: CreativeMode;
+  attachmentReferences?: AttachmentReference[];
+  workflow?: { status: WorkflowStatus; issueNumber: number; issueUrl: string };
 }
 
 export function emptyChangeRequest(id: string, now: string): ChangeRequest {
