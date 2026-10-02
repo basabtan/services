@@ -286,3 +286,30 @@ Run the Vite dev server, then open `/relationship-map.html` at the served port -
 Open [demo/interaction_playground_v1_light.html](demo/interaction_playground_v1_light.html) directly in a browser; this standalone HTML includes its fonts, styles, and scripts, with no build step.
 
 Explore seven placeholder blocks with uneven branch depths, or switch to twenty blocks. Includes draggable cards with connected arrows, hover focus, attached drawers, branch navigation, compact/expanded cards, quick details, and role-dependent sample decision suggestions. The **Options** menu controls applicable metrics, badges, and actions. Suggestions are demonstrations only.
+
+---
+
+# Progressive Disclosure
+
+A third reusable service in this repository: a host-agnostic information-sequencing model for interfaces that reveal information according to priority and likely next questions.
+
+Core journey:
+
+`signal → context → explanation → evidence → action → implementation → alternatives`
+
+Use it when a host app should avoid showing every detail at once and instead keep the most likely next layer one interaction away.
+
+```ts
+import { recommendedNext, rankNext, type DisclosureJourney }
+  from '@basabtan/repair-report/progressive-disclosure';
+```
+
+Principles:
+
+- Priority before completeness.
+- Every expansion should answer a natural follow-up question.
+- Promote one evidence-supported recommended action; keep alternatives quieter but reachable.
+- Keep domain meaning, thresholds, owners, and interventions in the host app.
+- Opening and closing transitions should be spatial inverses.
+
+See [`src/progressive-disclosure/README.md`](src/progressive-disclosure/README.md) for the model and [`demo/progressive-disclosure-playground.html`](demo/progressive-disclosure-playground.html) for the neutral interaction study.
