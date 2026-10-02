@@ -280,3 +280,9 @@ Run the Vite dev server, then open `/relationship-map.html` at the served port -
 ## Tests
 
 `tests/relationship-map.model.test.ts` covers data validation, graph traversal, and spatial keyboard navigation. `tests/relationship-map.search.test.ts` covers search matching and ranking. `tests/relationship-map.branch.test.ts` covers branch derivation (directed roots, undirected components, cycles), visibility sets, and the stagger delays. Run with `npm test`.
+
+## Interaction playground — light
+
+Open [demo/interaction_playground_v1_light.html](demo/interaction_playground_v1_light.html) directly in a browser; this standalone HTML includes its fonts, styles, and scripts, with no build step.
+
+Explore seven placeholder blocks with uneven branch depths, or switch to twenty blocks. Includes draggable cards with connected arrows, hover focus, attached drawers, branch navigation, compact/expanded cards, quick details, and role-dependent sample decision suggestions. The **Options** menu controls applicable metrics, badges, and actions. Suggestions are demonstrations only.
