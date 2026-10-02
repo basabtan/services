@@ -20,7 +20,11 @@
       "import": "./src/relationship-map/index.ts"
     },
     "./relationship-map.css": "./src/relationship-map/relationship-map.css",
-    "./themes/*": "./themes/*"
+    "./themes/*": "./themes/*",
+    "./progressive-disclosure": {
+      "types": "./src/progressive-disclosure/index.ts",
+      "import": "./src/progressive-disclosure/index.ts"
+    }
   },
   "files": [
     "src",
