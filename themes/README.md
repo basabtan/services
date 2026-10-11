@@ -15,8 +15,10 @@ Download the [repository ZIP](https://github.com/basabtan/services/archive/refs/
 | Gold + Obsidian (reference only) | [Original Ask AI reskin](ask-ai-gold-obsidian.html) | CSS embedded in the preview; not a shared palette |
 | Original Ivory + Champagne reskin | [Ask AI](ask-ai-ivory-champagne.html) | CSS embedded in the preview |
 | Gold / glass button collection | [Interactive playground](gold-button-showcase.html) | CSS and drag interactions embedded in the preview |
+| Facet: Ivory + Graphite + Ruby | [Style tile](facet-style-tile.html) (Ivory and Graphite modes) | [Facet tokens CSS](facet-tokens.css) |
+| Facet Studio: crystal, gunmetal, ruby (photorealistic) | [Style tile](facet-studio-style-tile.html) | [Material recipes CSS](facet-studio-materials.css) |
 
-There are four reusable palette families plus the standalone references listed above. The original reskins and button collection are retained as separate references. They are not silently substituted for the later approved style tiles. Ask AI examples are visual demos, not live AI services. Some style tiles load optional Google Fonts; system fonts are available as fallbacks.
+There are four reusable palette families plus the standalone references listed above. The two Facet tiles are a separate family built from the Facet logo; they use their own variables (`--bg`, `--accent`, `--ruby` and so on, toggled by `data-theme="dark"`) and are not part of the `--zs-*` palette layer or `themes.json`. The original reskins and button collection are retained as separate references. They are not silently substituted for the later approved style tiles. Ask AI examples are visual demos, not live AI services. Some style tiles load optional Google Fonts; system fonts are available as fallbacks.
 
 The approved main file is an exact copy of Bader's supplied `zeal-ivory-style-tile (1).html`. Its built-in **Ink blue** switch is that attachment's legacy dark companion; it is separate from the newer **Ink Blue + Platinum** design linked above. `index.html` uses the approved file with collection navigation added near the footer. The standalone Ivory CSS/JSON match the attachment's own downloads; the newer Ink Blue reference and its exports are retained under separate filenames.
 
@@ -84,5 +86,7 @@ The default preview and approved Ivory style tile export `zeal-ivory-tokens.css`
 - `index.html` presents the approved Ivory composition by default; `palette-collection.html` retains navigation to the three original previews.
 - `zeal-ink-blue-ask.html` is the source Ask AI preview with its existing Ink Blue mode selected initially. It completes a link already present in the source style tile.
 - Publication adjustments separate portable tokens from compatibility aliases, wrap Ask header controls on narrow screens, and clarify palette counts, download formats, and reuse instructions. The preview styles retain their embedded palette and compatibility rules; approved color and gradient values are unchanged.
+
+- The Facet and Facet Studio tiles were built on 11 October 2026 from Bader's Facet logo render (crystal hexagon, gunmetal lattice, ruby core). Facet Studio embeds that render and three close-up crops of it as images, so the file is self-contained at about 210 KB.
 
 Published here as repository assets. This change does not deploy a website or publish a new npm registry release.

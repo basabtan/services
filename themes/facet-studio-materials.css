@@ -1,0 +1,60 @@
+/* Facet Studio material recipes: crystal (.glass), gunmetal (.metal), ruby (.btn-ruby).
+   Light studio look only. Source: facet-studio-style-tile.html */
+:root {
+  --studio-top: #F4F0EC;   --studio-floor: #E4DDD5;
+  --crystal-hi: #FFFFFF;   --crystal-mid: #DCD8D3;  --crystal-lo: #9C9894;
+  --gunmetal-hi: #6C6C72;  --gunmetal: #3E3E43;     --gunmetal-lo: #232326;
+  --ruby-hi: #FF4D55;      --ruby: #C8121E;         --ruby-mid: #9E0D18;  --ruby-lo: #5E060C;
+  --text: #2A2928;         --text-on-metal: #ECE8E2;
+  --font-display: "Josefin Sans", "Futura", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  --cut: 10px;
+  --brushed: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='b'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.002 .95' numOctaves='3' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23b)'/%3E%3C/svg%3E");
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  --key-shadow: 0 46px 50px -42px rgba(48,38,30,.55), 0 2px 3px rgba(48,38,30,.08);
+  --bevel-glass: inset 1px 1px 0 rgba(255,255,255,.95),
+                 inset -1px -1px 0 rgba(255,255,255,.35);
+}
+
+/* CRYSTAL */
+.glass {
+  position: relative; isolation: isolate;
+  background: linear-gradient(135deg, rgba(255,255,255,.72),
+              rgba(255,255,255,.30) 55%, rgba(255,255,255,.48));
+  backdrop-filter: blur(18px) saturate(1.25);
+  box-shadow: var(--bevel-glass), var(--key-shadow);
+}
+.glass::before {            /* hard facet reflection */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(118deg,
+    rgba(255,255,255,.42) 0 22%, transparent 22.1% 64%,
+    rgba(255,255,255,.18) 64.1% 71%, transparent 71.1%);
+}
+
+/* GUNMETAL */
+.metal {
+  position: relative; isolation: isolate; color: var(--text-on-metal);
+  background: linear-gradient(180deg, var(--gunmetal-hi),
+              var(--gunmetal) 38%, var(--gunmetal-lo));
+}
+.metal::before {            /* brushed grain */
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background-image: var(--brushed);
+  opacity: .32; mix-blend-mode: overlay;
+}
+
+/* RUBY, primary action only */
+.btn-ruby { position: relative; isolation: isolate; color: #FFF6F5;
+  filter: drop-shadow(0 12px 16px rgba(158,13,24,.35)); }
+.btn-ruby::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  clip-path: polygon(var(--cut) 0, 100% 0, 100% calc(100% - var(--cut)),
+             calc(100% - var(--cut)) 100%, 0 100%, 0 var(--cut));
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.34), rgba(255,255,255,.10) 46%,
+                    transparent 47%, rgba(0,0,0,.16)),
+    conic-gradient(from 0deg at 50% 52%,
+      #D9192A 0 38deg, #9E0D18 38deg 90deg, #6A070E 90deg 142deg,
+      #B5101C 142deg 180deg, #E0232F 180deg 218deg, #8A0B15 218deg 270deg,
+      #C8121E 270deg 322deg, #FF4D55 322deg 360deg);
+}

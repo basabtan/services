@@ -148,7 +148,7 @@ npm test
 
 ## Reusable theme collection
 
-Four reusable palettes, approved design references, and interactive style tiles are available in [themes/](themes/README.md): Ivory + Champagne, Ink Blue + Platinum, Graphite + Soft Copper, and Light Grey + Red-orange.
+Four reusable palettes, approved design references, and interactive style tiles are available in [themes/](themes/README.md): Ivory + Champagne, Ink Blue + Platinum, Graphite + Soft Copper, and Light Grey + Red-orange. The collection also holds the Facet theme (Ivory and Graphite, with a ruby accent) and its photorealistic edition, Facet Studio.
 
 Download the [repository ZIP](https://github.com/basabtan/services/archive/refs/heads/main.zip), extract it, and open `themes/index.html` locally. It opens Bader's approved Ivory + Champagne main style tile by default. The [palette collection](themes/palette-collection.html) retains the four-way switcher. Gold + Obsidian and the original Ivory reskin are standalone references with embedded CSS; the gold/glass button playground is also included. Ask AI examples are visual demonstrations.
 
