@@ -1,0 +1,85 @@
+/* Facet theme tokens. Ivory is the default; set data-theme="dark" on <html> for Graphite.
+   Source: facet-style-tile.html */
+:root {
+  /* palette */
+  --ivory: #F3F0EB;      --paper: #FAF8F5;
+  --crystal: #FFFFFF;    --facet: #E3E0DB;
+  --mist: #C9C6C1;       --steel: #8D8C8A;
+  --gunmetal: #55555A;   --graphite: #2C2C2F;
+  --onyx: #19191B;
+  --ruby: #C2121F;       --ruby-deep: #7C0A12;
+  --ruby-glow: #EE2C36;  --ruby-tint: #F5E3E2;
+
+  /* roles */
+  --bg: var(--ivory);
+  --bg-alt: var(--paper);
+  --surface: var(--crystal);
+  --surface-sunk: var(--facet);
+  --line: #D9D5CF;
+  --line-strong: var(--steel);
+  --text: var(--graphite);
+  --text-muted: #5F5E60;
+  --accent: var(--ruby);
+  --accent-hover: var(--ruby-deep);
+  --accent-soft: var(--ruby-tint);
+  --on-accent: #FFFFFF;
+  --inverse-bg: var(--graphite);
+  --inverse-text: var(--ivory);
+
+  /* data */
+  --viz-1: var(--graphite);
+  --viz-2: var(--steel);
+  --viz-3: var(--mist);
+  --viz-key: var(--ruby);
+
+  /* type */
+  --font-display: "Josefin Sans", "Futura", "Century Gothic", sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  --fs-display: clamp(2.75rem, 6.2vw, 4.75rem);
+  --fs-h1: clamp(2.25rem, 4.4vw, 3.375rem);
+  --fs-h2: clamp(1.75rem, 3vw, 2.375rem);
+  --fs-h3: 1.75rem;
+  --fs-lead: 1.375rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-label: 0.8125rem;
+
+  /* space */
+  --s-1: 4px;  --s-2: 8px;  --s-3: 12px; --s-4: 16px; --s-5: 24px;
+  --s-6: 32px; --s-7: 48px; --s-8: 72px; --s-9: 112px;
+
+  /* shape */
+  --radius: 0;
+  --cut: 10px;
+  --edge: 1px;
+  --edge-heavy: 3px;
+  --floor-shadow: 0 28px 36px -30px rgba(44, 44, 47, .45);
+}
+
+:root[data-theme="dark"] {
+  --bg: var(--onyx);
+  --bg-alt: #1F1F22;
+  --surface: #232326;
+  --surface-sunk: #151517;
+  --line: #38383C;
+  --line-strong: #707075;
+  --text: var(--ivory);
+  --text-muted: #AAA8A4;
+  --accent: #DA1F2B;
+  --accent-hover: var(--ruby-glow);
+  --accent-soft: #3A1518;
+  --inverse-bg: var(--ivory);
+  --inverse-text: var(--graphite);
+  --viz-1: var(--ivory);
+  --viz-3: #4A4A4F;
+  --viz-key: var(--ruby-glow);
+}
+
+/* corner cut for buttons and other pressable items */
+.cut {
+  clip-path: polygon(
+    var(--cut) 0, 100% 0,
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    0 100%, 0 var(--cut));
+}
