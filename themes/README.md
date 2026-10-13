@@ -85,7 +85,7 @@ The Concord app's default, brand-aligned theme. In the app it is called **OG**; 
 
 | File | What it is |
 | --- | --- |
-| [concord-theme.css](concord-theme.css) | Portable tokens: `--og-*` palette, `--concord-*` semantic roles, fonts, radius, focus, and the paper-and-grid page background. Selectors: `:root[data-theme="concord"]` and `:root[data-theme="og"]`. No component styles. |
+| [concord-theme.css](concord-theme.css) | Portable tokens: `--og-*` palette, every `--concord-*` role and `--graph-*` token that `og.css` defines (a test keeps them in step), fonts, radius, focus, and the paper-and-grid page background. Selectors: `:root[data-theme="concord"]` and `:root[data-theme="og"]`. No component styles. |
 | [concord-tokens.json](concord-tokens.json) | The same values, machine-readable, with `"aliases": ["og"]`. |
 | [concord-style-tile.html](concord-style-tile.html) | Swatches, type, buttons, inputs, state chips, a table, icons and an empty state. Open it through a local server so the icon sprite loads. |
 | [concord/og.css](concord/og.css) | Complete OG app skin, copied unchanged from the Concord app. It targets Concord's own markup (`.btn`, `.panel`, `.rail` …) under `:root[data-theme="og"]`. |

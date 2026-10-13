@@ -45,8 +45,10 @@
   --concord-bg-canvas: var(--og-bg);
   --concord-bg-panel: var(--og-surface);
   --concord-bg-panel-strong: var(--og-surface-strong);
+  --concord-surface-strong: var(--og-surface-strong);
   --concord-hover-surface: var(--og-hover);
   --concord-selected-surface: var(--og-primary-soft);
+  --concord-focus-soft: var(--og-primary-soft);
   --concord-disabled-surface: var(--og-chrome);
   --concord-text-primary: var(--og-ink);
   --concord-text-muted: var(--og-muted);
@@ -69,6 +71,17 @@
   --concord-icon-secondary: var(--og-bronze);
   --concord-icon-disabled: var(--og-muted);
   --concord-icon-node-fill: var(--og-bg);
+
+  /* Graph tokens (from og.css) */
+  --graph-edge: #919BA3;
+  --graph-arrow: var(--og-muted);
+  --graph-node-fill: var(--og-surface-strong);
+  --graph-node-text: var(--og-ink);
+  --graph-node-border: #A9B0B5;
+  --graph-stable-fill: #EDF4F1;
+  --graph-stable-text: var(--og-success);
+  --graph-stable-border: #769D8F;
+  --graph-node-radius: 1px;
 
   /* Type, geometry, focus */
   --concord-font-display: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
