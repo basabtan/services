@@ -1,0 +1,60 @@
+{
+  "theme": "concord",
+  "aliases": ["og"],
+  "name": "Concord (OG)",
+  "description": "The Concord app's default, brand-aligned theme: warm paper, graphite ink, one sapphire accent, crimson for conflict, bronze for the secondary actor. Flat surfaces, 1px borders, 2px radius, no shadows.",
+  "source": {
+    "repository": "basabtan/concord",
+    "file": "src/styles/og.css",
+    "commit": "1271480c544b103f76fc9625c16777c8a03be2a5",
+    "commitTitle": "Add OG as the default brand-aligned theme"
+  },
+  "scheme": "light",
+  "attribute": "data-theme=\"concord\" (or data-theme=\"og\")",
+  "colors": {
+    "bg": "#F3F0EA",
+    "surface": "#F8F6F1",
+    "surfaceStrong": "#FFFDFC",
+    "chrome": "#ECE8E0",
+    "ink": "#141B23",
+    "muted": "#5A687C",
+    "line": "#D5D0C7",
+    "lineStrong": "#AEB4B8",
+    "primary": "#185FB5",
+    "primarySoft": "#E7EEF7",
+    "primaryInk": "#174E90",
+    "primaryHover": "#154F96",
+    "bronze": "#9A744F",
+    "bronzeSoft": "#F3ECE3",
+    "bronzeInk": "#735638",
+    "success": "#2F6F5E",
+    "successSoft": "#E7F0EC",
+    "danger": "#BC2627",
+    "dangerSoft": "#F7E8E6",
+    "dangerInk": "#7D2526",
+    "hover": "#F5F2ED",
+    "header": "#EFECE6",
+    "rank": "#F2EFE9"
+  },
+  "brandPrimitives": {
+    "graphite": "#141823",
+    "sapphire": "#1A85FB",
+    "crimson": "#BC2627",
+    "bronze": "#9A7A4F",
+    "slate": "#5A687C",
+    "paper": "#F3F0EA"
+  },
+  "fonts": {
+    "display": "\"Bahnschrift\", \"Arial Narrow\", \"Segoe UI\", sans-serif",
+    "ui": "\"Segoe UI\", Inter, system-ui, sans-serif",
+    "mono": "\"Cascadia Mono\", \"JetBrains Mono\", Consolas, monospace",
+    "displayWeight": 600
+  },
+  "geometry": {
+    "radius": "2px",
+    "shadow": "none",
+    "border": "1px",
+    "focus": "1px solid #185FB5, offset 1px, ring 0 0 0 3px rgba(24, 95, 181, .09)"
+  },
+  "background": "linear-gradient(rgba(20,27,35,.018) 1px, transparent 1px), linear-gradient(90deg, rgba(20,27,35,.018) 1px, transparent 1px), #F3F0EA; size 36px 36px"
+}

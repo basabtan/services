@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" data-theme="concord">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Concord Style Tile</title>
+<link rel="icon" type="image/svg+xml" href="concord/brand/favicon.svg">
+<link rel="stylesheet" href="concord-theme.css">
+<style>
+/* Tile-only layout. Every colour, font and radius comes from concord-theme.css
+   (Concord "OG"); component treatments mirror themes/concord/og.css. */
+*{box-sizing:border-box;border-radius:var(--og-radius)}
+body{margin:0;font:14px/1.48 var(--concord-font-ui)}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 16px 64px;display:grid;gap:28px}
+.top{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--og-line-strong)}
+.top img{width:44px;height:44px}
+.word{font:300 26px/1 var(--concord-font-display);letter-spacing:.32em}
+.top .meta{margin-left:auto;font:700 9px/1.6 var(--concord-font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--og-muted);text-align:right}
+.alias{display:inline-block;border:1px solid var(--og-line-strong);background:var(--og-surface-strong);padding:3px 6px;margin-left:6px}
+h1,h2,h3{font-family:var(--concord-font-display);font-weight:var(--concord-type-display-weight);letter-spacing:.015em;margin:0}
+h1{font-size:30px}h2{font-size:17px;margin-bottom:12px}
+.eyebrow{font:700 9px/1 var(--concord-font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--og-muted);margin:0 0 8px}
+.panel{background:var(--og-surface);border:1px solid var(--og-line);padding:18px}
+.grid{display:grid;gap:12px}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.sw div{border:1px solid var(--og-line);background:var(--og-surface-strong)}
+.sw i{display:block;height:54px;border-bottom:1px solid var(--og-line)}
+.sw b{display:block;font:600 12px/1.3 var(--concord-font-ui);padding:8px 10px 0}
+.sw code{display:block;font:500 11px/1.4 var(--concord-font-mono);color:var(--og-muted);padding:2px 10px 9px}
+.type p{margin:0 0 10px}
+.d{font:var(--concord-type-display-weight) 30px/1.1 var(--concord-font-display)}
+.m{font:500 12px/1.4 var(--concord-font-mono);color:var(--og-muted)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.btn{font:650 11px/1 var(--concord-font-ui);letter-spacing:.02em;min-height:34px;padding:0 14px;border:1px solid var(--og-line-strong);background:var(--og-surface-strong);color:var(--og-ink);cursor:pointer}
+.btn:hover{border-color:#89939A;background:#F4F1EB}
+.btn.gold{color:var(--og-primary);border-color:var(--og-primary)}
+.btn.gold:hover{background:var(--og-primary-soft)}
+.btn.primary{background:var(--og-primary);border-color:var(--og-primary);color:var(--og-surface-strong)}
+.btn.primary:hover{background:#154F96;border-color:#154F96}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--og-primary)}
+.btn.ghost:hover{background:var(--og-primary-soft)}
+.btn.danger{color:var(--og-danger);border-color:#D8A6A3}
+.btn.danger:hover{background:var(--og-danger-soft);border-color:var(--og-danger)}
+.btn:focus-visible,input:focus-visible,select:focus-visible{outline:var(--concord-focus-outline);outline-offset:var(--concord-focus-offset);box-shadow:var(--og-focus)}
+label{display:grid;gap:6px;font:700 9px/1 var(--concord-font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--og-muted)}
+input,select{font:400 13px/1.3 var(--concord-font-ui);color:var(--og-ink);background:var(--og-surface-strong);border:1px solid var(--og-line-strong);min-height:34px;padding:0 10px;letter-spacing:normal;text-transform:none}
+.chip{display:inline-flex;align-items:center;gap:6px;font:600 11px/1 var(--concord-font-ui);padding:6px 9px;border:1px solid}
+.chip.cur{color:var(--og-primary);border-color:var(--og-primary);background:var(--og-primary-soft)}
+.chip.ok{color:var(--og-success);border-color:#9DC0B5;background:var(--og-success-soft)}
+.chip.stale{color:var(--og-bronze-ink);border-color:#CDB79E;background:var(--og-bronze-soft)}
+.chip.bad{color:var(--og-danger-ink);border-color:#D8A6A3;background:var(--og-danger-soft)}
+.chip.off{color:var(--og-muted);border-color:var(--og-line);background:var(--og-chrome)}
+table{border-collapse:collapse;width:100%;font-size:13px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--og-line)}
+thead th{background:var(--og-header);font:700 9px/1 var(--concord-font-mono);letter-spacing:.1em;text-transform:uppercase;color:var(--og-muted)}
+tbody tr:hover{background:var(--og-hover)}
+.icons{display:flex;flex-wrap:wrap;gap:14px}
+.icons figure{margin:0;display:grid;justify-items:center;gap:6px;width:92px;font:600 9px/1.3 var(--concord-font-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--og-muted);text-align:center}
+.icons svg{width:40px;height:40px;color:var(--concord-icon-default)}
+.icons figure:hover svg{color:var(--concord-icon-active)}
+.empty{border:1px dashed var(--og-line-strong);background:var(--og-surface-strong);padding:26px;text-align:center;color:var(--og-muted)}
+.empty b{display:block;color:var(--og-ink);font:var(--concord-type-display-weight) 16px/1.3 var(--concord-font-display);margin-bottom:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.two{grid-template-columns:1fr}.top .meta{margin-left:0;text-align:left}}
+footer{font:700 9px/1.6 var(--concord-font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--og-muted);border-top:1px solid var(--og-line);padding-top:14px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="top">
+    <img src="concord/brand/concord-mark.svg" alt="">
+    <span class="word">CONCORD</span>
+    <div class="meta">Theme name <b>concord</b><span class="alias">alias: og</span><br>Source: basabtan/concord · src/styles/og.css · 1271480c</div>
+  </header>
+
+  <section>
+    <p class="eyebrow">01 · The theme</p>
+    <h1>Concord, in the OG dress.</h1>
+    <p style="max-width:66ch;color:var(--og-muted);margin:8px 0 0">Warm paper, graphite ink and one sapphire accent. Crimson is kept for conflict and bronze for the secondary actor. Flat surfaces, precise 1px borders, a 2px radius and no shadows. Set <code>data-theme="concord"</code> (or the alias <code>og</code>) on <code>&lt;html&gt;</code> and use the <code>--og-*</code> / <code>--concord-*</code> variables.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Palette</h2>
+    <div class="sw">
+      <div><i style="background:var(--og-bg)"></i><b>Paper</b><code>--og-bg #F3F0EA</code></div>
+      <div><i style="background:var(--og-surface)"></i><b>Surface</b><code>--og-surface #F8F6F1</code></div>
+      <div><i style="background:var(--og-surface-strong)"></i><b>Surface strong</b><code>#FFFDFC</code></div>
+      <div><i style="background:var(--og-chrome)"></i><b>Chrome</b><code>--og-chrome #ECE8E0</code></div>
+      <div><i style="background:var(--og-ink)"></i><b>Graphite ink</b><code>--og-ink #141B23</code></div>
+      <div><i style="background:var(--og-muted)"></i><b>Slate muted</b><code>--og-muted #5A687C</code></div>
+      <div><i style="background:var(--og-line)"></i><b>Line</b><code>#D5D0C7 / #AEB4B8</code></div>
+      <div><i style="background:var(--og-primary)"></i><b>Sapphire</b><code>--og-primary #185FB5</code></div>
+      <div><i style="background:var(--og-danger)"></i><b>Crimson</b><code>--og-danger #BC2627</code></div>
+      <div><i style="background:var(--og-bronze)"></i><b>Bronze</b><code>--og-bronze #9A744F</code></div>
+      <div><i style="background:var(--og-success)"></i><b>Stable</b><code>--og-success #2F6F5E</code></div>
+      <div><i style="background:var(--og-primary-soft)"></i><b>Sapphire soft</b><code>#E7EEF7</code></div>
+    </div>
+  </section>
+
+  <div class="two">
+    <section class="panel type">
+      <h2>Type</h2>
+      <p class="d">Display · Bahnschrift 600</p>
+      <p>UI text · Segoe UI 14/1.48. The status quo, the moves each decision maker can make, and the states that hold.</p>
+      <p class="m">MONO · CASCADIA MONO · S18 · 11110</p>
+      <p class="eyebrow">Eyebrow · 9px mono, tracked .14em</p>
+    </section>
+    <section class="panel grid">
+      <h2>Controls</h2>
+      <div class="row">
+        <button class="btn" type="button">Default</button>
+        <button class="btn gold" type="button">Outline</button>
+        <button class="btn primary" type="button">Run analysis</button>
+        <button class="btn ghost" type="button">Ghost</button>
+        <button class="btn danger" type="button">Delete</button>
+      </div>
+      <div class="row">
+        <label>Decision maker <input value="Port Authority"></label>
+        <label>Scenario <select><option>Candidate A</option><option>Candidate B</option></select></label>
+      </div>
+      <div class="row">
+        <span class="chip cur">◆ Current</span><span class="chip ok">Stable</span><span class="chip stale">Stale</span><span class="chip bad">Conflict</span><span class="chip off">Disabled</span>
+      </div>
+    </section>
+  </div>
+
+  <section class="panel">
+    <h2>A real panel</h2>
+    <table>
+      <thead><tr><th>State</th><th>Signature</th><th>Actor</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>S01</td><td class="m">00000</td><td>Status quo</td><td><span class="chip off">Start</span></td></tr>
+        <tr><td>S09</td><td class="m">11110</td><td>Municipality</td><td><span class="chip ok">Equilibrium</span></td></tr>
+        <tr><td>S11</td><td class="m">01110</td><td>Shipping Firm</td><td><span class="chip bad">Blocked</span></td></tr>
+        <tr><td>S16</td><td class="m">11111</td><td>Port Authority</td><td><span class="chip cur">◆ Selected</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="panel">
+    <h2>Icons (concord/brand/concord-icons.svg)</h2>
+    <div class="icons">
+      <figure><svg aria-hidden="true"><use href="concord/brand/concord-icons.svg#primary-decision-makers"/></svg>Decision makers</figure>
+      <figure><svg aria-hidden="true"><use href="concord/brand/concord-icons.svg#primary-state-space"/></svg>State space</figure>
+      <figure><svg aria-hidden="true"><use href="concord/brand/concord-icons.svg#primary-reachability-graph"/></svg>Reachability</figure>
+      <figure><svg aria-hidden="true"><use href="concord/brand/concord-icons.svg#primary-equilibria"/></svg>Equilibria</figure>
+      <figure><svg aria-hidden="true"><use href="concord/brand/concord-icons.svg#primary-stability-matrix"/></svg>Stability matrix</figure>
+      <figure><svg aria-hidden="true"><use href="concord/brand/concord-icons.svg#primary-reports-export"/></svg>Reports</figure>
+    </div>
+    <p class="m" style="margin:10px 0 0">Icons load from the sprite file, so open this tile through a local server (browsers block file:// sprite links).</p>
+  </section>
+
+  <section class="empty"><b>No scenarios yet.</b>Add a decision maker to start building the state space.<div class="row" style="justify-content:center;margin-top:12px"><button class="btn primary" type="button">Add decision maker</button></div></section>
+
+  <footer><span>Concord GMCR platform · theme "concord" (alias "og")</span><span>basabtan/services · themes</span></footer>
+</main>
+</body>
+</html>

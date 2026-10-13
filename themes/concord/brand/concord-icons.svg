@@ -1,0 +1,294 @@
+<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <symbol id="primary-analysis" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="17" cy="17" r="10.5" />
+    <path d="M24.5 24.5 33.5 33.5" />
+    <path d="M11.8 17 16.1 12.8M16.1 12.8 21.8 16.2M16.1 12.8V20.7M16.1 20.7 22 19" opacity="0.78" />
+    <circle cx="11.8" cy="17" r="2.3" />
+    <circle cx="16.1" cy="12.8" r="2.3" />
+    <circle cx="16.1" cy="20.7" r="2.3" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="22" cy="19" r="2.6" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="primary-compare-scenarios" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 11 14 17 8 23M14 17H18M32 11 26 17 32 23M26 17H22" />
+    <circle cx="8" cy="8" r="3.2" />
+    <circle cx="8" cy="26" r="3.2" />
+    <circle cx="32" cy="8" r="3.2" />
+    <circle cx="32" cy="26" r="3.2" />
+    <path d="M14 32H26M16.7 29.2 14 32l2.7 2.8M23.3 29.2 26 32l-2.7 2.8" opacity="0.78" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="20" cy="17" r="3.5" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="primary-decision-makers" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.4 12.9 17.5 18M11.4 27.1 17.5 22M22.8 20H27.5" />
+    <circle cx="8" cy="10" r="4.25" />
+    <circle cx="8" cy="30" r="4.25" />
+    <circle cx="32" cy="20" r="4.25" />
+    <circle cx="20" cy="20" r="3.2" />
+  </g>
+
+  </symbol>
+  <symbol id="primary-equilibria" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="miter">
+    <path d="M20 13V10.5M13 20H10.5M27 20H29.5M20 27V29.5" />
+    <path d="M20 13 27 20 20 27 13 20Z" />
+  </g>
+  
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5">
+    <circle cx="20" cy="7" r="3.5" />
+    <circle cx="7" cy="20" r="3.5" />
+    <circle cx="33" cy="20" r="3.5" />
+    <circle cx="20" cy="33" r="3.5" />
+  </g>
+  
+    <path xmlns="http://www.w3.org/2000/svg" d="M20 15.3 24.7 20 20 24.7 15.3 20Z" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="primary-feasibility-rules" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.2 17.4 16.8 12.6M23.2 10H28.75" />
+    <circle cx="7" cy="20" r="4.25" />
+    <circle cx="20" cy="10" r="4.25" />
+    <circle cx="33" cy="10" r="4.25" />
+    <circle cx="20" cy="30" r="4.25" />
+  </g>
+  
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#BC2627" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.2 22.6 16.8 27.4M24.25 30H27.25" stroke-dasharray="3 2" />
+    <circle cx="33" cy="30" r="4.25" />
+    <path d="M30.7 27.7 35.3 32.3M35.3 27.7 30.7 32.3" />
+  </g>
+
+  </symbol>
+  <symbol id="primary-options" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12.25 20H18M18 20V8M18 20V32M18 8H27.75M18 20H27.75M18 32H27.75" />
+    <circle cx="8" cy="20" r="4.25" />
+    <circle cx="32" cy="8" r="4.25" />
+    <circle cx="32" cy="32" r="4.25" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="32" cy="20" r="4.25" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="primary-preferences" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M13.25 20H29M13.25 31H25" />
+    <circle cx="9" cy="20" r="4.25" />
+    <circle cx="9" cy="31" r="4.25" />
+    <path d="M29 17.2V22.8M25 28.2V33.8" opacity="0.65" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="9" cy="9" r="4.25" fill="#1A85FB" />
+  
+    <path xmlns="http://www.w3.org/2000/svg" d="M13.25 9H34" fill="none" stroke="#1A85FB" stroke-width="2.5" stroke-linecap="round" />
+  
+    <path xmlns="http://www.w3.org/2000/svg" d="M34 6.2V11.8" fill="none" stroke="#1A85FB" stroke-width="2.5" stroke-linecap="round" />
+
+  </symbol>
+  <symbol id="primary-reachability-graph" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M11.8 18.2 16.2 10.8M11.8 21.8 16.2 29.2M22.3 9.4 27.6 11.1M22.3 30.6 27.6 28.9" />
+    <path d="M25.6 8.8 28.4 11.3 25.1 12.2M25.1 27.8 28.4 28.7 25.6 31.2" />
+    <circle cx="8" cy="20" r="4.25" />
+    <circle cx="19" cy="8" r="4.25" />
+    <circle cx="19" cy="32" r="4.25" />
+    <circle cx="32" cy="28" r="4.25" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="32" cy="12" r="4.25" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="primary-reports-export" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M9 5.5H25L31 11.5V24" />
+    <path d="M25 5.5V11.5H31" />
+    <path d="M9 5.5V34.5H22" />
+    <path d="M14 17H18.5M18.5 17 22 20.5M18.5 17V24M18.5 24H23" opacity="0.82" />
+    <circle cx="14" cy="17" r="2.1" />
+    <circle cx="23" cy="24" r="2.1" />
+    <path d="M24 31H35M31 27l4 4-4 4" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="22" cy="20.5" r="2.4" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="primary-settings" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 5.5v3.2M20 31.3v3.2M5.5 20h3.2M31.3 20h3.2M9.7 9.7l2.3 2.3M28 28l2.3 2.3M30.3 9.7 28 12M12 28l-2.3 2.3" />
+    <circle cx="20" cy="20" r="11.3" />
+    <circle cx="20" cy="20" r="4.8" />
+  </g>
+
+  </symbol>
+  <symbol id="primary-stability-matrix" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="6" y="6" width="28" height="28" />
+    <path d="M15.3 6V34M24.7 6V34M6 15.3H34M6 24.7H34" opacity="0.78" />
+  </g>
+  
+    <rect xmlns="http://www.w3.org/2000/svg" x="16.8" y="16.8" width="6.4" height="6.4" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="primary-state-space" viewBox="0 0 40 40">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8 8H32M8 20H32M8 32H32M8 8V32M20 8V32M32 8V32" opacity="0.72" />
+    <circle cx="8" cy="8" r="2.4" />
+    <circle cx="20" cy="8" r="2.4" />
+    <circle cx="32" cy="8" r="2.4" />
+    <circle cx="8" cy="20" r="2.4" />
+    <circle cx="32" cy="20" r="2.4" />
+    <circle cx="8" cy="32" r="2.4" />
+    <circle cx="20" cy="32" r="2.4" />
+    <circle cx="32" cy="32" r="2.4" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="20" cy="20" r="3.3" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="utility-add" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 5.25v13.5M5.25 12h13.5" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-delete" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5.25 7.25h13.5M9 7.25V5.5h6v1.75M7.25 7.25l.7 11.5h8.1l.7-11.5" />
+    <path d="M10 10.25v5.5M14 10.25v5.5" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-duplicate" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="8" y="8" width="10.75" height="10.75" rx="0.75" />
+    <path d="M6.25 16H5.5a1.25 1.25 0 0 1-1.25-1.25V5.5A1.25 1.25 0 0 1 5.5 4.25h9.25A1.25 1.25 0 0 1 16 5.5v.75" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-edit" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5.25 18.75 6 15.2 15.85 5.35a1.75 1.75 0 0 1 2.48 0l.32.32a1.75 1.75 0 0 1 0 2.48L8.8 18l-3.55.75Z" />
+    <path d="m14.6 6.6 2.8 2.8M5.25 18.75l3.55-.75" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-export" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 13.5V4.25M8.75 7.5 12 4.25l3.25 3.25" />
+    <path d="M5 13.25v5.5h14v-5.5" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-filter" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M4.5 5.25h15l-5.7 6.55v5.6l-3.6 1.35V11.8L4.5 5.25Z" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-help" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="8" />
+    <path d="M9.65 9.25a2.5 2.5 0 1 1 4.15 1.88c-1.2 1-1.8 1.45-1.8 2.62" />
+    <path d="M12 16.75h.01" stroke-width="2" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-import" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 4.5v9.25M8.75 10.5 12 13.75l3.25-3.25" />
+    <path d="M5 15.25v3.5h14v-3.5" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-refresh-recompute" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M18.1 8.15A7.2 7.2 0 0 0 6.25 6.5L4.75 8" />
+    <path d="M4.75 4.75V8h3.25" />
+    <path d="M5.9 15.85A7.2 7.2 0 0 0 17.75 17.5l1.5-1.5" />
+    <path d="M19.25 19.25V16H16" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-save" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 4.75h11.25L19 7.5v11.75H5V4.75Z" />
+    <path d="M8 4.75v5h7.5v-5M8 19.25v-5.5h8v5.5" />
+  </g>
+
+  </symbol>
+  <symbol id="utility-search" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" class="icon-main" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10.5" cy="10.5" r="5.75" />
+    <path d="m14.65 14.65 4.6 4.6" />
+  </g>
+
+  </symbol>
+  <symbol id="compact-analysis" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="10" cy="10" r="6.2" />
+    <path d="M14.5 14.5 20.5 20.5M7 10l2.4-2.4 2.5 1.8" />
+    <circle cx="7" cy="10" r="1.2" /><circle cx="9.4" cy="7.6" r="1.2" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="9.5" r="1.5" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="compact-compare-scenarios" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="5" cy="7" r="2" /><circle cx="5" cy="15" r="2" /><circle cx="19" cy="7" r="2" /><circle cx="19" cy="15" r="2" />
+    <path d="M7 7 10 11M7 15l3-4M17 7l-3 4M17 15l-3-4M8 20h8M9.5 18.5 8 20l1.5 1.5M14.5 18.5 16 20l-1.5 1.5" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="11" r="2" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="compact-feasibility-rules" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="4.5" cy="12" r="2.2" /><circle cx="12" cy="6" r="2.2" /><circle cx="19.5" cy="6" r="2.2" />
+    <path d="M6.3 10.6 10.2 7.4M14.2 6H17.3" />
+  </g>
+  
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#BC2627" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.3 13.4 10.2 16.6M14.2 18H17" stroke-dasharray="2 1.5" />
+    <circle cx="12" cy="18" r="2.2" /><circle cx="19.5" cy="18" r="2.2" />
+    <path d="M18.4 16.9 20.6 19.1M20.6 16.9 18.4 19.1" />
+  </g>
+
+  </symbol>
+  <symbol id="compact-reachability-graph" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6.7 12 10 7.2M6.7 12 10 16.8M13.2 7.2 17 8.5M13.2 16.8 17 15.5" />
+    <circle cx="4.5" cy="12" r="2.2" /><circle cx="11.5" cy="6" r="2.2" /><circle cx="11.5" cy="18" r="2.2" /><circle cx="19.5" cy="16" r="2.2" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="19.5" cy="8" r="2.2" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="compact-reports-export" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 3.5h10l3 3v8M15 3.5v3h3M5 3.5v17h7" />
+    <path d="M8 10h2.4l2 2M10.4 10v4h2.6" opacity="0.8" />
+    <path d="M13 19h8M18.5 16.5 21 19l-2.5 2.5" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="12.4" cy="12" r="1.45" fill="#1A85FB" />
+
+  </symbol>
+  <symbol id="compact-state-space" viewBox="0 0 24 24">
+    <g xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M5 5H19M5 12H19M5 19H19M5 5V19M12 5V19M19 5V19" opacity="0.7" />
+    <circle cx="5" cy="5" r="1.35" /><circle cx="19" cy="5" r="1.35" /><circle cx="5" cy="19" r="1.35" /><circle cx="19" cy="19" r="1.35" />
+  </g>
+  
+    <circle xmlns="http://www.w3.org/2000/svg" cx="12" cy="12" r="2.1" fill="#1A85FB" />
+
+  </symbol>
+</svg>

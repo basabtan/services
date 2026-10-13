@@ -1,0 +1,323 @@
+/* OG — brand-aligned Concord style tile.
+   Scoped skin of existing components. Frozen brand primitives stay in concord-tokens.css. */
+:root[data-theme="og"] {
+  --og-bg: #F3F0EA;
+  --og-surface: #F8F6F1;
+  --og-surface-strong: #FFFDFC;
+  --og-chrome: #ECE8E0;
+  --og-ink: #141B23;
+  --og-muted: #5A687C;
+  --og-line: #D5D0C7;
+  --og-line-strong: #AEB4B8;
+  --og-primary: #185FB5;
+  --og-primary-soft: #E7EEF7;
+  --og-primary-ink: #174E90;
+  --og-bronze: #9A744F;
+  --og-bronze-soft: #F3ECE3;
+  --og-bronze-ink: #735638;
+  --og-success: #2F6F5E;
+  --og-success-soft: #E7F0EC;
+  --og-danger: #BC2627;
+  --og-danger-soft: #F7E8E6;
+  --og-danger-ink: #7D2526;
+  --og-hover: #F5F2ED;
+  --og-header: #EFECE6;
+  --og-rank: #F2EFE9;
+  --og-radius: 2px;
+  --og-shadow: none;
+  --og-focus: 0 0 0 3px rgba(24, 95, 181, .09);
+
+  --navy: var(--og-ink);
+  --gold: var(--og-primary);
+  --vellum: var(--og-bg);
+  --ink: var(--og-ink);
+  --muted: var(--og-muted);
+  --line: var(--og-line);
+  --surface: var(--og-surface);
+  --ok: var(--og-success);
+  --warn: var(--og-bronze);
+  --bad: var(--og-danger);
+  --navy-lift: #154F96;
+  --gold-on-navy: var(--og-primary);
+  --input-bg: var(--og-surface-strong);
+  --input-bg-focus: var(--og-surface-strong);
+  --input-line: var(--og-line-strong);
+  --radius: var(--og-radius);
+
+  --concord-bg-canvas: var(--og-bg);
+  --concord-bg-panel: var(--og-surface);
+  --concord-bg-panel-strong: var(--og-surface-strong);
+  --concord-surface-strong: var(--og-surface-strong);
+  --concord-hover-surface: var(--og-hover);
+  --concord-selected-surface: var(--og-primary-soft);
+  --concord-focus-soft: var(--og-primary-soft);
+  --concord-disabled-surface: var(--og-chrome);
+  --concord-text-primary: var(--og-ink);
+  --concord-text-muted: var(--og-muted);
+  --concord-text-link: var(--og-primary);
+  --concord-text-on-sapphire: var(--og-surface-strong);
+  --concord-border-default: var(--og-line);
+  --concord-border-emphasis: var(--og-line-strong);
+  --concord-action-primary: var(--og-primary);
+  --concord-state-current: var(--og-primary);
+  --concord-state-stable: var(--og-success);
+  --concord-state-stale: var(--og-bronze);
+  --concord-state-conflict: var(--og-danger);
+  --concord-state-disabled: var(--og-muted);
+  --concord-state-secondary: var(--og-bronze);
+  --concord-sapphire-ink: var(--og-primary-ink);
+  --concord-bronze-ink: var(--og-bronze-ink);
+  --concord-font-display: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
+  --concord-font-ui: "Segoe UI", Inter, system-ui, sans-serif;
+  --concord-font-mono: "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
+  --concord-type-display-weight: 600;
+  --concord-radius-default: var(--og-radius);
+  --concord-shadow-default: var(--og-shadow);
+  --concord-focus-outline: 1px solid var(--og-primary);
+  --concord-focus-offset: 1px;
+  --concord-icon-default: var(--og-ink);
+  --concord-icon-active: var(--og-primary);
+  --concord-icon-conflict: var(--og-danger);
+  --concord-icon-secondary: var(--og-bronze);
+  --concord-icon-disabled: var(--og-muted);
+  --concord-icon-node-fill: var(--og-bg);
+
+  --graph-edge: #919BA3;
+  --graph-arrow: var(--og-muted);
+  --graph-node-fill: var(--og-surface-strong);
+  --graph-node-text: var(--og-ink);
+  --graph-node-border: #A9B0B5;
+  --graph-stable-fill: #EDF4F1;
+  --graph-stable-text: var(--og-success);
+  --graph-stable-border: #769D8F;
+  --graph-node-radius: 1px;
+}
+
+:root[data-theme="og"] body {
+  line-height: 1.48;
+  background:
+    linear-gradient(rgba(20, 27, 35, .018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 27, 35, .018) 1px, transparent 1px),
+    var(--og-bg);
+  background-size: 36px 36px;
+}
+:root[data-theme="og"] :is(h1, h2, h3) { letter-spacing: .015em; text-transform: none; }
+:root[data-theme="og"] .eyebrow {
+  color: var(--og-primary);
+  font: 700 9px/1 var(--font-mono);
+  letter-spacing: .14em;
+}
+
+/* Square reset stays on data cells. Controls and panels use the 2px tile radius. */
+:root[data-theme="og"] :is(
+  .btn, .panel, .card, .benchmark-card, .benchmark-kpis, .tier, .chip,
+  .banner, .result, .empty, .pattern-builder, .pattern-options, .pattern-preview,
+  .pattern-option label, .infeasibility-row, .expression-builder,
+  .app-dialog, .app-dialog-close, .confirm-pop, .login-shell,
+  .idea-brief-details, .idea-hard-stops, .request-surfaces, .request-resolved-toggle,
+  .repair-panel, .repair-close, .repair-chip, .repair-autocomplete,
+  .observatory, .observatory-branch, .observatory-status, .observatory-verdict,
+  .verification, .future-work-status, .request-priority, .request-resolved-mark,
+  input:not([type="checkbox"], [type="radio"]), select, textarea
+) { border-radius: var(--og-radius) !important; }
+:root[data-theme="og"] .status-mark { border-radius: 50% !important; }
+
+:root[data-theme="og"] :is(.panel, .card, .benchmark-card, .login-shell, .observatory) {
+  background: var(--og-surface);
+  border-color: var(--og-line);
+  box-shadow: none;
+}
+:root[data-theme="og"] :is(.panel, .card, .benchmark-card):hover { border-color: #C7C1B8; }
+:root[data-theme="og"] .panel { padding: var(--space-4); }
+:root[data-theme="og"] .panel h2 { font-size: 17px; }
+
+:root[data-theme="og"] .top { background: var(--og-surface); border-bottom-color: var(--og-line-strong); }
+:root[data-theme="og"] .rail {
+  background: rgba(236, 232, 224, .94);
+  color: var(--og-ink);
+  border-right: 1px solid var(--og-line-strong);
+}
+:root[data-theme="og"] :is(.rail-sub, .rail-foot, .rail-disabled) { color: var(--og-muted); }
+:root[data-theme="og"] .rail-sub { font: 700 9px/1 var(--font-mono); letter-spacing: .13em; }
+:root[data-theme="og"] .rail :is(a, button.nav) {
+  color: #465260;
+  font-weight: 600;
+  border-left: 2px solid transparent;
+  border-radius: var(--og-radius) !important;
+}
+:root[data-theme="og"] .rail :is(a:hover, button.nav:hover) {
+  background: rgba(255, 255, 255, .45);
+  border-left-color: #BFC4C7;
+  color: var(--og-ink);
+}
+:root[data-theme="og"] .rail :is(a.active, button.nav.active) {
+  color: var(--og-primary);
+  background: var(--og-surface-strong);
+  border-left-color: var(--og-primary);
+  box-shadow: none;
+}
+:root[data-theme="og"] .rail-foot .btn.ghost { color: var(--og-ink); border-color: var(--og-line-strong); background: transparent; }
+:root[data-theme="og"] .rail-foot .btn.ghost:hover { background: var(--og-primary-soft); color: var(--og-primary); border-color: var(--og-primary); }
+
+:root[data-theme="og"] .btn {
+  border: 1px solid var(--og-line-strong);
+  background: var(--og-surface-strong);
+  color: var(--og-ink);
+  font-weight: 650;
+  font-size: 11px;
+  box-shadow: none;
+}
+:root[data-theme="og"] .btn:hover { border-color: #89939A; background: #F4F1EB; }
+:root[data-theme="og"] .btn.gold { color: var(--og-primary); border-color: var(--og-primary); background: var(--og-surface-strong); }
+:root[data-theme="og"] .btn.gold:hover { background: var(--og-primary-soft); }
+:root[data-theme="og"] .btn.ghost { background: transparent; box-shadow: none; color: var(--og-primary); border-color: transparent; }
+:root[data-theme="og"] .btn.ghost:hover { background: var(--og-primary-soft); border-color: transparent; }
+:root[data-theme="og"] .btn.danger { color: var(--og-danger); border-color: #D8A6A3; background: var(--og-surface-strong); }
+:root[data-theme="og"] .btn.danger:hover { background: var(--og-danger-soft); border-color: var(--og-danger); color: var(--og-danger); }
+:root[data-theme="og"] .btn[data-ui="AnalysisRunButton"] {
+  background: var(--og-primary);
+  border-color: var(--og-primary);
+  color: #fff;
+}
+:root[data-theme="og"] .btn[data-ui="AnalysisRunButton"]:hover { background: #154F96; border-color: #154F96; }
+:root[data-theme="og"] .workspace-tabs .btn.gold { background: var(--og-primary-soft); }
+:root[data-theme="og"] .workspace-tabs .btn.ghost { color: var(--og-ink); border-color: var(--og-line-strong); background: var(--og-surface-strong); }
+
+:root[data-theme="og"] :is(input:not([type="checkbox"], [type="radio"]), select, textarea) {
+  font-size: 13px;
+  letter-spacing: normal;
+  font-weight: 400;
+  background-color: var(--og-surface-strong);
+  border-color: var(--og-line-strong);
+}
+:root[data-theme="og"] select {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23185FB5' d='M1.1 1.2h9.8L6 6.8z'/></svg>");
+}
+:root[data-theme="og"] :is(input, textarea)::placeholder { letter-spacing: normal; font-style: normal; }
+:root[data-theme="og"] .field label {
+  font: 700 9px/1 var(--font-mono);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--og-muted);
+}
+:root[data-theme="og"] :is(input, select, textarea):focus {
+  outline: 1px solid var(--og-primary);
+  outline-offset: 1px;
+  border-color: var(--og-primary);
+  box-shadow: var(--og-focus);
+}
+:root[data-theme="og"] :is(button, a, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 1px solid var(--og-primary);
+  outline-offset: 1px;
+}
+:root[data-theme="og"] .rail :is(a, button):focus-visible { outline-offset: -2px; }
+:root[data-theme="og"] input:is([type="checkbox"], [type="radio"]) { accent-color: var(--og-primary); }
+
+:root[data-theme="og"] th {
+  color: var(--og-muted);
+  background: var(--og-header);
+  font: 700 9px/1 var(--font-mono);
+  letter-spacing: .08em;
+}
+:root[data-theme="og"] :is(td, th) { border-width: 0 0 1px; border-color: #E1DDD5; }
+:root[data-theme="og"] .dense :is(td, th) { padding: 8px 10px; }
+:root[data-theme="og"] .dense th.group { border-bottom-color: var(--og-line); }
+:root[data-theme="og"] tr:nth-child(even) td { background: var(--og-surface); }
+:root[data-theme="og"] tbody tr:hover td { background: var(--og-hover); }
+:root[data-theme="og"] table tr.eq td { background: var(--og-success-soft); }
+:root[data-theme="og"] table tr.eq td:first-child { box-shadow: inset 3px 0 var(--og-success); }
+:root[data-theme="og"] .cell { color: var(--og-success); font-weight: 750; }
+:root[data-theme="og"] .cell .off { color: var(--og-danger); }
+:root[data-theme="og"] .cell:hover { background: var(--og-primary-soft); }
+:root[data-theme="og"] .result { border-left: 3px solid var(--og-success); background: var(--og-surface-strong); }
+:root[data-theme="og"] .result-states:not(.none) { color: var(--og-success); }
+:root[data-theme="og"] .tier { border-style: solid; border-color: var(--og-line); background: var(--og-rank); }
+:root[data-theme="og"] .tier-label { font: 700 9px/1 var(--font-mono); letter-spacing: .07em; text-transform: uppercase; }
+:root[data-theme="og"] .chip { background: var(--og-surface-strong); font-family: var(--font-mono); }
+:root[data-theme="og"] .tier.over { background: var(--og-primary-soft); border-color: var(--og-primary); }
+:root[data-theme="og"] .graph {
+  background: radial-gradient(#D7D2C9 1px, transparent 1px), var(--og-surface);
+  background-size: 18px 18px;
+}
+:root[data-theme="og"] .graph text { font-family: var(--font-mono); font-weight: 700; }
+
+:root[data-theme="og"] .banner.warn {
+  background: var(--og-bronze-soft);
+  color: var(--og-bronze-ink);
+  border-color: rgba(154, 116, 79, .42);
+  border-left: 3px solid var(--og-bronze);
+}
+:root[data-theme="og"] .banner.bad {
+  background: var(--og-danger-soft);
+  color: var(--og-danger-ink);
+  border-color: #E7BEBB;
+  border-left: 3px solid var(--og-danger);
+}
+:root[data-theme="og"] .banner.ok {
+  background: var(--og-success-soft);
+  color: var(--og-success);
+  border-color: #C6D9D1;
+  border-left: 3px solid var(--og-success);
+}
+:root[data-theme="og"] .verification.verified { background: var(--og-success-soft); color: var(--og-success); border-color: #C6D9D1; }
+:root[data-theme="og"] .verification.partial { background: var(--og-bronze-soft); color: var(--og-bronze-ink); border-color: #DCC8B2; }
+:root[data-theme="og"] .status-mark.verified { color: var(--og-success); background: var(--og-success); }
+:root[data-theme="og"] .status-mark.partial { color: var(--og-bronze); background: var(--og-bronze); }
+:root[data-theme="og"] .benchmark-table td.oracle-divergence { background: var(--og-bronze-soft); box-shadow: inset 3px 0 var(--og-bronze); }
+:root[data-theme="og"] .request-priority.priority-high { border-color: #DCC8B2; background: var(--og-bronze-soft); color: var(--og-bronze-ink); }
+:root[data-theme="og"] .request-priority.priority-urgent { background: var(--og-danger-soft); border-color: #E7BEBB; color: var(--og-danger); }
+:root[data-theme="og"] .request-resolved-toggle.is-resolved { border-color: #C6D9D1; background: var(--og-success-soft); }
+:root[data-theme="og"] .request-resolved-toggle input { accent-color: var(--og-success); }
+:root[data-theme="og"] .request-resolved-mark { border-color: #C6D9D1; background: var(--og-success-soft); color: var(--og-success); }
+:root[data-theme="og"] .future-work-status.status-from-notes { background: var(--og-bronze-soft); color: var(--og-bronze-ink); border-color: #DCC8B2; }
+:root[data-theme="og"] :is(.empty::before, .login-identity::before) { opacity: .03; }
+
+:root[data-theme="og"] .app-dialog-backdrop { background: rgba(20, 27, 35, .28); backdrop-filter: none; }
+:root[data-theme="og"] :is(.app-dialog, .repair-panel, .confirm-pop, .repair-autocomplete) {
+  border-color: var(--og-line-strong);
+  box-shadow: none;
+  background: var(--og-surface);
+}
+:root[data-theme="og"] .app-dialog-head {
+  background: var(--og-surface);
+  color: var(--og-ink);
+  border-bottom: 1px solid var(--og-line-strong);
+}
+:root[data-theme="og"] .app-dialog-head h2 { color: var(--og-ink); }
+:root[data-theme="og"] .app-dialog-head p,
+:root[data-theme="og"] .app-dialog-kicker { color: var(--og-muted); }
+:root[data-theme="og"] .app-dialog-close { color: var(--og-muted); border-color: var(--og-line-strong); background: var(--og-surface-strong); }
+:root[data-theme="og"] .app-dialog-close:hover { color: var(--og-primary); border-color: var(--og-primary); background: var(--og-primary-soft); }
+:root[data-theme="og"] .app-dialog-repair { color: var(--og-primary) !important; align-self: flex-start; }
+:root[data-theme="og"] .drawer {
+  background: #F6F4EF;
+  border-left: 3px solid var(--og-primary);
+  box-shadow: none;
+}
+:root[data-theme="og"] .confirm-pop { border-color: var(--og-ink); }
+
+:root[data-theme="og"] .observatory-status.verified,
+:root[data-theme="og"] .observatory-verdict.pass,
+:root[data-theme="og"] .observatory-branch-result.pass,
+:root[data-theme="og"] .observatory-vacuous {
+  color: var(--og-success);
+  background: var(--og-success-soft);
+  border-color: #C6D9D1;
+}
+:root[data-theme="og"] .observatory-status.failed,
+:root[data-theme="og"] .observatory-verdict.fail,
+:root[data-theme="og"] .observatory-branch-result.fail {
+  color: var(--og-danger);
+  background: var(--og-danger-soft);
+  border-color: #E7BEBB;
+}
+:root[data-theme="og"] .observatory-check { border-radius: 50% !important; }
+
+@media (min-width: 821px) {
+  :root[data-theme="og"] .rail nav a { margin: 2px 12px; width: calc(100% - 24px); }
+  :root[data-theme="og"] .rail-foot .rail-dialog-btn { margin: 0; width: 100%; padding: 9px 10px; }
+}
+@media (max-width: 820.98px) {
+  :root[data-theme="og"] .rail { border-right: 0; border-bottom: 1px solid var(--og-line-strong); }
+  :root[data-theme="og"] .rail :is(a, button.nav) { border-radius: 0 !important; }
+}
