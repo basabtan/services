@@ -1,0 +1,94 @@
+/* Concord — portable theme (alias: "og").
+   The Concord app's default, brand-aligned theme ("OG"), published here under the name
+   "concord" so any app can use it. Values are copied unchanged from basabtan/concord
+   src/styles/og.css (commit 1271480c, "Add OG as the default brand-aligned theme");
+   the complete app skin and brand primitives are in themes/concord/.
+
+   Use:  <html data-theme="concord">   or the alias   <html data-theme="og">
+   Defines only --concord-* / --og-* variables, color-scheme and the page background.
+   It does not restyle components; apply the variables in your own CSS.
+
+   Note: inside the Concord app itself, data-theme="concord" is a separate dark skin and
+   this theme is called "og". Outside the app, "concord" means this theme. */
+:root[data-theme="concord"],
+:root[data-theme="og"] {
+  color-scheme: light;
+
+  /* OG palette (from og.css) */
+  --og-bg: #F3F0EA;
+  --og-surface: #F8F6F1;
+  --og-surface-strong: #FFFDFC;
+  --og-chrome: #ECE8E0;
+  --og-ink: #141B23;
+  --og-muted: #5A687C;
+  --og-line: #D5D0C7;
+  --og-line-strong: #AEB4B8;
+  --og-primary: #185FB5;
+  --og-primary-soft: #E7EEF7;
+  --og-primary-ink: #174E90;
+  --og-bronze: #9A744F;
+  --og-bronze-soft: #F3ECE3;
+  --og-bronze-ink: #735638;
+  --og-success: #2F6F5E;
+  --og-success-soft: #E7F0EC;
+  --og-danger: #BC2627;
+  --og-danger-soft: #F7E8E6;
+  --og-danger-ink: #7D2526;
+  --og-hover: #F5F2ED;
+  --og-header: #EFECE6;
+  --og-rank: #F2EFE9;
+  --og-radius: 2px;
+  --og-shadow: none;
+  --og-focus: 0 0 0 3px rgba(24, 95, 181, .09);
+
+  /* Concord semantic roles, mapped to OG (as og.css does) */
+  --concord-bg-canvas: var(--og-bg);
+  --concord-bg-panel: var(--og-surface);
+  --concord-bg-panel-strong: var(--og-surface-strong);
+  --concord-hover-surface: var(--og-hover);
+  --concord-selected-surface: var(--og-primary-soft);
+  --concord-disabled-surface: var(--og-chrome);
+  --concord-text-primary: var(--og-ink);
+  --concord-text-muted: var(--og-muted);
+  --concord-text-link: var(--og-primary);
+  --concord-text-on-sapphire: var(--og-surface-strong);
+  --concord-border-default: var(--og-line);
+  --concord-border-emphasis: var(--og-line-strong);
+  --concord-action-primary: var(--og-primary);
+  --concord-state-current: var(--og-primary);
+  --concord-state-stable: var(--og-success);
+  --concord-state-stale: var(--og-bronze);
+  --concord-state-conflict: var(--og-danger);
+  --concord-state-disabled: var(--og-muted);
+  --concord-state-secondary: var(--og-bronze);
+  --concord-sapphire-ink: var(--og-primary-ink);
+  --concord-bronze-ink: var(--og-bronze-ink);
+  --concord-icon-default: var(--og-ink);
+  --concord-icon-active: var(--og-primary);
+  --concord-icon-conflict: var(--og-danger);
+  --concord-icon-secondary: var(--og-bronze);
+  --concord-icon-disabled: var(--og-muted);
+  --concord-icon-node-fill: var(--og-bg);
+
+  /* Type, geometry, focus */
+  --concord-font-display: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
+  --concord-font-ui: "Segoe UI", Inter, system-ui, sans-serif;
+  --concord-font-mono: "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
+  --concord-type-display-weight: 600;
+  --concord-radius-default: var(--og-radius);
+  --concord-shadow-default: var(--og-shadow);
+  --concord-focus-outline: 1px solid var(--og-primary);
+  --concord-focus-offset: 1px;
+}
+
+/* Page background exactly as og.css: paper with a faint 36px grid. */
+:root[data-theme="concord"] body,
+:root[data-theme="og"] body {
+  line-height: 1.48;
+  color: var(--og-ink);
+  background:
+    linear-gradient(rgba(20, 27, 35, .018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(20, 27, 35, .018) 1px, transparent 1px),
+    var(--og-bg);
+  background-size: 36px 36px;
+}

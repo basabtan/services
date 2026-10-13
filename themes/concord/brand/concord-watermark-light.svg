@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" aria-hidden="true" focusable="false">
+  <!-- Optimized for Paper/light surfaces. -->
+  <g transform="translate(300 300) scale(2.8) translate(-50 -50)">
+    <g fill="none" stroke="#141823" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.065">
+      <path d="M50 30V15M30 50H15M70 50H85M50 70V85"/>
+      <path d="M50 30 70 50 50 70 30 50Z"/>
+      <circle cx="50" cy="9" r="6"/>
+      <circle cx="9" cy="50" r="6"/>
+      <circle cx="91" cy="50" r="6"/>
+      <circle cx="50" cy="91" r="6"/>
+    </g>
+    <path d="M50 38 62 50 50 62 38 50Z" fill="#1A85FB" opacity="0.075"/>
+  </g>
+</svg>

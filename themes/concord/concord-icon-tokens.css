@@ -1,0 +1,66 @@
+/* CONCORD Icon Construction Tokens — Phase 1 */
+
+:root {
+  /* Grids */
+  --concord-icon-grid-compact: 24px;
+  --concord-icon-grid-navigation: 32px;
+  --concord-icon-grid-feature: 40px;
+
+  /* Baseline strokes */
+  --concord-icon-stroke-24: 1.5px;
+  --concord-icon-stroke-32: 2px;
+  --concord-icon-stroke-40: 2.5px;
+
+  /* Internal safe-area padding */
+  --concord-icon-padding-24: 3px;
+  --concord-icon-padding-32: 4px;
+  --concord-icon-padding-40: 5px;
+
+  /* Standard circular graph-node diameters */
+  --concord-icon-node-24: 5.5px;
+  --concord-icon-node-32: 7px;
+  --concord-icon-node-40: 8.5px;
+
+  /* Small focal diamond extents */
+  --concord-icon-diamond-24: 6px;
+  --concord-icon-diamond-32: 8px;
+  --concord-icon-diamond-40: 10px;
+
+  /* Line behavior */
+  --concord-icon-linecap: round;
+  --concord-icon-linejoin: round;
+  --concord-icon-dash: 3 2;
+
+  /* Semantic colors */
+  --concord-icon-default: var(--concord-graphite, #141823);
+  --concord-icon-active: var(--concord-sapphire, #1A85FB);
+  --concord-icon-conflict: var(--concord-crimson, #BC2627);
+  --concord-icon-secondary: var(--concord-bronze, #9A7A4F);
+  --concord-icon-disabled: var(--concord-slate, #5A687C);
+  --concord-icon-node-fill: var(--concord-paper, #F3F0EA);
+
+  /* State behavior */
+  --concord-icon-disabled-opacity: 0.48;
+  --concord-icon-hover-transition: 110ms;
+}
+
+.concord-icon {
+  color: var(--concord-icon-default);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: var(--concord-icon-linecap);
+  stroke-linejoin: var(--concord-icon-linejoin);
+  transition: color var(--concord-icon-hover-transition) ease,
+              opacity var(--concord-icon-hover-transition) ease;
+}
+
+.concord-icon[data-state="hover"] { color: var(--concord-icon-active); }
+.concord-icon[data-state="active"],
+.concord-icon[data-state="selected"] { color: var(--concord-icon-active); }
+.concord-icon[data-state="warning"],
+.concord-icon[data-state="conflict"] { color: var(--concord-icon-conflict); }
+.concord-icon[data-state="secondary"] { color: var(--concord-icon-secondary); }
+.concord-icon[data-state="disabled"] {
+  color: var(--concord-icon-disabled);
+  opacity: var(--concord-icon-disabled-opacity);
+}

@@ -1,0 +1,96 @@
+/* CONCORD Design Tokens — Phase 1 foundation
+   Source of truth: approved Concord palette + documented derived UI shades. */
+
+:root {
+  /* Core brand palette — frozen */
+  --concord-graphite: #141823;
+  --concord-sapphire: #1A85FB;
+  --concord-crimson: #BC2627;
+  --concord-bronze: #9A7A4F;
+  --concord-slate: #5A687C;
+  --concord-paper: #F3F0EA;
+
+  /* Registered neutral */
+  --concord-white: #FFFFFF;
+
+  /* Derived light surfaces */
+  --concord-surface: #FAF8F6;          /* paper → white, 55% */
+  --concord-surface-strong: #FDFCFB;   /* paper → white, 82% */
+  --concord-border: #D6D4D0;           /* paper → graphite, 13% */
+  --concord-border-strong: #B5B4B2;    /* paper → graphite, 28% */
+  --concord-hover-surface: #E2E7EB;    /* paper → sapphire, 8% */
+  --concord-selected-surface: #D9E3EC; /* paper → sapphire, 12% */
+  --concord-focus-soft: #D0DFED;       /* paper → sapphire, 16% */
+  --concord-disabled-surface: #E4E2DF; /* paper → slate, 10% */
+
+  /* Derived readable accent text */
+  --concord-sapphire-ink: #186AC5;     /* sapphire → graphite, 25% */
+  --concord-bronze-ink: #7F6646;       /* bronze → graphite, 20% */
+
+  /* Derived dark surfaces */
+  --concord-dark-surface: #222630;     /* graphite → white, 6% */
+  --concord-dark-panel: #2C2F39;       /* graphite → white, 10% */
+  --concord-dark-border: #484B53;      /* graphite → white, 22% */
+  --concord-dark-muted: #8892A1;       /* slate → white, 28% */
+
+  /* Semantic aliases */
+  --concord-bg-canvas: var(--concord-paper);
+  --concord-bg-panel: var(--concord-surface);
+  --concord-bg-panel-strong: var(--concord-surface-strong);
+  --concord-text-primary: var(--concord-graphite);
+  --concord-text-muted: var(--concord-slate);
+  --concord-text-link: var(--concord-sapphire-ink);
+  --concord-text-on-dark: var(--concord-paper);
+  --concord-text-on-sapphire: var(--concord-graphite);
+  --concord-border-default: var(--concord-border);
+  --concord-border-emphasis: var(--concord-border-strong);
+  --concord-action-primary: var(--concord-sapphire);
+  --concord-state-current: var(--concord-sapphire);
+  --concord-state-stable: var(--concord-sapphire);
+  --concord-state-stale: var(--concord-bronze);
+  --concord-state-conflict: var(--concord-crimson);
+  --concord-state-disabled: var(--concord-slate);
+  --concord-state-secondary: var(--concord-bronze);
+
+  /* Typography families — local/system-first */
+  --concord-font-display: "Bahnschrift", "Arial Narrow", "Segoe UI", sans-serif;
+  --concord-font-ui: "Segoe UI Variable", "Segoe UI", Inter, system-ui, sans-serif;
+  --concord-font-mono: "Cascadia Mono", "JetBrains Mono", Consolas, monospace;
+
+  /* Typography roles */
+  --concord-type-display-weight: 600;
+  --concord-type-ui-weight: 400;
+  --concord-type-ui-medium: 600;
+  --concord-type-ui-bold: 700;
+  --concord-type-mono-weight: 500;
+  --concord-type-caption-size: 10px;
+  --concord-type-body-size: 14px;
+  --concord-type-control-size: 12px;
+  --concord-type-heading-1-size: 30px;
+  --concord-type-heading-2-size: 20px;
+  --concord-type-heading-3-size: 14px;
+
+  /* UI geometry */
+  --concord-radius-0: 0;
+  --concord-radius-1: 1px;
+  --concord-radius-2: 2px;
+  --concord-radius-default: var(--concord-radius-2);
+  --concord-border-width: 1px;
+  --concord-border-width-emphasis: 2px;
+  --concord-shadow-default: none;
+
+  /* Spacing */
+  --concord-space-1: 4px;
+  --concord-space-2: 8px;
+  --concord-space-3: 12px;
+  --concord-space-4: 16px;
+  --concord-space-5: 20px;
+  --concord-space-6: 28px;
+  --concord-space-7: 40px;
+
+  /* Focus + motion */
+  --concord-focus-outline: 1px solid var(--concord-sapphire);
+  --concord-focus-offset: 1px;
+  --concord-motion-fast: 110ms;
+  --concord-motion-normal: 180ms;
+}

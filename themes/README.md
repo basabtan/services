@@ -17,8 +17,9 @@ Download the [repository ZIP](https://github.com/basabtan/services/archive/refs/
 | Gold / glass button collection | [Interactive playground](gold-button-showcase.html) | CSS and drag interactions embedded in the preview |
 | Facet: Ivory + Graphite + Ruby | [Style tile](facet-style-tile.html) (Ivory and Graphite modes) | [Facet tokens CSS](facet-tokens.css) |
 | Facet Studio: crystal, gunmetal, ruby (photorealistic) | [Style tile](facet-studio-style-tile.html) | [Material recipes CSS](facet-studio-materials.css) |
+| **Concord** (alias **og**) — paper, graphite, sapphire | [Style tile](concord-style-tile.html) | [Portable CSS](concord-theme.css), [JSON](concord-tokens.json), complete app skin in [concord/](concord/) |
 
-There are four reusable palette families plus the standalone references listed above. The two Facet tiles are a separate family built from the Facet logo; they use their own variables (`--bg`, `--accent`, `--ruby` and so on, toggled by `data-theme="dark"`) and are not part of the `--zs-*` palette layer or `themes.json`. The original reskins and button collection are retained as separate references. They are not silently substituted for the later approved style tiles. Ask AI examples are visual demos, not live AI services. Some style tiles load optional Google Fonts; system fonts are available as fallbacks.
+There are four reusable palette families plus the standalone references listed above. The Concord theme is another separate family, described in **Concord** below. The two Facet tiles are a separate family built from the Facet logo; they use their own variables (`--bg`, `--accent`, `--ruby` and so on, toggled by `data-theme="dark"`) and are not part of the `--zs-*` palette layer or `themes.json`. The original reskins and button collection are retained as separate references. They are not silently substituted for the later approved style tiles. Ask AI examples are visual demos, not live AI services. Some style tiles load optional Google Fonts; system fonts are available as fallbacks.
 
 The approved main file is an exact copy of Bader's supplied `zeal-ivory-style-tile (1).html`. Its built-in **Ink blue** switch is that attachment's legacy dark companion; it is separate from the newer **Ink Blue + Platinum** design linked above. `index.html` uses the approved file with collection navigation added near the footer. The standalone Ivory CSS/JSON match the attachment's own downloads; the newer Ink Blue reference and its exports are retained under separate filenames.
 
@@ -68,6 +69,34 @@ The palette selectors target `:root[data-zeal-theme]`. Set the attribute on `<ht
 
 The existing Repair Report and Change Requests panels still use their own styles and variables. These new theme resources are opt-in. Religion/provenance gradient values from the approved source are retained unchanged.
 
+## Concord (alias "og")
+
+The Concord app's default, brand-aligned theme. In the app it is called **OG**; here it is named **concord**, and `og` is kept as an alias. It is the same skin Axis uses in `basabtan/Baders` (`nexus/tools/axis.html`).
+
+```html
+<link rel="stylesheet" href="themes/concord-theme.css">
+<html data-theme="concord">   <!-- or data-theme="og" -->
+```
+
+```css
+.card { background: var(--og-surface); color: var(--og-ink); border: 1px solid var(--og-line); border-radius: var(--og-radius); }
+.primary { background: var(--og-primary); color: var(--og-surface-strong); }
+```
+
+| File | What it is |
+| --- | --- |
+| [concord-theme.css](concord-theme.css) | Portable tokens: `--og-*` palette, `--concord-*` semantic roles, fonts, radius, focus, and the paper-and-grid page background. Selectors: `:root[data-theme="concord"]` and `:root[data-theme="og"]`. No component styles. |
+| [concord-tokens.json](concord-tokens.json) | The same values, machine-readable, with `"aliases": ["og"]`. |
+| [concord-style-tile.html](concord-style-tile.html) | Swatches, type, buttons, inputs, state chips, a table, icons and an empty state. Open it through a local server so the icon sprite loads. |
+| [concord/og.css](concord/og.css) | Complete OG app skin, copied unchanged from the Concord app. It targets Concord's own markup (`.btn`, `.panel`, `.rail` …) under `:root[data-theme="og"]`. |
+| [concord/concord-tokens.css](concord/concord-tokens.css) | Frozen Concord brand primitives and derived shades (`--concord-*`), copied unchanged. |
+| [concord/concord-icon-tokens.css](concord/concord-icon-tokens.css) | Icon construction tokens (grids, strokes, node sizes, states), copied unchanged. |
+| [concord/brand/](concord/brand/) | Flat mark, mono mark, favicon, the 29-icon sprite and the watermark/pattern SVGs. |
+
+Colours: paper `#F3F0EA`, surface `#F8F6F1` / `#FFFDFC`, chrome `#ECE8E0`, graphite ink `#141B23`, slate muted `#5A687C`, lines `#D5D0C7` / `#AEB4B8`, sapphire `#185FB5`, crimson `#BC2627`, bronze `#9A744F` (text `#735638`), stable `#2F6F5E`. Fonts: Bahnschrift (display, 600), Segoe UI (UI), Cascadia Mono (labels); all are Windows system fonts with fallbacks. Geometry: 1px borders, 2px radius, no shadows, faint 36px grid.
+
+Naming note: inside the Concord app, `data-theme="concord"` is a separate dark skin and this theme is `og`. Outside the app, in this collection, `concord` means this theme.
+
 ## Downloads
 
 The [palette collection](palette-collection.html) and the three companion palette tiles provide:
@@ -88,5 +117,7 @@ The default preview and approved Ivory style tile export `zeal-ivory-tokens.css`
 - Publication adjustments separate portable tokens from compatibility aliases, wrap Ask header controls on narrow screens, and clarify palette counts, download formats, and reuse instructions. The preview styles retain their embedded palette and compatibility rules; approved color and gradient values are unchanged.
 
 - The Facet and Facet Studio tiles were built on 11 October 2026 from Bader's Facet logo render (crystal hexagon, gunmetal lattice, ruby core). Facet Studio embeds that render and three close-up crops of it as images, so the file is self-contained at about 210 KB.
+
+- The Concord theme files were copied on 13 October 2026 from `basabtan/concord` at commit `1271480c544b103f76fc9625c16777c8a03be2a5` ("Add OG as the default brand-aligned theme"). `concord/og.css`, `concord/concord-tokens.css` and `concord/concord-icon-tokens.css` are byte-for-byte copies (SHA-256 `a274d076…`, `df5a3cb7…`, `1a1fe8ed…`). The brand SVGs come from `public/brand/concord/`. The large lockups (1.7 MB SVGs) and the 2.8 MB primary PNG stay in the Concord repo. `concord-theme.css`, `concord-tokens.json` and the style tile were written from those files. The values are the same; only the theme name `concord` and the alias `og` were added.
 
 Published here as repository assets. This change does not deploy a website or publish a new npm registry release.
