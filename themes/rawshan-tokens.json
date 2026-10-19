@@ -216,9 +216,16 @@
     "band-height": "14px"
   },
   "opacity": {
-    "opacity-grain": "0.06",
-    "opacity-lattice": "0.32",
-    "opacity-photo-tint": "0.22"
+    "plaster": {
+      "opacity-grain": "0.06",
+      "opacity-lattice": "0.32",
+      "opacity-photo-tint": "0.22"
+    },
+    "night": {
+      "opacity-grain": "0.08",
+      "opacity-lattice": "0.32",
+      "opacity-photo-tint": "0.22"
+    }
   },
   "motifs": [
     "title tab",

@@ -39,6 +39,28 @@ describe('Rawshan theme', () => {
     });
   }
 
+  it('declares each token once per mode', () => {
+    for (const src of [plaster, night]) {
+      const all = src.match(/--rw-[a-z0-9-]+(?=\s*:)/g) ?? [];
+      expect(all.filter((n, i) => all.indexOf(n) !== i)).toEqual([]);
+    }
+  });
+
+  for (const mode of ['plaster', 'night'] as const) {
+    it(`keeps the JSON ${mode} opacities equal to the CSS`, () => {
+      const src = mode === 'plaster' ? plaster : night;
+      for (const [name, v] of Object.entries(json.opacity[mode] as Record<string, string>)) {
+        expect(value(src, name), name).toBe(v);
+      }
+    });
+  }
+
+  it('shows the error border on every field control', () => {
+    for (const control of ['input', 'select', 'textarea']) {
+      expect(components).toContain(`.rw-field.is-error ${control}`);
+    }
+  });
+
   it('uses only tokens the theme defines', () => {
     const known = defined(plaster);
     for (const src of [components, tile]) {

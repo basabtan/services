@@ -102,7 +102,7 @@
   padding: var(--rw-space-3) var(--rw-space-4); min-height: 44px; }
 .rw-field input:focus-visible, .rw-field select:focus-visible, .rw-field textarea:focus-visible { outline: 2px solid var(--rw-focus); outline-offset: 2px; }
 .rw-field .rw-help { font: 400 13px/20px var(--rw-font-text); color: var(--rw-ink-muted); }
-.rw-field.is-error input { border-color: var(--rw-danger); }
+.rw-field.is-error input, .rw-field.is-error select, .rw-field.is-error textarea { border-color: var(--rw-danger); }
 .rw-field.is-error .rw-help { color: var(--rw-danger); }
 
 /* Motion: one orchestrated entrance, then quiet. Always starts from a readable state. */
