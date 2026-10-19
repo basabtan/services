@@ -1,0 +1,209 @@
+/* Rawshan — portable theme for the Arabz page.
+   A Hijazi-heritage, Arabic-first look: a multicolour bookshelf of identity bars, one deep
+   navy block per section, whitewashed plaster, teak rawshan lattice. Square corners,
+   hard offset shadows, no blur. Two modes: Plaster (light) and Night (dark).
+
+   Use:  <html data-theme="rawshan" dir="rtl" lang="ar">        Plaster
+         <html data-theme="rawshan-night" dir="rtl" lang="ar">  Night
+   Defines only --rw-* variables, color-scheme, the Effra face and the page background.
+   Component classes (rw-btn, rw-tab, rw-card ...) are in rawshan-components.css.
+
+   Font: Effra Regular (Dalton Maag, commercial). The font file is NOT in this public
+   repository. The @font-face below uses an installed copy, or a licensed file you host
+   yourself (add your own url() first). Without it, IBM Plex Sans Arabic / system-ui. */
+
+@font-face {
+  font-family: "Effra";
+  src: local("Effra"), local("Effra-Regular"), local("Effra Regular");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root[data-theme="rawshan"] {
+  color-scheme: light;
+  /* Identity hues, surfaces, text, roles, status, charts */
+  --rw-coral: #eb5a3d;
+  --rw-saffron: #ff9619;
+  --rw-crimson: #b21c35;
+  --rw-plum: #6f1946;
+  --rw-sage: #90b9b3;
+  --rw-peach: #f3c6a5;
+  --rw-navy: #0e2837;
+  --rw-rust: #b04828;
+  --rw-teak: #905838;
+  --rw-teak-light: #b88058;
+  --rw-sky: #98a8c0;
+  --rw-band-peach: #f2bd94;
+  --rw-band-sage: #b1c6bd;
+  --rw-surface: #fbf8f4;
+  --rw-surface-raised: #ffffff;
+  --rw-surface-sunken: #f3ece4;
+  --rw-ink: #0e2837;
+  --rw-ink-muted: #4f5f69;
+  --rw-hairline: #d9cfc4;
+  --rw-control-border: #8f8274;
+  --rw-frame: #b04828;
+  --rw-kicker: #6f1946;
+  --rw-link: #b21c35;
+  --rw-action: #0e2837;
+  --rw-on-action: #ffffff;
+  --rw-tab: #0e2837;
+  --rw-on-tab: #ffffff;
+  --rw-tab-shadow: #f2bd94;
+  --rw-slab: #0e2837;
+  --rw-focus: #b21c35;
+  --rw-success: #2e6b5e;
+  --rw-warning: #9a5a00;
+  --rw-danger: #b21c35;
+  --rw-chart-1: #0e2837;
+  --rw-chart-2: #eb5a3d;
+  --rw-chart-3: #4f8a82;
+  --rw-chart-4: #c96f00;
+  --rw-chart-5: #6f1946;
+  --rw-chart-grid: #e6ddd3;
+  --rw-selection: #f3c6a5;
+  --rw-on-selection: #0e2837;
+  --rw-lattice-line: #905838;
+  /* Shadows: hard offsets only, never blur */
+  --rw-shadow-tab: -8px 0 0 0 #f2bd94;
+  --rw-shadow-lift: 4px 4px 0 0 #e6ddd3;
+  /* Type: Effra Regular for titles and text, Naskh for pull quotes only */
+  --rw-font-display: "Effra", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --rw-font-serif: "Noto Naskh Arabic", "Amiri", serif;
+  --rw-font-text: "Effra", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --rw-type-display: 400 68px/92px var(--rw-font-display);
+  --rw-type-h1: 400 44px/64px var(--rw-font-display);
+  --rw-type-h2: 400 28px/40px var(--rw-font-display);
+  --rw-type-quote: 500 28px/52px var(--rw-font-serif);
+  --rw-type-lead: 400 21px/40px var(--rw-font-text);
+  --rw-type-h3: 400 20px/32px var(--rw-font-text);
+  --rw-type-body-lg: 400 18px/32px var(--rw-font-text);
+  --rw-type-body: 400 16px/28px var(--rw-font-text);
+  --rw-type-kicker: 400 14px/20px var(--rw-font-text);
+  --rw-type-caption: 400 12px/20px var(--rw-font-text);
+  --rw-type-label: 400 12px/16px var(--rw-font-text);
+  /* Spacing */
+  --rw-space-1: 4px;
+  --rw-space-2: 8px;
+  --rw-space-3: 12px;
+  --rw-space-4: 16px;
+  --rw-space-5: 24px;
+  --rw-space-6: 32px;
+  --rw-space-7: 48px;
+  --rw-space-8: 64px;
+  /* Radius */
+  --rw-radius-none: 0;
+  --rw-radius-sharp: 2px;
+  /* Border */
+  --rw-border-hair: 1px;
+  --rw-border-control: 1.5px;
+  --rw-border-frame: 6px;
+  --rw-band-height: 14px;
+  /* Opacity */
+  --rw-opacity-grain: 0.06;
+  --rw-opacity-lattice: 0.32;
+  --rw-opacity-photo-tint: 0.22;
+}
+
+:root[data-theme="rawshan-night"] {
+  color-scheme: dark;
+  /* Identity hues, surfaces, text, roles, status, charts */
+  --rw-coral: #eb5a3d;
+  --rw-saffron: #ff9619;
+  --rw-crimson: #b21c35;
+  --rw-plum: #6f1946;
+  --rw-sage: #90b9b3;
+  --rw-peach: #f3c6a5;
+  --rw-navy: #0e2837;
+  --rw-rust: #b04828;
+  --rw-teak: #905838;
+  --rw-teak-light: #b88058;
+  --rw-sky: #98a8c0;
+  --rw-band-peach: #f2bd94;
+  --rw-band-sage: #b1c6bd;
+  --rw-surface: #0b1f2b;
+  --rw-surface-raised: #12303f;
+  --rw-surface-sunken: #08171f;
+  --rw-ink: #f4eee6;
+  --rw-ink-muted: #a9b6bd;
+  --rw-hairline: #24404f;
+  --rw-control-border: #6f8794;
+  --rw-frame: #e07a52;
+  --rw-kicker: #f3c6a5;
+  --rw-link: #ffb4a3;
+  --rw-action: #ff9619;
+  --rw-on-action: #0e2837;
+  --rw-tab: #12303f;
+  --rw-on-tab: #f4eee6;
+  --rw-tab-shadow: #b04828;
+  --rw-slab: #24506a;
+  --rw-focus: #ff9619;
+  --rw-success: #90b9b3;
+  --rw-warning: #ff9619;
+  --rw-danger: #ff8a75;
+  --rw-chart-1: #98a8c0;
+  --rw-chart-2: #eb5a3d;
+  --rw-chart-3: #90b9b3;
+  --rw-chart-4: #ff9619;
+  --rw-chart-5: #c47aa3;
+  --rw-chart-grid: #1c3746;
+  --rw-selection: #f3c6a5;
+  --rw-on-selection: #0e2837;
+  --rw-lattice-line: #b88058;
+  /* Shadows: hard offsets only, never blur */
+  --rw-shadow-tab: -8px 0 0 0 #b04828;
+  --rw-shadow-lift: 4px 4px 0 0 #08171f;
+  /* Type: Effra Regular for titles and text, Naskh for pull quotes only */
+  --rw-font-display: "Effra", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --rw-font-serif: "Noto Naskh Arabic", "Amiri", serif;
+  --rw-font-text: "Effra", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --rw-type-display: 400 68px/92px var(--rw-font-display);
+  --rw-type-h1: 400 44px/64px var(--rw-font-display);
+  --rw-type-h2: 400 28px/40px var(--rw-font-display);
+  --rw-type-quote: 500 28px/52px var(--rw-font-serif);
+  --rw-type-lead: 400 21px/40px var(--rw-font-text);
+  --rw-type-h3: 400 20px/32px var(--rw-font-text);
+  --rw-type-body-lg: 400 18px/32px var(--rw-font-text);
+  --rw-type-body: 400 16px/28px var(--rw-font-text);
+  --rw-type-kicker: 400 14px/20px var(--rw-font-text);
+  --rw-type-caption: 400 12px/20px var(--rw-font-text);
+  --rw-type-label: 400 12px/16px var(--rw-font-text);
+  /* Spacing */
+  --rw-space-1: 4px;
+  --rw-space-2: 8px;
+  --rw-space-3: 12px;
+  --rw-space-4: 16px;
+  --rw-space-5: 24px;
+  --rw-space-6: 32px;
+  --rw-space-7: 48px;
+  --rw-space-8: 64px;
+  /* Radius */
+  --rw-radius-none: 0;
+  --rw-radius-sharp: 2px;
+  /* Border */
+  --rw-border-hair: 1px;
+  --rw-border-control: 1.5px;
+  --rw-border-frame: 6px;
+  --rw-band-height: 14px;
+  /* Opacity */
+  --rw-opacity-lattice: 0.32;
+  --rw-opacity-photo-tint: 0.22;
+  --rw-opacity-grain: 0.08;
+}
+
+/* Retina: hairlines drop to half a pixel. */
+@media (min-resolution: 2dppx) {
+  :root[data-theme="rawshan"], :root[data-theme="rawshan-night"] { --rw-border-hair: .5px; }
+}
+
+/* Page ground. Add class="rw-grain" (rawshan-components.css) for the plaster texture. */
+:root[data-theme="rawshan"] body,
+:root[data-theme="rawshan-night"] body {
+  background: var(--rw-surface);
+  color: var(--rw-ink);
+  font: var(--rw-type-body);
+  font-synthesis: none;
+}
+:root[data-theme="rawshan"] ::selection,
+:root[data-theme="rawshan-night"] ::selection { background: var(--rw-selection); color: var(--rw-on-selection); }

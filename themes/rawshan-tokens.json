@@ -1,0 +1,240 @@
+{
+  "theme": "rawshan",
+  "modes": {
+    "plaster": "rawshan",
+    "night": "rawshan-night"
+  },
+  "name": "Rawshan",
+  "description": "Hijazi-heritage, Arabic-first theme for the Arabz page: multicolour identity bars, one navy block per section, whitewashed plaster, teak rawshan lattice. Square corners, hard offset shadows, Effra Regular.",
+  "attribute": "data-theme=\"rawshan\" (Plaster) or data-theme=\"rawshan-night\" (Night); set dir=\"rtl\" lang=\"ar\"",
+  "prefix": "--rw-",
+  "colorRules": "70/20/10: about 70% plaster surfaces, 20% navy (tab, action, slab), 10% accent. All seven identity hues appear together only in the spine stripe, once per page.",
+  "colors": {
+    "plaster": {
+      "coral": "#eb5a3d",
+      "saffron": "#ff9619",
+      "crimson": "#b21c35",
+      "plum": "#6f1946",
+      "sage": "#90b9b3",
+      "peach": "#f3c6a5",
+      "navy": "#0e2837",
+      "rust": "#b04828",
+      "teak": "#905838",
+      "teak-light": "#b88058",
+      "sky": "#98a8c0",
+      "band-peach": "#f2bd94",
+      "band-sage": "#b1c6bd",
+      "surface": "#fbf8f4",
+      "surface-raised": "#ffffff",
+      "surface-sunken": "#f3ece4",
+      "ink": "#0e2837",
+      "ink-muted": "#4f5f69",
+      "hairline": "#d9cfc4",
+      "control-border": "#8f8274",
+      "frame": "#b04828",
+      "kicker": "#6f1946",
+      "link": "#b21c35",
+      "action": "#0e2837",
+      "on-action": "#ffffff",
+      "tab": "#0e2837",
+      "on-tab": "#ffffff",
+      "tab-shadow": "#f2bd94",
+      "slab": "#0e2837",
+      "focus": "#b21c35",
+      "success": "#2e6b5e",
+      "warning": "#9a5a00",
+      "danger": "#b21c35",
+      "chart-1": "#0e2837",
+      "chart-2": "#eb5a3d",
+      "chart-3": "#4f8a82",
+      "chart-4": "#c96f00",
+      "chart-5": "#6f1946",
+      "chart-grid": "#e6ddd3",
+      "selection": "#f3c6a5",
+      "on-selection": "#0e2837",
+      "lattice-line": "#905838"
+    },
+    "night": {
+      "coral": "#eb5a3d",
+      "saffron": "#ff9619",
+      "crimson": "#b21c35",
+      "plum": "#6f1946",
+      "sage": "#90b9b3",
+      "peach": "#f3c6a5",
+      "navy": "#0e2837",
+      "rust": "#b04828",
+      "teak": "#905838",
+      "teak-light": "#b88058",
+      "sky": "#98a8c0",
+      "band-peach": "#f2bd94",
+      "band-sage": "#b1c6bd",
+      "surface": "#0b1f2b",
+      "surface-raised": "#12303f",
+      "surface-sunken": "#08171f",
+      "ink": "#f4eee6",
+      "ink-muted": "#a9b6bd",
+      "hairline": "#24404f",
+      "control-border": "#6f8794",
+      "frame": "#e07a52",
+      "kicker": "#f3c6a5",
+      "link": "#ffb4a3",
+      "action": "#ff9619",
+      "on-action": "#0e2837",
+      "tab": "#12303f",
+      "on-tab": "#f4eee6",
+      "tab-shadow": "#b04828",
+      "slab": "#24506a",
+      "focus": "#ff9619",
+      "success": "#90b9b3",
+      "warning": "#ff9619",
+      "danger": "#ff8a75",
+      "chart-1": "#98a8c0",
+      "chart-2": "#eb5a3d",
+      "chart-3": "#90b9b3",
+      "chart-4": "#ff9619",
+      "chart-5": "#c47aa3",
+      "chart-grid": "#1c3746",
+      "selection": "#f3c6a5",
+      "on-selection": "#0e2837",
+      "lattice-line": "#b88058"
+    }
+  },
+  "shadows": {
+    "plaster": {
+      "shadow-tab": "-8px 0 0 0 #f2bd94",
+      "shadow-lift": "4px 4px 0 0 #e6ddd3"
+    },
+    "night": {
+      "shadow-tab": "-8px 0 0 0 #b04828",
+      "shadow-lift": "4px 4px 0 0 #08171f"
+    }
+  },
+  "fonts": {
+    "display": "\"Effra\", \"IBM Plex Sans Arabic\", system-ui, sans-serif",
+    "serif": "\"Noto Naskh Arabic\", \"Amiri\", serif",
+    "text": "\"Effra\", \"IBM Plex Sans Arabic\", system-ui, sans-serif",
+    "license": "Effra is a commercial Dalton Maag font. It is not distributed here; use an installed or separately licensed copy. Fallback: IBM Plex Sans Arabic.",
+    "weights": "Effra Regular (400) only: build hierarchy from size, colour and the navy tab; keep font-synthesis: none."
+  },
+  "type": {
+    "display": {
+      "family": "display",
+      "size": "68px",
+      "lineHeight": "92px",
+      "weight": 400,
+      "usage": "Hero title on the Arabz page; one per page. Effra Regular at size: hierarchy comes from scale and colour, never faux bold. 44px on phones."
+    },
+    "h1": {
+      "family": "display",
+      "size": "44px",
+      "lineHeight": "64px",
+      "weight": 400,
+      "usage": "Page title under a hero, or the hero itself on inner pages."
+    },
+    "h2": {
+      "family": "display",
+      "size": "28px",
+      "lineHeight": "40px",
+      "weight": 400,
+      "usage": "Section titles, set inside a title tab."
+    },
+    "quote": {
+      "family": "serif",
+      "size": "28px",
+      "lineHeight": "52px",
+      "weight": 500,
+      "usage": "Pull quotes, one per section at most."
+    },
+    "lead": {
+      "family": "text",
+      "size": "21px",
+      "lineHeight": "40px",
+      "weight": 400,
+      "usage": "Lead paragraph directly under a hero or section title; one per section."
+    },
+    "h3": {
+      "family": "text",
+      "size": "20px",
+      "lineHeight": "32px",
+      "weight": 400,
+      "usage": "Card titles, sub-sections."
+    },
+    "body-lg": {
+      "family": "text",
+      "size": "18px",
+      "lineHeight": "32px",
+      "weight": 400,
+      "usage": "Lead paragraphs under a title."
+    },
+    "body": {
+      "family": "text",
+      "size": "16px",
+      "lineHeight": "28px",
+      "weight": 400,
+      "usage": "Default running text. Arabic needs the generous 1.75 leading."
+    },
+    "kicker": {
+      "family": "text",
+      "size": "14px",
+      "lineHeight": "20px",
+      "weight": 400,
+      "usage": "Section kicker above a title tab, in kicker colour."
+    },
+    "caption": {
+      "family": "text",
+      "size": "12px",
+      "lineHeight": "20px",
+      "weight": 400,
+      "usage": "Meta, dates, figure captions, in ink-muted."
+    },
+    "label": {
+      "family": "text",
+      "size": "12px",
+      "lineHeight": "16px",
+      "weight": 400,
+      "usage": "Field labels, chart axes, badges, in ink. No letter-spacing (it breaks Arabic joins)."
+    }
+  },
+  "spacing": {
+    "space-1": "4px",
+    "space-2": "8px",
+    "space-3": "12px",
+    "space-4": "16px",
+    "space-5": "24px",
+    "space-6": "32px",
+    "space-7": "48px",
+    "space-8": "64px"
+  },
+  "radius": {
+    "radius-none": "0",
+    "radius-sharp": "2px"
+  },
+  "border": {
+    "border-hair": "1px",
+    "border-control": "1.5px",
+    "border-frame": "6px",
+    "band-height": "14px"
+  },
+  "opacity": {
+    "plaster": {
+      "opacity-grain": "0.06",
+      "opacity-lattice": "0.32",
+      "opacity-photo-tint": "0.22"
+    },
+    "night": {
+      "opacity-grain": "0.08",
+      "opacity-lattice": "0.32",
+      "opacity-photo-tint": "0.22"
+    }
+  },
+  "motifs": [
+    "title tab",
+    "twin band",
+    "spine stripe",
+    "rawshan lattice",
+    "plaster grain",
+    "dotted frame",
+    "rust frame",
+    "date line"
+  ]
+}

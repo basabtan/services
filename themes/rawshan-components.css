@@ -1,0 +1,120 @@
+/* Fallback and quote faces (free, Google Fonts). Effra itself is declared in rawshan-theme.css. */
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500&family=Noto+Naskh+Arabic:wght@400;500&display=swap");
+
+/* Rawshan components. Load after rawshan-theme.css; every value is a --rw-* token.
+   Wrap the page (or any block) in class="rw" for direction, font and selection. */
+.rw { font-family: var(--rw-font-text); color: var(--rw-ink); direction: rtl; font-feature-settings: "kern"; font-synthesis: none; }
+.rw *, .rw *::before, .rw *::after { box-sizing: border-box; }
+.rw ::selection { background: var(--rw-selection); color: var(--rw-on-selection); }
+.rw :where(h1, h2, h3) { text-wrap: balance; }
+.rw-nums { font-variant-numeric: tabular-nums lining-nums; }
+/* Retina: hairlines drop to half a pixel so rules read as drawn, not stamped. */
+/* (Half-pixel hairlines on retina screens are set in rawshan-theme.css.) */
+
+/* Editorial: Effra for leads, Naskh for pull quotes */
+.rw-lead { margin: 0; font: 400 21px/40px var(--rw-font-text); color: var(--rw-ink); max-width: 38em; }
+.rw-quote { margin: 0; font: 500 28px/52px var(--rw-font-serif); color: var(--rw-ink); max-width: 30em; }
+
+/* Button */
+.rw-btn { display: inline-flex; align-items: center; gap: var(--rw-space-2); min-height: 44px; padding: 0 var(--rw-space-5);
+  font: 400 15px/1 var(--rw-font-text); border: var(--rw-border-control) solid var(--rw-action); border-radius: var(--rw-radius-none);
+  background: var(--rw-action); color: var(--rw-on-action); cursor: pointer; text-decoration: none; }
+.rw-btn:hover { background: transparent; color: var(--rw-action); }
+.rw-btn:focus-visible { outline: 2px solid var(--rw-focus); outline-offset: 2px; }
+.rw-btn--secondary { background: transparent; color: var(--rw-ink); border-color: var(--rw-ink); }
+.rw-btn--secondary:hover { background: var(--rw-ink); color: var(--rw-surface); }
+.rw-btn--link { background: transparent; border-color: transparent; color: var(--rw-link); padding: 0 var(--rw-space-1); text-decoration: underline; text-underline-offset: 4px; }
+.rw-btn--link:hover { background: transparent; color: var(--rw-ink); }
+.rw-btn[disabled] { opacity: .4; pointer-events: none; }
+
+/* Title tab with kicker */
+.rw-head { display: flex; flex-direction: column; align-items: flex-start; gap: var(--rw-space-3); }
+.rw-kicker { font: 400 14px/20px var(--rw-font-text); color: var(--rw-kicker); padding: var(--rw-space-1) var(--rw-space-3);
+  border: var(--rw-border-hair) dotted var(--rw-control-border); }
+.rw-tab { margin: 0; font: 400 28px/40px var(--rw-font-display); color: var(--rw-on-tab); background: var(--rw-tab);
+  padding: var(--rw-space-2) var(--rw-space-5); box-shadow: var(--rw-shadow-tab); border-radius: var(--rw-radius-none); }
+
+/* Card */
+.rw-card { background: var(--rw-surface-raised); border: var(--rw-border-hair) solid var(--rw-hairline); border-radius: var(--rw-radius-none);
+  padding: var(--rw-space-5); display: flex; flex-direction: column; gap: var(--rw-space-3); }
+.rw-card--interactive { cursor: pointer; transition: box-shadow .12s, transform .12s; }
+.rw-card--interactive:hover { box-shadow: var(--rw-shadow-lift); transform: translate(-2px, -2px); }
+.rw-card--dotted { background: transparent; border-style: dotted; }
+.rw-card__title { margin: 0; font: 400 20px/32px var(--rw-font-text); }
+.rw-card__body { margin: 0; font: 400 16px/28px var(--rw-font-text); color: var(--rw-ink-muted); }
+
+/* Spine stripe: unequal identity bars */
+.rw-spine { display: flex; height: 40px; gap: 3px; }
+.rw-spine > i { display: block; height: 100%; }
+.rw-spine > i:nth-child(1) { width: 26px; background: var(--rw-coral); }
+.rw-spine > i:nth-child(2) { width: 8px;  background: var(--rw-plum); }
+.rw-spine > i:nth-child(3) { width: 6px;  background: var(--rw-sage); }
+.rw-spine > i:nth-child(4) { width: 18px; background: var(--rw-saffron); }
+.rw-spine > i:nth-child(5) { width: 5px;  background: var(--rw-crimson); }
+.rw-spine > i:nth-child(6) { width: 64px; background: var(--rw-slab); }
+.rw-spine > i:nth-child(7) { width: 12px; background: var(--rw-peach); }
+.rw-spine > i:nth-child(8) { width: 14px; background: var(--rw-sage); }
+.rw-spine > i:nth-child(9) { width: 7px;  background: var(--rw-crimson); }
+.rw-spine > i:nth-child(10){ width: 16px; background: var(--rw-saffron); }
+.rw-spine > i:nth-child(11){ width: 36px; background: var(--rw-plum); }
+
+/* Twin band */
+.rw-band { position: relative; height: calc(var(--rw-band-height) * 2); }
+.rw-band::before, .rw-band::after { content: ""; position: absolute; height: var(--rw-band-height); }
+.rw-band::before { top: 0; inset-inline-start: 0; width: 100%; background: var(--rw-band-peach); }
+.rw-band::after { top: var(--rw-band-height); inset-inline-start: var(--rw-space-5); width: calc(100% - var(--rw-space-7)); background: var(--rw-band-sage); }
+
+/* Date line */
+.rw-dateline { display: flex; align-items: center; gap: var(--rw-space-4); font: 400 13px/20px var(--rw-font-text); color: var(--rw-ink-muted); }
+.rw-dateline::before, .rw-dateline::after { content: ""; flex: 0 0 64px; height: 1px; background: var(--rw-ink-muted); }
+
+/* Rawshan lattice: a 40px tile traced from the balcony woodwork. Horizontal rails,
+   crossed diagonal slats, a small diamond where they meet. Masked so the stroke
+   takes lattice-line in either theme. */
+.rw-lattice { position: relative; background-color: var(--rw-surface-sunken); isolation: isolate; }
+.rw-lattice::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: var(--rw-lattice-line); opacity: var(--rw-opacity-lattice);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23000'%3E%3Cpath d='M0 0L40 40M40 0L0 40' stroke-width='1.6'/%3E%3Cpath d='M0 .6H40M0 39.4H40' stroke-width='1.2'/%3E%3Cpath d='M20 14L26 20L20 26L14 20Z' stroke-width='1.2'/%3E%3Ccircle cx='0' cy='20' r='1.6' fill='%23000' stroke='none'/%3E%3Ccircle cx='40' cy='20' r='1.6' fill='%23000' stroke='none'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 40px 40px repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'%3E%3Cg fill='none' stroke='%23000'%3E%3Cpath d='M0 0L40 40M40 0L0 40' stroke-width='1.6'/%3E%3Cpath d='M0 .6H40M0 39.4H40' stroke-width='1.2'/%3E%3Cpath d='M20 14L26 20L20 26L14 20Z' stroke-width='1.2'/%3E%3Ccircle cx='0' cy='20' r='1.6' fill='%23000' stroke='none'/%3E%3Ccircle cx='40' cy='20' r='1.6' fill='%23000' stroke='none'/%3E%3C/g%3E%3C/svg%3E") 0 0 / 40px 40px repeat; }
+.rw-lattice--soft::before { opacity: calc(var(--rw-opacity-lattice) * .5); }
+
+/* Plaster grain: put rw-grain on the page wrapper. */
+.rw-grain { position: relative; isolation: isolate; }
+.rw-grain::after { content: ""; position: absolute; inset: 0; z-index: 9; pointer-events: none; opacity: var(--rw-opacity-grain);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .42 0 0 0 0 .33 0 0 0 0 .25 0 0 0 1.6 -.3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E") 0 0 / 200px 200px; }
+
+/* Photo: one warm light for every image, bands along the lower edge. */
+.rw-photo { position: relative; margin: 0; overflow: hidden; background: var(--rw-navy); }
+.rw-photo > img, .rw-photo > svg { display: block; width: 100%; height: 100%; object-fit: cover; filter: sepia(.22) saturate(.86) contrast(1.05); }
+.rw-photo::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: var(--rw-band-peach); mix-blend-mode: multiply; opacity: var(--rw-opacity-photo-tint); }
+.rw-photo > .rw-band { position: absolute; z-index: 1; bottom: var(--rw-space-5); inset-inline-end: 0; width: min(62%, 420px); }
+.rw-photo figcaption { position: absolute; z-index: 1; top: var(--rw-space-4); inset-inline-start: var(--rw-space-4); padding: var(--rw-space-1) var(--rw-space-3);
+  font: 400 12px/20px var(--rw-font-text); background: var(--rw-surface); color: var(--rw-ink-muted); }
+
+/* Rust frame */
+.rw-frame { border-top: var(--rw-border-frame) solid var(--rw-frame); border-inline-start: var(--rw-border-frame) solid var(--rw-frame); }
+
+/* Field */
+.rw-field { display: flex; flex-direction: column; gap: var(--rw-space-1); }
+.rw-field label { font: 400 12px/16px var(--rw-font-text); color: var(--rw-ink); }
+.rw-field input, .rw-field select, .rw-field textarea { font: 400 16px/24px var(--rw-font-text); color: var(--rw-ink);
+  background: var(--rw-surface-raised); border: var(--rw-border-control) solid var(--rw-control-border); border-radius: var(--rw-radius-none);
+  padding: var(--rw-space-3) var(--rw-space-4); min-height: 44px; }
+.rw-field input:focus-visible, .rw-field select:focus-visible, .rw-field textarea:focus-visible { outline: 2px solid var(--rw-focus); outline-offset: 2px; }
+.rw-field .rw-help { font: 400 13px/20px var(--rw-font-text); color: var(--rw-ink-muted); }
+.rw-field.is-error input, .rw-field.is-error select, .rw-field.is-error textarea { border-color: var(--rw-danger); }
+.rw-field.is-error .rw-help { color: var(--rw-danger); }
+
+/* Motion: one orchestrated entrance, then quiet. Always starts from a readable state. */
+@media (prefers-reduced-motion: no-preference) {
+  .rw-tab { animation: rw-tab-in .6s cubic-bezier(.2,.7,.2,1) both; }
+  .rw-band::before, .rw-band::after { transform-origin: right center; animation: rw-band-in .7s cubic-bezier(.2,.7,.2,1) both; }
+  .rw-band::after { animation-delay: .12s; }
+  .rw-card--interactive { transition: box-shadow .2s ease-out, transform .2s ease-out; }
+  @supports (animation-timeline: view()) {
+    .rw-reveal { animation: rw-rise linear both; animation-timeline: view(); animation-range: entry 0% entry 45%; }
+  }
+}
+@keyframes rw-tab-in { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
+@keyframes rw-band-in { from { transform: scaleX(.15); } to { transform: scaleX(1); } }
+@keyframes rw-rise { from { opacity: .4; transform: translateY(16px); } to { opacity: 1; transform: none; } }

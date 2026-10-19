@@ -18,8 +18,9 @@ Download the [repository ZIP](https://github.com/basabtan/services/archive/refs/
 | Facet: Ivory + Graphite + Ruby | [Style tile](facet-style-tile.html) (Ivory and Graphite modes) | [Facet tokens CSS](facet-tokens.css) |
 | Facet Studio: crystal, gunmetal, ruby (photorealistic) | [Style tile](facet-studio-style-tile.html) | [Material recipes CSS](facet-studio-materials.css) |
 | **Concord** (alias **og**) — paper, graphite, sapphire | [Style tile](concord-style-tile.html) | [Portable CSS](concord-theme.css), [JSON](concord-tokens.json), complete app skin in [concord/](concord/) |
+| **Rawshan** — Hijazi plaster, navy, teak lattice (Arabic, RTL) | [Style tile](rawshan-style-tile.html) (Plaster and Night modes) | [Portable CSS](rawshan-theme.css), [Components CSS](rawshan-components.css), [JSON](rawshan-tokens.json) |
 
-There are four reusable palette families plus the standalone references listed above. The Concord theme is another separate family, described in **Concord** below. The two Facet tiles are a separate family built from the Facet logo; they use their own variables (`--bg`, `--accent`, `--ruby` and so on, toggled by `data-theme="dark"`) and are not part of the `--zs-*` palette layer or `themes.json`. The original reskins and button collection are retained as separate references. They are not silently substituted for the later approved style tiles. Ask AI examples are visual demos, not live AI services. Some style tiles load optional Google Fonts; system fonts are available as fallbacks.
+There are four reusable palette families plus the standalone references listed above. The Concord and Rawshan themes are further separate families, described in **Concord** and **Rawshan** below. The two Facet tiles are a separate family built from the Facet logo; they use their own variables (`--bg`, `--accent`, `--ruby` and so on, toggled by `data-theme="dark"`) and are not part of the `--zs-*` palette layer or `themes.json`. The original reskins and button collection are retained as separate references. They are not silently substituted for the later approved style tiles. Ask AI examples are visual demos, not live AI services. Some style tiles load optional Google Fonts; system fonts are available as fallbacks.
 
 The approved main file is an exact copy of Bader's supplied `zeal-ivory-style-tile (1).html`. Its built-in **Ink blue** switch is that attachment's legacy dark companion; it is separate from the newer **Ink Blue + Platinum** design linked above. `index.html` uses the approved file with collection navigation added near the footer. The standalone Ivory CSS/JSON match the attachment's own downloads; the newer Ink Blue reference and its exports are retained under separate filenames.
 
@@ -97,6 +98,35 @@ Colours: paper `#F3F0EA`, surface `#F8F6F1` / `#FFFDFC`, chrome `#ECE8E0`, graph
 
 Naming note: inside the Concord app, `data-theme="concord"` is a separate dark skin and this theme is `og`. Outside the app, in this collection, `concord` means this theme.
 
+## Rawshan
+
+The theme for the Arabz page on baders.sa. Arabic-first and right-to-left, named after the carved teak balconies of Hijazi houses: a multicolour strip of identity bars, one deep navy block per section, whitewashed plaster surfaces and a traced rawshan lattice. Two modes, **Plaster** (light) and **Night** (dark).
+
+```html
+<html data-theme="rawshan" dir="rtl" lang="ar">        <!-- Plaster -->
+<html data-theme="rawshan-night" dir="rtl" lang="ar">  <!-- Night -->
+<link rel="stylesheet" href="themes/rawshan-theme.css">
+<link rel="stylesheet" href="themes/rawshan-components.css">   <!-- optional -->
+```
+
+```css
+.card  { background: var(--rw-surface-raised); color: var(--rw-ink); border: 1px solid var(--rw-hairline); border-radius: 0; }
+.title { font: var(--rw-type-h2); background: var(--rw-tab); color: var(--rw-on-tab); box-shadow: var(--rw-shadow-tab); }
+```
+
+| File | What it is |
+| --- | --- |
+| [rawshan-theme.css](rawshan-theme.css) | Portable tokens: `--rw-*` colours for both modes, type shorthands (`--rw-type-display` … `--rw-type-label`), spacing, radius, borders, opacities and hard shadows, the Effra `@font-face`, and the page background. Selectors: `:root[data-theme="rawshan"]` and `:root[data-theme="rawshan-night"]`. No component styles. |
+| [rawshan-components.css](rawshan-components.css) | Opt-in classes: `rw-btn`, `rw-tab` with `rw-kicker`, `rw-card`, `rw-field`, `rw-band` (twin band), `rw-spine` (identity bars), `rw-lattice`, `rw-grain` (plaster texture), `rw-photo` (shared warm image treatment), `rw-frame`, `rw-dateline`, `rw-lead`, `rw-quote`, and the entrance motion (off under reduced motion). Wrap content in `class="rw"`. |
+| [rawshan-tokens.json](rawshan-tokens.json) | The same values, machine-readable, per mode. |
+| [rawshan-style-tile.html](rawshan-style-tile.html) | Header, mood, palette, type, buttons and links, form, cards, ornaments, donut / bar / scatter charts, and tokens, with a Plaster / Night switch. Works straight from the ZIP. |
+
+Colours: coral `#EB5A3D`, plum `#6F1946`, crimson `#B21C35`, saffron `#FF9619`, sage `#90B9B3`, peach `#F3C6A5`, navy `#0E2837`, rust frame `#B04828`, teak `#905838` / `#B88058`, bands `#F2BD94` / `#B1C6BD`. Plaster surface `#FBF8F4`, Night surface `#0B1F2B`. Use about 70% surface, 20% navy, 10% accent; all seven identity hues appear together only in the spine stripe, once per page. Every text pair meets 4.5:1 in both modes.
+
+Font: **Effra Regular** (Arabic and Latin) sets titles and text; Noto Naskh Arabic sets pull quotes only. Effra is a commercial Dalton Maag typeface, so the font file is **not** in this public repository. `rawshan-theme.css` uses an installed copy through `local()`; on a website, host your licensed file privately and add its `url()` to the `@font-face`. Without Effra, text falls back to IBM Plex Sans Arabic. Effra has one weight, so hierarchy comes from size, colour and the navy tab, with `font-synthesis: none`.
+
+Geometry: square corners everywhere (`--rw-radius-sharp`, 2px, only for chart bars), hard offset shadows with no blur, 1px hairlines (0.5px on high-density screens), 6px rust frame.
+
 ## Downloads
 
 The [palette collection](palette-collection.html) and the three companion palette tiles provide:
@@ -119,5 +149,7 @@ The default preview and approved Ivory style tile export `zeal-ivory-tokens.css`
 - The Facet and Facet Studio tiles were built on 11 October 2026 from Bader's Facet logo render (crystal hexagon, gunmetal lattice, ruby core). Facet Studio embeds that render and three close-up crops of it as images, so the file is self-contained at about 210 KB.
 
 - The Concord theme files were copied on 13 October 2026 from `basabtan/concord` at commit `1271480c544b103f76fc9625c16777c8a03be2a5` ("Add OG as the default brand-aligned theme"). `concord/og.css`, `concord/concord-tokens.css` and `concord/concord-icon-tokens.css` are byte-for-byte copies (SHA-256 `a274d076…`, `df5a3cb7…`, `1a1fe8ed…`). The brand SVGs come from `public/brand/concord/`. The large lockups (1.7 MB SVGs) and the 2.8 MB primary PNG stay in the Concord repo. `concord-theme.css`, `concord-tokens.json` and the style tile were written from those files. The values are the same; only the theme name `concord` and the alias `og` were added.
+
+- The Rawshan theme was built on 13 October 2026 for the Arabz page. Its colours were sampled from two reference images Bader supplied, a logo and a slide template, and from the photograph of a Hijazi house in that template; no logo, mark or photograph from them is included. The house in the style tile is an original illustration. Font choice (Effra) was Bader's; the font file stays outside the repository. `rawshan-theme.css`, `rawshan-components.css` and `rawshan-tokens.json` are generated from the Rawshan design system's token file, and `tests/rawshan-theme.test.ts` keeps the three in step.
 
 Published here as repository assets. This change does not deploy a website or publish a new npm registry release.
