@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-theme="rawshan">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rawshan Style Tile</title>
+<link rel="stylesheet" href="rawshan-theme.css">
+<link rel="stylesheet" href="rawshan-components.css">
+<style>
+/* Tile-only layout. Every colour, font, size and radius comes from rawshan-theme.css;
+   component treatments are the classes in rawshan-components.css. */
+*{border-radius:0}
+.page{padding-inline:clamp(16px,4vw,48px);padding-block:0 64px;border-top:var(--rw-border-frame) solid var(--rw-frame);min-height:100vh}
+.wrap{max-width:1120px;margin:0 auto;display:grid;gap:var(--rw-space-7)}
+.top{display:flex;align-items:center;gap:var(--rw-space-4);flex-wrap:wrap;padding-block:var(--rw-space-5);border-bottom:var(--rw-border-hair) solid var(--rw-hairline)}
+.word{font:400 26px/1 var(--rw-font-display)}
+.top .meta{margin-inline-start:auto;font:var(--rw-type-caption);color:var(--rw-ink-muted)}
+.mode{display:flex;border:var(--rw-border-control) solid var(--rw-ink)}
+.mode button{font:400 13px/1 var(--rw-font-text);min-height:36px;padding:0 var(--rw-space-4);background:transparent;color:var(--rw-ink);border:0;cursor:pointer}
+.mode button[aria-pressed="true"]{background:var(--rw-ink);color:var(--rw-surface)}
+.mode button:focus-visible{outline:2px solid var(--rw-focus);outline-offset:2px}
+.sec{display:grid;gap:var(--rw-space-5)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--rw-space-5)}
+.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--rw-space-5)}
+.panel{background:var(--rw-surface-raised);border:var(--rw-border-hair) solid var(--rw-hairline);padding:var(--rw-space-5);min-width:0}
+.k{font:var(--rw-type-caption);color:var(--rw-ink-muted)}
+p.k{margin:0;unicode-bidi:plaintext;text-align:start}
+.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:var(--rw-space-7);align-items:center}
+.hero-text{display:flex;flex-direction:column;align-items:flex-start;gap:var(--rw-space-5)}
+.hero h1{margin:0;font:var(--rw-type-display);font-size:clamp(44px,6vw,68px)}
+.hero h1 em{font-style:normal;color:var(--rw-kicker)}
+.rw-spine{height:28px}
+.rw-photo{aspect-ratio:5/4;max-width:100%}
+.mood{display:flex;flex-wrap:wrap;gap:var(--rw-space-2)}
+.mood span{font:var(--rw-type-kicker);padding:var(--rw-space-1) var(--rw-space-3);border:var(--rw-border-hair) dotted var(--rw-control-border)}
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:var(--rw-space-3)}
+.sw div{background:var(--rw-surface-raised);border:var(--rw-border-hair) solid var(--rw-hairline)}
+.sw i{display:block;height:64px;border-bottom:var(--rw-border-hair) solid var(--rw-hairline)}
+.sw b{display:block;font:400 13px/1.4 var(--rw-font-text);padding:var(--rw-space-2) var(--rw-space-3) 0}
+.sw code{display:block;direction:ltr;text-align:right;font:400 11px/1.5 ui-monospace,Consolas,monospace;color:var(--rw-ink-muted);padding:2px var(--rw-space-3) var(--rw-space-2)}
+.split{display:grid;grid-template-columns:7fr 2fr 1fr;height:28px}
+.split i{display:block}
+.spec{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--rw-space-4);align-items:baseline;padding-block:var(--rw-space-3);border-bottom:var(--rw-border-hair) solid var(--rw-hairline)}
+.spec:last-child{border-bottom:0}
+.spec p{margin:0;min-width:0;overflow-wrap:anywhere}
+.row{display:flex;flex-wrap:wrap;gap:var(--rw-space-4);align-items:center}
+form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--rw-space-5)}
+.wide{grid-column:1/-1}
+.rw-field input,.rw-field select,.rw-field textarea{width:100%}
+.orn{display:grid;gap:var(--rw-space-5)}
+.lat{height:120px}
+.frame-demo{height:120px;background:var(--rw-surface-raised);padding:var(--rw-space-4);font:var(--rw-type-body)}
+.slab{background:var(--rw-slab);color:#f4eee6;padding:var(--rw-space-7) var(--rw-space-6);display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--rw-space-5)}
+.slab .mark{font:500 80px/.8 var(--rw-font-serif);color:var(--rw-peach)}
+.slab p{margin:0;font:var(--rw-type-quote);font-size:clamp(22px,3vw,28px)}
+figure.chart{margin:0;display:grid;gap:var(--rw-space-3)}
+figure.chart figcaption{font:var(--rw-type-h3);font-size:16px}
+.chart svg{display:block;width:100%;height:auto;direction:ltr}
+.c1{fill:var(--rw-chart-1)}.c2{fill:var(--rw-chart-2)}.c3{fill:var(--rw-chart-3)}.c4{fill:var(--rw-chart-4)}.c5{fill:var(--rw-chart-5)}
+.s1{stroke:var(--rw-chart-1)}.s2{stroke:var(--rw-chart-2)}.s3{stroke:var(--rw-chart-3)}.s4{stroke:var(--rw-chart-4)}.s5{stroke:var(--rw-chart-5)}
+.gl{stroke:var(--rw-chart-grid);stroke-width:1}
+.ax{font:400 11px/1 var(--rw-font-text);fill:var(--rw-ink-muted)}
+.big{font:400 28px/1 var(--rw-font-display);fill:var(--rw-ink)}
+.legend{display:flex;flex-wrap:wrap;gap:var(--rw-space-3);font:var(--rw-type-caption);color:var(--rw-ink-muted)}
+.legend span{display:inline-flex;align-items:center;gap:var(--rw-space-1)}
+.legend i{width:10px;height:10px;display:inline-block}
+pre{margin:0;direction:ltr;text-align:left;overflow-x:auto;background:var(--rw-surface-sunken);border:var(--rw-border-hair) solid var(--rw-hairline);padding:var(--rw-space-4);font:400 12px/1.7 ui-monospace,Consolas,monospace;color:var(--rw-ink)}
+.files{display:flex;flex-wrap:wrap;gap:var(--rw-space-3)}
+footer{display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--rw-space-3);font:var(--rw-type-caption);color:var(--rw-ink-muted)}
+@media (max-width:860px){.hero,.two,.three,form{grid-template-columns:minmax(0,1fr)}.spec{grid-template-columns:minmax(0,1fr);gap:var(--rw-space-1)}.slab{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<div class="page rw rw-grain">
+<main class="wrap">
+
+  <!-- 1 Header -->
+  <header class="top">
+    <span class="word">Rawshan</span>
+    <span class="k">روشان · Arabz page theme</span>
+    <div class="meta">data-theme="rawshan" / "rawshan-night" · --rw-*</div>
+    <div class="mode" role="group" aria-label="Mode">
+      <button type="button" id="m-plaster" data-mode="rawshan" aria-pressed="true">Plaster</button>
+      <button type="button" id="m-night" data-mode="rawshan-night" aria-pressed="false">Night</button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <div class="rw-spine" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <span class="rw-kicker">الحجاز · التراث العمراني</span>
+      <h1>ثقافةٌ تُروى <em>بالحجر</em> والخشب</h1>
+      <p class="rw-lead">من رواشين جدة التاريخية إلى حكايات البيوت المرجانية: العمارة، والحِرف، والناس.</p>
+      <div class="rw-dateline">أكتوبر / ٢٠٢٦</div>
+    </div>
+    <figure class="rw-photo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Illustration of a Hijazi coral-stone house with a carved teak rawshan balcony">
+  <defs>
+    <linearGradient id="fz-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7f97b5"/><stop offset=".7" stop-color="#b9c6d4"/><stop offset="1" stop-color="#e3dccf"/></linearGradient>
+    <linearGradient id="fz-wall" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f1e9de"/><stop offset=".78" stop-color="#e6dbcc"/><stop offset="1" stop-color="#c9b9a6"/></linearGradient>
+    <pattern id="fz-lat" width="10" height="10" patternUnits="userSpaceOnUse"><rect width="10" height="10" fill="#9a603d"/><path d="M0 0L10 10M10 0L0 10" stroke="#5a321d" stroke-width="1.4"/><path d="M0 .5H10" stroke="#4a2816" stroke-width="1"/></pattern>
+    <pattern id="fz-lat2" width="8" height="8" patternUnits="userSpaceOnUse"><rect width="8" height="8" fill="#8b5434"/><path d="M0 0L8 8M8 0L0 8" stroke="#4e2a17" stroke-width="1.2"/></pattern>
+  </defs>
+  <rect width="640" height="480" fill="url(#fz-sky)"/>
+  <g fill="#ffffff" opacity=".55"><ellipse cx="120" cy="90" rx="110" ry="26"/><ellipse cx="200" cy="70" rx="70" ry="22"/><ellipse cx="90" cy="180" rx="80" ry="16"/><ellipse cx="420" cy="40" rx="90" ry="18"/></g>
+
+  <!-- low house, left -->
+  <rect x="20" y="300" width="230" height="190" fill="url(#fz-wall)"/>
+  <path d="M20 300h230v-8H20z" fill="#cdbca7"/>
+  <path d="M20 292 l8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 8 10 8-10 6 10z" fill="#e9e0d3"/>
+  <rect x="58" y="340" width="150" height="92" fill="url(#fz-lat2)"/>
+  <rect x="50" y="330" width="166" height="12" fill="#6b3a21"/>
+  <rect x="58" y="368" width="150" height="4" fill="#5a2f1a"/>
+
+  <!-- tower -->
+  <rect x="270" y="74" width="300" height="420" fill="url(#fz-wall)"/>
+  <path d="M270 74 l12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18 12-18 12 18z" fill="#efe6da"/>
+  <rect x="270" y="74" width="300" height="8" fill="#c8b6a1"/>
+  <rect x="270" y="196" width="300" height="7" fill="#7a4428"/>
+  <g fill="url(#fz-lat)" stroke="#5a2f1a" stroke-width="3">
+    <path d="M308 182v-62a17 17 0 0 1 34 0v62z"/>
+    <path d="M370 182v-62a17 17 0 0 1 34 0v62z"/>
+    <path d="M432 182v-62a17 17 0 0 1 34 0v62z"/>
+    <path d="M494 182v-62a17 17 0 0 1 34 0v62z"/>
+  </g>
+
+  <!-- rawshan -->
+  <path d="M286 236h268l-16 -18H302z" fill="#5d3019"/>
+  <path d="M290 236h260v10H290z" fill="#7a4428"/>
+  <g fill="#6e3b21"><path d="M296 246h10v6h-10z"/><path d="M330 246h10v6h-10z"/><path d="M364 246h10v6h-10z"/><path d="M398 246h10v6h-10z"/><path d="M432 246h10v6h-10z"/><path d="M466 246h10v6h-10z"/><path d="M500 246h10v6h-10z"/><path d="M534 246h10v6h-10z"/></g>
+  <rect x="296" y="252" width="248" height="130" fill="url(#fz-lat)"/>
+  <g fill="none" stroke="#4e2816" stroke-width="3">
+    <rect x="296" y="252" width="248" height="130"/>
+    <path d="M358 252v130M420 252v130M482 252v130"/>
+    <path d="M296 300h248"/>
+  </g>
+  <g fill="#b07a54" opacity=".55"><rect x="300" y="256" width="54" height="40"/><rect x="424" y="256" width="54" height="40"/></g>
+  <path d="M296 382h248l-20 20H316z" fill="#5d3019"/>
+  <g fill="#6e3b21"><path d="M318 402l12 26 12-26z"/><path d="M404 402l12 26 12-26z"/><path d="M490 402l12 26 12-26z"/></g>
+
+  <!-- lower openings -->
+  <g fill="url(#fz-lat2)" stroke="#5a2f1a" stroke-width="3">
+    <path d="M330 494v-34a14 14 0 0 1 28 0v34z"/>
+    <path d="M480 494v-34a14 14 0 0 1 28 0v34z"/>
+  </g>
+  <rect x="270" y="74" width="26" height="420" fill="#000" opacity=".04"/>
+  <rect x="548" y="74" width="22" height="420" fill="#000" opacity=".08"/>
+
+  <!-- leaves -->
+  <g fill="#2c4416">
+    <ellipse cx="610" cy="30" rx="70" ry="44"/><ellipse cx="640" cy="120" rx="44" ry="70"/><ellipse cx="596" cy="96" rx="30" ry="22"/>
+    <ellipse cx="626" cy="230" rx="30" ry="46"/><ellipse cx="0" cy="40" rx="40" ry="60"/>
+  </g>
+  <g fill="#4d6b24">
+    <ellipse cx="586" cy="52" rx="34" ry="16" transform="rotate(-28 586 52)"/><ellipse cx="616" cy="164" rx="26" ry="12" transform="rotate(40 616 164)"/><ellipse cx="632" cy="290" rx="18" ry="9" transform="rotate(-30 632 290)"/><ellipse cx="14" cy="96" rx="20" ry="9" transform="rotate(30 14 96)"/>
+  </g>
+  <path d="M640 330 C 600 300, 590 250, 560 200" stroke="#3a2a1a" stroke-width="2" fill="none" opacity=".5"/>
+</svg>
+
+      <div class="rw-band" aria-hidden="true"></div>
+      <figcaption>رسم توضيحي · استبدله بصورة حقيقية</figcaption>
+    </figure>
+  </section>
+
+  <!-- 2 Mood / keywords -->
+  <section class="sec">
+    <header class="rw-head"><span class="rw-kicker">٠١</span><h2 class="rw-tab">الطابع</h2></header>
+    <div class="mood"><span>حجازي</span><span>جيري</span><span>خشب الساج</span><span>مربّع الزوايا</span><span>هادئ</span><span>تحريري</span><span>Arabic-first</span><span>Hard shadows</span></div>
+  </section>
+
+  <!-- 3 Colour palette -->
+  <section class="sec">
+    <header class="rw-head"><span class="rw-kicker">٠٢</span><h2 class="rw-tab">الألوان</h2></header>
+    <p class="k">Identity hues, sampled from the reference images. In use they keep the 70 / 20 / 10 split below.</p>
+    <div class="split" aria-label="70 percent surface, 20 percent navy, 10 percent accent"><i style="background:var(--rw-surface-sunken)"></i><i style="background:var(--rw-navy)"></i><i style="background:var(--rw-coral)"></i></div>
+    <div class="sw" id="sw-identity"></div>
+    <p class="k">Roles that switch between Plaster and Night.</p>
+    <div class="sw" id="sw-roles"></div>
+  </section>
+
+  <!-- 4 Typography -->
+  <section class="sec">
+    <header class="rw-head"><span class="rw-kicker">٠٣</span><h2 class="rw-tab">الخط</h2></header>
+    <div class="panel">
+      <div class="spec"><span class="k">display · 68</span><p style="font:var(--rw-type-display);font-size:clamp(40px,6vw,68px)">العنوان الرئيسي</p></div>
+      <div class="spec"><span class="k">h1 · 44</span><p style="font:var(--rw-type-h1);font-size:clamp(32px,5vw,44px)">العنوان الفرعي</p></div>
+      <div class="spec"><span class="k">h2 · 28</span><p style="font:var(--rw-type-h2)">عنوان الشريحة</p></div>
+      <div class="spec"><span class="k">h3 · 20</span><p style="font:var(--rw-type-h3)">القسم الرئيسي</p></div>
+      <div class="spec"><span class="k">lead · 21</span><p style="font:var(--rw-type-lead)">نص إضافي يشرح الفكرة بوضوح في سطر افتتاحي.</p></div>
+      <div class="spec"><span class="k">body · 16</span><p style="font:var(--rw-type-body)">نص إضافي يشرح الفكرة بوضوح. Effra Regular sets Arabic and Latin together, ٠١٢٣٤٥٦٧٨٩ / 0123456789.</p></div>
+      <div class="spec"><span class="k">quote · Naskh</span><p style="font:var(--rw-type-quote);font-size:clamp(22px,3vw,28px)">المكان ذاكرةٌ تُروى</p></div>
+      <div class="spec"><span class="k">caption · 12</span><p style="font:var(--rw-type-caption);color:var(--rw-ink-muted)">الشهر / السنة</p></div>
+    </div>
+    <p class="k">Effra ships in Regular only: hierarchy comes from size, colour and the navy tab. Effra is commercial and is not in this repository; without it the tile falls back to IBM Plex Sans Arabic.</p>
+  </section>
+
+  <!-- 5 Buttons & links / 6 Form -->
+  <div class="two">
+    <section class="sec">
+      <header class="rw-head"><span class="rw-kicker">٠٤</span><h2 class="rw-tab">الأزرار والروابط</h2></header>
+      <div class="panel row">
+        <button class="rw-btn" type="button">ابدأ الآن</button>
+        <button class="rw-btn rw-btn--secondary" type="button">التفاصيل</button>
+        <a class="rw-btn rw-btn--link" href="#tokens">اقرأ المزيد</a>
+        <button class="rw-btn" type="button" disabled>غير متاح</button>
+      </div>
+      <p class="k">Inline: <a href="#tokens" style="color:var(--rw-link);text-underline-offset:4px">رابط داخل النص</a>. Focus ring is 2px solid --rw-focus.</p>
+    </section>
+    <section class="sec">
+      <header class="rw-head"><span class="rw-kicker">٠٥</span><h2 class="rw-tab">النموذج</h2></header>
+      <form class="panel" id="tile-form" novalidate>
+        <div class="rw-field"><label for="t-name">الاسم</label><input id="t-name" value="سارة العتيبي"><span class="rw-help">كما يظهر في الهوية</span></div>
+        <div class="rw-field"><label for="t-city">المدينة</label><select id="t-city"><option>جدة</option><option>مكة المكرمة</option><option>الطائف</option></select></div>
+        <div class="rw-field is-error wide"><label for="t-mail">البريد الإلكتروني</label><input id="t-mail" value="name@" aria-invalid="true"><span class="rw-help">خطأ: البريد غير مكتمل</span></div>
+        <div class="wide"><button class="rw-btn" type="submit">إرسال</button></div>
+      </form>
+    </section>
+  </div>
+
+  <!-- 7 Card -->
+  <section class="sec">
+    <header class="rw-head"><span class="rw-kicker">٠٦</span><h2 class="rw-tab">البطاقة</h2></header>
+    <div class="three">
+      <article class="rw-card"><h3 class="rw-card__title">العمارة الحجازية</h3><p class="rw-card__body">البيوت المرجانية، والجدران الجيرية، والرواشين التي ترشّح الضوء.</p><span class="k">١٢ مقالاً · مثال</span></article>
+      <article class="rw-card rw-card--interactive" tabindex="0"><div class="rw-spine" style="height:10px" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><h3 class="rw-card__title">بطاقة تفاعلية</h3><p class="rw-card__body">خطوة ظل صلبة عند المرور، دون أي ضبابية.</p><span class="k">--rw-shadow-lift</span></article>
+      <article class="rw-card rw-card--dotted"><h3 class="rw-card__title">نص إضافي</h3><p class="rw-card__body">إطار منقط للمحتوى الثانوي أو المؤقت.</p><span class="k">dotted frame</span></article>
+    </div>
+  </section>
+
+  <!-- 8 Dividers / ornaments -->
+  <section class="sec">
+    <header class="rw-head"><span class="rw-kicker">٠٧</span><h2 class="rw-tab">الزخارف والفواصل</h2></header>
+    <div class="orn">
+      <div><p class="k">Twin band (rw-band)</p><div class="rw-band" aria-hidden="true"></div></div>
+      <div class="rw-dateline" style="justify-content:center">الشهر / السنة</div>
+      <div class="two">
+        <div><p class="k">Rawshan lattice (rw-lattice)</p><div class="rw-lattice lat" aria-hidden="true"></div></div>
+        <div><p class="k">Rust frame (rw-frame)</p><div class="rw-frame frame-demo">صفحة محتوى</div></div>
+      </div>
+      <div class="slab"><span class="mark" aria-hidden="true">«</span><p>البيتُ الحجازي لا يُغلق نوافذه في وجه الضوء، بل يُرشّحه عبر الخشب حتى يصير ظلًّا رحيمًا.</p></div>
+    </div>
+  </section>
+
+  <!-- 9 Data viz -->
+  <section class="sec">
+    <header class="rw-head"><span class="rw-kicker">٠٨</span><h2 class="rw-tab">البيانات</h2></header>
+    <div class="three">
+      <figure class="chart panel">
+        <figcaption>التوزيع حسب المسار</figcaption>
+        <svg viewBox="0 0 200 160" role="img" aria-label="Donut: architecture 35%, crafts 24%, people 18%, markets 12%, other 11%">
+          <g transform="translate(100,80)" fill="none" stroke-width="24">
+            <circle r="56" class="s1" stroke-dasharray="123.2 228.6" transform="rotate(-90)"/>
+            <circle r="56" class="s2" stroke-dasharray="84.4 267.4" stroke-dashoffset="-123.2" transform="rotate(-90)"/>
+            <circle r="56" class="s3" stroke-dasharray="63.3 288.5" stroke-dashoffset="-207.6" transform="rotate(-90)"/>
+            <circle r="56" class="s4" stroke-dasharray="42.2 309.6" stroke-dashoffset="-270.9" transform="rotate(-90)"/>
+            <circle r="56" class="s5" stroke-dasharray="38.7 313.1" stroke-dashoffset="-313.1" transform="rotate(-90)"/>
+          </g>
+          <text x="100" y="90" text-anchor="middle" class="big">٣٥٪</text>
+        </svg>
+        <div class="legend"><span><i class="c1" style="background:var(--rw-chart-1)"></i>العمارة</span><span><i style="background:var(--rw-chart-2)"></i>الحرف</span><span><i style="background:var(--rw-chart-3)"></i>الناس</span><span><i style="background:var(--rw-chart-4)"></i>الأسواق</span><span><i style="background:var(--rw-chart-5)"></i>أخرى</span></div>
+      </figure>
+      <figure class="chart panel">
+        <figcaption>مبانٍ موثّقة حسب الحارة</figcaption>
+        <svg viewBox="0 0 220 160" role="img" aria-label="Bar chart of documented buildings per district: 42, 31, 27, 18, 10">
+          <line x1="28" x2="214" y1="136" y2="136" class="gl"/><line x1="28" x2="214" y1="96" y2="96" class="gl"/><line x1="28" x2="214" y1="56" y2="56" class="gl"/><line x1="28" x2="214" y1="16" y2="16" class="gl"/>
+          <text x="22" y="140" class="ax" text-anchor="end">0</text><text x="22" y="100" class="ax" text-anchor="end">15</text><text x="22" y="60" class="ax" text-anchor="end">30</text><text x="22" y="20" class="ax" text-anchor="end">45</text>
+          <rect class="c1" x="38" y="24" width="26" height="112" rx="2"/>
+          <rect class="c2" x="74" y="53.3" width="26" height="82.7" rx="2"/>
+          <rect class="c3" x="110" y="64" width="26" height="72" rx="2"/>
+          <rect class="c4" x="146" y="88" width="26" height="48" rx="2"/>
+          <rect class="c5" x="182" y="109.3" width="26" height="26.7" rx="2"/>
+          <text x="51" y="152" class="ax" text-anchor="middle">١</text><text x="87" y="152" class="ax" text-anchor="middle">٢</text><text x="123" y="152" class="ax" text-anchor="middle">٣</text><text x="159" y="152" class="ax" text-anchor="middle">٤</text><text x="195" y="152" class="ax" text-anchor="middle">٥</text>
+        </svg>
+        <div class="legend"><span>Districts 1 to 5 · example data</span></div>
+      </figure>
+      <figure class="chart panel">
+        <figcaption>العمر مقابل حالة الحفظ</figcaption>
+        <svg viewBox="0 0 220 160" role="img" aria-label="Scatter plot of building age against condition score, three groups">
+          <line x1="28" x2="214" y1="136" y2="136" class="gl"/><line x1="28" x2="28" y1="10" y2="136" class="gl"/>
+          <text x="28" y="152" class="ax" text-anchor="middle">50</text><text x="121" y="152" class="ax" text-anchor="middle">150</text><text x="214" y="152" class="ax" text-anchor="end">250 yrs</text>
+          <text x="22" y="140" class="ax" text-anchor="end">0</text><text x="22" y="16" class="ax" text-anchor="end">10</text>
+          <g class="c1"><rect x="44" y="40" width="8" height="8"/><rect x="66" y="52" width="8" height="8"/><rect x="88" y="46" width="8" height="8"/><rect x="104" y="64" width="8" height="8"/><rect x="128" y="72" width="8" height="8"/></g>
+          <g class="c2"><rect x="96" y="88" width="8" height="8"/><rect x="122" y="98" width="8" height="8"/><rect x="146" y="92" width="8" height="8"/><rect x="164" y="108" width="8" height="8"/><rect x="190" y="116" width="8" height="8"/></g>
+          <g class="c3"><rect x="58" y="24" width="8" height="8"/><rect x="80" y="30" width="8" height="8"/><rect x="138" y="54" width="8" height="8"/><rect x="176" y="70" width="8" height="8"/></g>
+        </svg>
+        <div class="legend"><span><i style="background:var(--rw-chart-1)"></i>مرمّم</span><span><i style="background:var(--rw-chart-2)"></i>متضرر</span><span><i style="background:var(--rw-chart-3)"></i>قيد الترميم</span></div>
+      </figure>
+    </div>
+    <p class="k">All chart figures are example data for the specimen.</p>
+  </section>
+
+  <!-- 10 Tokens -->
+  <section class="sec" id="tokens">
+    <header class="rw-head"><span class="rw-kicker">٠٩</span><h2 class="rw-tab">الرموز</h2></header>
+    <div class="files">
+      <a class="rw-btn" href="rawshan-theme.css" download>rawshan-theme.css</a>
+      <a class="rw-btn rw-btn--secondary" href="rawshan-components.css" download>rawshan-components.css</a>
+      <a class="rw-btn rw-btn--secondary" href="rawshan-tokens.json" download>rawshan-tokens.json</a>
+    </div>
+<pre>&lt;html data-theme="rawshan" dir="rtl" lang="ar"&gt;   &lt;!-- or "rawshan-night" --&gt;
+&lt;link rel="stylesheet" href="themes/rawshan-theme.css"&gt;
+&lt;link rel="stylesheet" href="themes/rawshan-components.css"&gt;
+
+.my-panel  { background: var(--rw-surface-raised); color: var(--rw-ink);
+             border: 1px solid var(--rw-hairline); border-radius: 0; }
+.my-title  { font: var(--rw-type-h2); background: var(--rw-tab); color: var(--rw-on-tab);
+             box-shadow: var(--rw-shadow-tab); }
+.my-button { background: var(--rw-action); color: var(--rw-on-action); }</pre>
+    <pre id="token-dump" aria-label="Current mode tokens"></pre>
+  </section>
+
+  <div class="rw-band" aria-hidden="true"></div>
+  <footer><span>Rawshan · theme "rawshan" (Plaster) and "rawshan-night" (Night)</span><span>basabtan/services · themes</span></footer>
+</main>
+</div>
+<script>
+(function () {
+  var root = document.documentElement;
+  var identity = ['coral','plum','sage','saffron','crimson','peach','navy','rust','teak','teak-light','sky','band-peach','band-sage'];
+  var roles = ['surface','surface-raised','surface-sunken','ink','ink-muted','hairline','control-border','action','tab','tab-shadow','slab','link','kicker','focus','success','warning','danger','chart-1','chart-2','chart-3','chart-4','chart-5'];
+  function tile(name) {
+    var v = getComputedStyle(root).getPropertyValue('--rw-' + name).trim();
+    return '<div><i style="background:var(--rw-' + name + ')"></i><b>' + name + '</b><code>--rw-' + name + ' · ' + v + '</code></div>';
+  }
+  function render() {
+    document.getElementById('sw-identity').innerHTML = identity.map(tile).join('');
+    document.getElementById('sw-roles').innerHTML = roles.map(tile).join('');
+    var cs = getComputedStyle(root);
+    document.getElementById('token-dump').textContent = ':root[data-theme="' + root.dataset.theme + '"] {\n' +
+      identity.concat(roles).map(function (n) { return '  --rw-' + n + ': ' + cs.getPropertyValue('--rw-' + n).trim() + ';'; }).join('\n') + '\n}';
+  }
+  document.querySelectorAll('.mode button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      root.dataset.theme = b.dataset.mode;
+      document.querySelectorAll('.mode button').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
+      render();
+    });
+  });
+  document.getElementById('tile-form').addEventListener('submit', function (e) { e.preventDefault(); });
+  render();
+})();
+</script>
+</body>
+</html>
